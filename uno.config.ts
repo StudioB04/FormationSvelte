@@ -13,9 +13,7 @@ export default defineConfig({
       light: "var(--text-light)",
       dark: "var(--text-dark)",
       darker: "var(--text-darker)",
+      default: "var(--text)",
     },
-  },
-  shortcuts: {
-    "main-title": "text-4xl font-bold text-primary",
   },
 });

@@ -1,0 +1,37 @@
+<h1>StudioB04</h1>
+
+<div class="flex gap-10 items-start">
+  <img src="/assets/logos/studiob04.svg" alt="" class="w-25 mbs-2" />
+
+  <div>
+    <h2 class="text-light">Micro agence numérique 360.</h2>
+    <p>
+      StudioB04 est une micro agence spécialisée dans la création de site web, et supports de
+      communication.
+    </p>
+    <p v-click>
+      Nous accompagnons nos clients dans leur stratégie numérique et leur communication.<br />Nous
+      militons pour un web plus
+      <u>sobre</u>
+      et plus
+      <u>accessible</u>.
+    </p>
+    <ul class="mbs-10">
+      <li v-click v-motion :duration="250" :initial="{ x: 200 }" :enter="{ x: 0 }">
+        Développement et maintenance de solutions web (vitrine, e-commerce, applications, etc.)
+      </li>
+      <li v-click v-motion :duration="250" :initial="{ x: 200 }" :enter="{ x: 0 }">
+        Audit d'accessibilité numérique (106 critères du
+        <a href="https://accessibilite.numerique.gouv.fr/" target="_blank">R.G.A.A</a>)
+      </li>
+      <li v-click v-motion :duration="250" :initial="{ x: 200 }" :enter="{ x: 0 }">
+        Formation et sensibiliation à l'accessibilité numérique et au numérique responsable
+      </li>
+      <li v-click v-motion :duration="250" :initial="{ x: 200 }" :enter="{ x: 0 }">
+        Interventions en centre de formation
+      </li>
+    </ul>
+  </div>
+</div>
+
+<SlideFooter />

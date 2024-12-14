@@ -1,0 +1,40 @@
+.slidev-layout {
+  *:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0px 2px var(--white),
+      0 0 0px 4px var(--primary-500);
+  }
+
+  * {
+    text-decoration-thickness: 0.05em;
+  }
+
+  a {
+    color: var(--primary-500);
+    border-style: solid;
+
+    &:hover {
+      color: var(--primary-700);
+      border-style: dashed;
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 600;
+  }
+
+  h1 {
+    color: var(--primary-500);
+
+    & + p {
+      margin: initial;
+      opacity: 1;
+    }
+  }
+}

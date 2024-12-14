@@ -18,8 +18,8 @@ fonts:
   serif: Robot Slab
   mono: monospace
 themeConfig:
-  primary: "var(--primary-500)"
-  secondary: "var(--secondary-500)"
+  primary: var(--primary-500)
+  secondary: var(--secondary-500)
 
 # CONFIG
 presenter: true
@@ -36,13 +36,34 @@ mdc: true
 
 layout: cover # https://sli.dev/builtin/layouts
 transition: fade-out
-src: "./slides/introduction.html"
+src: ./slides/accueil.html
 ---
 
 
 ---
-title: "Introduction"
-level: 1
+title: Introduction
+layout: default
+transition: slide-left
+src: ./slides/introduction.html
+---
+
+---
+title: À propos de moi
+layout: default
+transition: slide-left
+src: ./slides/moi.html
+---
+
+---
+title: StudioB04
+layout: default
+transition: slide-left
+src: ./slides/StudioB04.html
+---
+
+---
+title: Table des matières
+layout: default
 transition: slide-up
-src: "./slides/programme.html"
+src: ./slides/programme.html
 ---

@@ -1,0 +1,18 @@
+<div class="flex flex-col gap-2">
+  <h1 class="main-title !text-7xl">Bienvenue</h1>
+  <h2 class="text-light">Parcours développeur front-end.</h2>
+  <h3 class="text-lighter">Module Svelte.</h3>
+</div>
+
+<img
+  alt=""
+  src="/assets/avatar/bras-croises.png"
+  class="absolute h-[90%] right-20 bottom-5"
+  v-motion
+  :delay="100"
+  :duration="250"
+  :initial="{ x: 500 }"
+  :enter="{ x: 0 }"
+/>
+
+<SlideFooter />
