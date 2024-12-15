@@ -1,0 +1,210 @@
+<h1>La syntaxe de Svelte</h1>
+
+<p>Un composant <b>Svelte</b> va s'écrire dans un fichier <kbd>.svelte</kbd> qui sera ensuite traduit par le compilateur en code JavaScript.</p>
+
+<p>Afin de simplifier le développement, les composants <b>Svelte</b> contiennent de l'HTML classique. Pas besoin d'apprendre un nouveau langage.</p>
+
+
+<div class="flex gap-5">
+
+<div v-click>
+<p>Un composant très simple qui va retouner du texte dans un paragraphe :</p>
+```svelte
+<!-- MyComponent.svelte -->
+
+<p>Hello World !</p>
+```
+</div>
+
+<div v-click>
+<p>Pour utiliser ce composant :</p>
+```svelte
+<!-- App.svelte -->
+<script>
+  import MyComponent from './MyComponent.svelte';
+</script>
+
+<MyComponent />
+```
+</div>
+
+</div>
+
+<p v-click>Essayons sur le <a href="https://svelte.dev/playground/e16e6f97c37a473a89b5dc90e5dea6cf?version=4.2.19" target="_blank">Playground</a> de <b>Svelte</b> !</p>
+
+<SlideFooter/>
+
+---
+
+<h1>Dynamiser le composant</h1>
+
+<p>
+  Imaginons que l'on souhaite afficher une variable et non pas un texte en dur.<br/>
+  Pour cela nous allons ajouter une balise <kbd>&lt;script/&gt;</kbd> :
+</p>
+
+<div v-click class="flex gap-10 mbs-10">
+```svelte
+<script>
+  let name = "John";
+</script>
+
+<p>Hello {name} !</p>
+```
+
+```html
+<script>
+  import MyComponent from './MyComponent.svelte';
+</script>
+
+<MyComponent /> <!-- Hello John -->
+```
+</div>
+
+---
+
+<h1>Ajouter des propriétés</h1>
+
+<p>
+  On pourrait avoir besoin d'utiliser le même composant avec des propriété différentes.<br/>
+  Pour cela il suffit d'exporter la variable name<kbd>&lt;script/&gt;</kbd> :
+</p>
+
+<div v-click class="flex mbs-5">
+```svelte
+<script>
+  export let name;
+</script>
+
+<p>Hello {name} !</p>
+```
+</div>
+
+<div v-click class="flex mbs-2">
+```svelte
+<script>
+  import MyComponent from './MyComponent.svelte';
+</script>
+
+<!-- name deviens une propriété du composant -->
+<MyComponent name="John"/>
+<MyComponent name="Bill"/>
+```
+</div>
+
+---
+
+<h1>Ajouter des propriétés</h1>
+
+<p>On peux avoir envie de mettre une valeur par défaut pour chaque propriété, c'est faisable en lui affectant une valeur initiale : </p>
+
+<div v-click class="flex gap-5 mbs-5">
+```svelte
+<script>
+  export let name = "Bill";
+</script>
+
+<p>Hello {name} !</p>
+```
+
+
+```svelte
+<script>
+  import MyComponent from './MyComponent.svelte';
+</script>
+
+<MyComponent /> <!-- Hello Bill ! -->
+<MyComponent name="John"/> <!-- Hello John ! -->
+```
+</div>
+
+
+<div v-click class="mbs-5 flex">
+
+  > <carbon-warning class="text-warning"/> <span class="text-warning">Attention !</span> 
+  > Par convention, si une propriété n'a pas de valeur par défaut, alors on va lui attribuer la valeur <kbd>undefined</kbd>
+</div>
+
+<div v-after  class="flex mbs-5">
+```js
+export let name = undefined;
+```
+</div>
+  
+<SlideFooter/>
+
+---
+
+<h1>Utilisation de TypeScript</h1>
+
+<p>Si on le souhaite, on peux utiliser <b>Svelte</b> avec TypeScript. Dans ce cas, il faut le préciser grâce à l'attribut <kbd>lang</kbd> de la balise <kbd>&lt;script/&gt;</kbd>.</p>
+
+<div v-click class="flex mbs-15">
+```svelte
+<script lang="ts">
+  export let name : string | undefined = "Bill";
+</script>
+
+<p>Hello {name} !</p>
+```
+</div>
+
+  
+<SlideFooter/>
+
+---
+
+<h1>Ajouter du style</h1>
+
+<p>Pour styliser un composant, c'est également très simple, il suffit d'ajouter une balise <kbd>&lt;style/&gt;</kbd></p>
+
+<div v-click class="flex mbs-5">
+```svelte
+<script>
+  export let name = "Bill";
+</script>
+
+<style>
+  p {
+    color: red;
+  }
+</style>
+
+<p>Hello {name} !</p>   <!-- Ce paragraphe sera en rouge -->
+```
+</div>
+
+<div v-after class="mbs-3 flex">
+
+  > <carbon-idea class="text-success"/> <span class="text-success">Astuce !</span>
+  > Le style déclaré dans un composant est scopé, et ne peux pas impacter les autres éléments de la page !
+</div>
+
+<SlideFooter/>
+
+---
+
+<h1>Utilisation d'un preprocesseur CSS</h1>
+
+<p>Si on le souhaite, on peux utiliser <b>Svelte</b> avec du <b>scss</b> ou du <b>less</b>. Dans ce cas, il faut le préciser grâce à l'attribut <kbd>lang</kbd> de la balise <kbd>&lt;style/&gt;</kbd>.</p>
+
+<div v-click class="flex mbs-5">
+```svelte
+<script>
+  export let name = "Bill";
+</script>
+
+<style lang="scss">
+  @import './colors.scss';
+
+  p {
+    color: $color-red;
+  }
+</style>
+
+<p>Hello {name} !</p>   <!-- Ce paragraphe sera en rouge -->
+```
+</div>
+
+  
+<SlideFooter/>

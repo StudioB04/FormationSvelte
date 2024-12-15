@@ -1,14 +1,14 @@
-<script setup lang="ts">
+<script>
 const today = new Date();
 
 const day = [
+  "Dimanche",
   "Lundi",
   "Mardi",
   "Mercredi",
   "Jeudi",
   "Vendredi",
   "Samedi",
-  "Dimanche",
 ][today.getDay()];
 
 const date = ("0" + today.getDate()).slice(-2);
