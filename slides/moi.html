@@ -24,102 +24,42 @@
   </div>
 </div>
 
-<ul class="flex flex-col gap-2 mbs-5">
-  <li v-click v-motion :duration="250" :initial="{ x: 200 }" :enter="{ x: 0 }">
-    <div
-      class="h-10 text-xl text-light flex gap-5 items-center justify-between"
-    >
-      <span>
-        2013 - 2015, Responsable de communication numérique chez
-        <u class="text-default">Harley Davidson</u>.
-      </span>
-      <span class="grow h-1 border-be border-dashed border-current opacity-30">
-      </span>
-      <a href="https://peoleo.com/" target="_blank" class="!border-none">
-        <img src="/assets/logos/harley-davidson.svg" alt="" class="w-[2em]" />
-      </a>
-    </div>
-  </li>
+<ul class="flex flex-col gap-2 mbs-10 mis-5">
+  <ListItem 
+    label="**2013 - 2015**, Responsable de communication numérique chez **Harley Davidson**"
+    image="/assets/logos/harley-davidson.svg"
+    link="https://www.harley-davidson.com/fr/fr/"
+  />
 
-  <li v-click v-motion :duration="250" :initial="{ x: 200 }" :enter="{ x: 0 }">
-    <div
-      class="h-10 text-xl text-light flex gap-5 items-center justify-between"
-    >
-      <span>
-        2015 - 2016, License développement de project Web chez
-        <u class="text-default">Efficom</u>.
-      </span>
-      <span class="grow h-1 border-be border-dashed border-current opacity-30">
-      </span>
-      <a href="https://www.efficom.fr/" target="_blank" class="!border-none">
-        <img src="/assets/logos/efficom.png" alt="" class="w-[5em]" />
-      </a>
-    </div>
-  </li>
+  <ListItem 
+    label="**2015 - 2016**, License développement de project Web chez **Efficom**"
+    image="/assets/logos/efficom.png"
+    link="https://www.efficom.fr/"
+  />
 
-  <li v-click v-motion :duration="250" :initial="{ x: 200 }" :enter="{ x: 0 }">
-    <div
-      class="h-10 text-xl text-light flex gap-5 items-center justify-between"
-    >
-      <span>
-        2015 - 2017, Intégrateur chez
-        <u class="text-default">PéoLéo</u>.
-      </span>
-      <span class="grow h-1 border-be border-dashed border-current opacity-30">
-      </span>
-      <a href="https://peoleo.com/" target="_blank" class="!border-none">
-        <img src="/assets/logos/peoleo.png" alt="" class="w-[2em]" />
-      </a>
-    </div>
-  </li>
+  <ListItem 
+    label="**2015 - 2017**, Intégrateur chez **PéoLéo**"
+    image="/assets/logos/peoleo.png"
+    link="https://peoleo.com"
+  />
 
-  <li v-click v-motion :duration="250" :initial="{ x: 200 }" :enter="{ x: 0 }">
-    <div
-      class="h-10 text-xl text-light flex gap-5 items-center justify-between"
-    >
-      <span>
-        2017 - 2018, Développeur Front-End chez
-        <u class="text-default">Hobbynote</u>.
-      </span>
-      <span class="grow h-1 border-be border-dashed border-current opacity-30">
-      </span>
-      <a href="https://www.hobbynote.com/" target="_blank" class="!border-none">
-        <img src="/assets/logos/hobbynote.svg" alt="" class="w-[3em]" />
-      </a>
-    </div>
-  </li>
+  <ListItem 
+    label="**2017 - 2018**, Développeur Front-End chez **Hobbynote**"
+    image="/assets/logos/hobbynote.svg"
+    link="https://www.hobbynote.com"
+  />
 
-  <li v-click v-motion :duration="250" :initial="{ x: 200 }" :enter="{ x: 0 }">
-    <div
-      class="h-10 text-xl text-light flex gap-5 items-center justify-between"
-    >
-      <span>
-        2018 - , Lead Développeur Front-End chez
-        <u class="text-default">atecna</u>.
-      </span>
-      <span class="grow h-1 border-be border-dashed border-current opacity-30">
-      </span>
-      <a href="https://www.atecna.fr/" target="_blank" class="!border-none">
-        <img src="/assets/logos/atecna.svg" alt="" class="w-[2em]" />
-      </a>
-    </div>
-  </li>
+  <ListItem 
+    label="**depuis 2018**, Lead Développeur Front-End chez **Atecna**"
+    image="/assets/logos/atecna.svg"
+    link="https://www.atecna.fr"
+  />
 
-  <li v-click v-motion :duration="250" :initial="{ x: 200 }" :enter="{ x: 0 }">
-    <div
-      class="h-10 text-xl text-light flex gap-5 items-center justify-between"
-    >
-      <span>
-        2015 - , Gérant de
-        <u class="text-default">StudioB04</u>.
-      </span>
-      <span class="grow h-1 border-be border-dashed border-current opacity-30">
-      </span>
-      <a href="https://studiob04.com/" target="_blank" class="!border-none">
-        <img src="/assets/logos/studiob04.svg" alt="" class="w-[2em]" />
-      </a>
-    </div>
-  </li>
+  <ListItem 
+    label="**depuis 2018**, Gérant de **StudioB04**"
+    image="/assets/logos/studiob04.svg"
+    link="https://www.studiob04.com"
+  />
 </ul>
 
 <SlideFooter />

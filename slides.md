@@ -64,6 +64,11 @@ src: ./slides/StudioB04.html
 ---
 title: Table des matières
 layout: default
-transition: slide-up
-src: ./slides/programme.html
+transition: slide-left
+src: ./slides/programme-jour1.html
+---
+
+---
+title: Introduction
+src: ./slides/Introduction/index.html
 ---
