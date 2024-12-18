@@ -25,7 +25,7 @@ export default {
       <span v-if="link && image" class="grow h-1 border-be border-dashed border-current opacity-30"></span>
       
       <a v-if="link && image" :href="link" target="_blank" class="!border-none" rel="noopener noreferrer">
-        <img :src="image" alt="" class="h-10 max-w-20 object-contain"/>
+        <img :src="`${image}?url`" alt="" class="h-10 max-w-20 object-contain"/>
       </a>
 
       <img v-if="!link && image" :src="image" alt="" class="h-10 max-w-20 object-contain"  />
