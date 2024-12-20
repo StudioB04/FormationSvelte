@@ -39,7 +39,7 @@ const year = today.getFullYear();
       class="flex gap-2 justify-end items-center px-2 py-1 text-2 text-slate-200"
     >
       <div class="w-full flex items-center gap-2">
-        <img src="/assets/logos/studiob04.svg" alt="" class="w-4" />
+        <img src="/logos/studiob04.svg" alt="" class="w-4" />
         <span>StudioB04</span>
         <small>|</small>
         <span>{{ day }} {{ date }} {{ month }} {{ year }} </span>

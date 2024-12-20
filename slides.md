@@ -5,7 +5,7 @@ author: Thomas PIERRE for StudioB04
 titleTemplate: '%s | StudioB04'
 title: Formation Svelte
 keywords: Formation, Svelte, Web, Javascript
-favicon: /assets/favicon.png
+favicon: favicon.png
 colorSchema: auto
 contextMenu: false
 htmlAttrs:
