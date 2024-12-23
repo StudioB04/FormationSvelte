@@ -6,3 +6,92 @@ transition: slide-up
 <h1 class="!text-6xl">6. La réactivité en Svelte</h1>
 
 <SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+--- 
+<h1>La réactivité en svelte.</h1>
+
+<p>Contrairement à d'autres frameworks comem <b>React</b>, les variables déclarées dans un composant <b>Svelte</b> sont par nature réactives. Démonstration : </p>
+
+<div v-click class="flex mbs-10">
+
+```svelte
+<script>
+  let count = 0;
+</script>
+
+<h1>Vous avez cliqué {count} fois sur le bouton.</h1>
+
+<button onclick={() => count++}>Click me !</button>
+```
+</div>
+
+<p v-click >Essayons sur le <a href="https://svelte.dev/playground/e16e6f97c37a473a89b5dc90e5dea6cf?version=4.2.19" target="_blank">Playground</a> de <b>Svelte</b> !</p>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+--- 
+<h1>La réactivité en svelte.</h1>
+
+<p>En revanche, si une variable est calculée par rapport à une autre variable, alors sa valeur ne sera pas mise à jour :</p>
+
+<div v-click class="flex mbs-10">
+
+```svelte
+<script>
+  let count = 0;
+  let double = count * 2;
+</script>
+
+<h1>Vous avez cliqué {count} fois sur le bouton.</h1>
+<h2>Double = {double}.</h2>
+
+<button onclick={() => count++}>Click me !</button>
+```
+</div>
+  
+<p v-click >Essayons sur le <a href="https://svelte.dev/playground/e16e6f97c37a473a89b5dc90e5dea6cf?version=4.2.19" target="_blank">Playground</a> de <b>Svelte</b> !</p>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+--- 
+<h1>La réactivité en svelte.</h1>
+
+<p>Pour rendre la variable double réactive et donc cahnger sa valeur dès que <b>count</b> change, il faut utiliser le <kbd>$:</kbd></p>
+
+<div v-click class="flex mbs-5">
+
+```svelte
+<script>
+  let count = 0;
+  $: double = count * 2;
+</script>
+
+<h1>Vous avez cliqué {count} fois sur le bouton.</h1>
+<h2>Double = {double}.</h2>
+
+<button onclick={() => count++}>Click me !</button>
+```
+</div>
+
+<div v-after class="mbs-5 flex">
+
+  > <carbon-warning class="text-warning"/> <span class="text-warning">Attention !</span> 
+  > Les variables déclarées avec <kbd>$:</kbd> demande beaucoup de mémoire et peuvent altérer la performance globale de votre application si elle sont utilisées trop souvent.
+</div>
+  
+<p v-click >Essayons sur le <a href="https://svelte.dev/playground/e16e6f97c37a473a89b5dc90e5dea6cf?version=4.2.19" target="_blank">Playground</a> de <b>Svelte</b> !</p>
+
+
+<SlideFooter/>

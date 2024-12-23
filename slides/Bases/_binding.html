@@ -6,3 +6,106 @@ transition: slide-up
 <h1 class="!text-6xl">7. Le binding</h1>
 
 <SlideFooter/>
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Le binding</h1>
+
+<p>Les données circulent généralement du parent à l'enfant. La directive bind: permet aux données de circuler dans l'autre sens, de l'enfant au parent.</p>
+
+<p>le mot clé <kbd>bind</kbd> permet de faire correspondre un attribut HTML à une variable, par exemple ce code peut facilement être simplifié :</p>
+
+<div v-click class="flex">
+```svelte
+<script>
+  let value = undefined;
+
+  function onInput(e) {
+    console.log(e)
+    value = e.target.value;
+  }
+</script>
+
+<input type="text" on:input|preventDefault={onInput}>
+<h1>value = {value ?? 'inconnue'}</h1>
+```
+</div>
+
+
+<SlideFooter/>
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Le binding</h1>
+
+<p>Avec le mot clé <kbd>bind:</kbd> :</p>
+
+<div v-click class="flex">
+```svelte
+<script>
+  let value = undefined;
+</script>
+
+<input type="text" bind:value={value}>
+<h1>value = {value ?? 'inconnue'}</h1>
+```
+</div>
+
+<p v-click>Avec le mot clé <kbd>bind:</kbd> :</p>
+
+<div v-after class="flex">
+```svelte
+<script>
+  let value = undefined;
+</script>
+
+<input type="text" bind:value>
+<h1>value = {value ?? 'inconnue'}</h1>
+```
+</div>
+
+
+<SlideFooter/>
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Le binding</h1>
+
+<p>Voici des exemples de mise en pratique de binding :</p>
+
+<div v-click class="flex">
+```svelte
+<script>
+  let size = "16";
+</script>
+<input type="range" bind:value={size} min="1" max="100" />
+<h1 style={`font-size: ${size}px;`}>Font size : {size}px</h1>
+```
+</div>
+
+<div v-click class="flex mbs-1">
+```svelte
+<script>
+  let direction = "row";
+</script>
+<select bind:value={direction}>
+  <option value="row" selected={direction === "row"}>row</option>
+  <option value="column" selected={direction === "column"}>column</option>
+</select>
+<div style="display: flex; gap: 10px; flex-direction: {direction};">
+  <p>Lorem ipsum dolor sit amet.</p>
+  <p>Lorem ipsum dolor sit amet.</p>
+</div>
+```
+</div>
+
+
+
+
+<SlideFooter/>

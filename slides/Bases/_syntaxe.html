@@ -2,7 +2,7 @@
 layout: center
 transition: slide-up
 ---
-<h1 class="!text-5xl">4. Les basesde la syntaxe de Svelte</h1>
+<h1 class="!text-5xl">4. Les bases de la syntaxe de Svelte</h1>
 
 <SlideFooter/>
 
@@ -154,6 +154,31 @@ transition: slide-up
 <div v-after  class="flex mbs-5">
 ```js
 export let name = undefined;
+```
+</div>
+  
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+--- 
+<h1>Les propriétées raccourcies</h1>
+
+<p>En <b>Svelte</b>, si le nom de la propriété et sa valeur sont la même, on peux utiliser une écriture simplifiée :</p>
+
+<div v-click class="flex mbs-5">
+```svelte
+<script>
+  const src = "https://picsum.photos/200";
+  const width = "200px";
+  const alt = "Lorem ipsum dolor sit amet."
+</script>
+
+<img src={src} width={width} alt={alt} />
+<!-- ou -->
+<img {src} {width} {alt} />
 ```
 </div>
   

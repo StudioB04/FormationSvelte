@@ -3,5 +3,228 @@ layout: center
 transition: slide-up
 --- 
 
-<h1 class="!text-6xl">5. Les évenements en Svelte</h1>
+<h1 class="!text-6xl">5. Les évènements en Svelte</h1>
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+--- 
+<h1>Les évènements.</h1>
+
+<p>Le fonctionnement de javascript dans une page web repose sur l'utilisation d'écouteurs d'évènements. En <b>Svelte</b> on peux facilement écouter un évènement avec le <kbd>on:event</kbd>. Par exemple : </p>
+
+<div v-click class="flex mbs-15">
+
+```svelte
+<script>
+  function onClick(e) {
+    console.log('Clicked !')
+  }
+</script>
+
+<button on:click={e => onClick(e)}>Click me</button>
+<!-- ou -->
+<button on:click={onClick}>Click me</button>
+```
+</div>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+--- 
+<h1>Les évènements.</h1>
+
+<p>Tous les évènements natifs peuvent être écoutés de cette façon sur différents éléments : </p>
+
+<div v-click class="flex mbs-10">
+
+```svelte
+<button on:click={onClick}>Click me</button>
+<button on:focus={onFocus}>Click me</button>
+<button on:blur={onBlur}>Click me</button>
+<button on:mouseenter={onMouseEnter}>Click me</button>
+<button on:mouseleave={onMouseLeave}>Click me</button>
+
+<input type="text" on:change={onChange}> />
+<input type="text" on:input={onInput}> />
+
+<form on:submit={onFormSubmit}>
+  ...
+</form>
+```
+</div>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+--- 
+<h1>Les évènements.</h1>
+
+<p>Il est tout à fait possible d'avoir plusieurs écouteurs d'évènement sur le même éléments :</p>
+
+<div v-click class="flex mbs-10">
+
+```svelte
+<button 
+  on:click={onClick}
+  on:click={trackEvent}
+  on:click={console.log}
+  on:focus={onFocus}
+  on:blur={onBlur}
+>
+  Click me
+</button>
+```
+</div>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+--- 
+<h1>Les modificateurs d'évènement.</h1>
+
+<p>Il existe de modicateurs qui permettent de modifier la façon dont un évènement va etre interprété. Cela s'avère très pratique et peux voux faire économiser quelques lignes de codes. Prenons un exemple :</p>
+
+<div v-click class="flex mbs-3">
+
+```svelte
+<script>
+  function onSubmit(e) {
+    e.preventDefault();
+    ...
+  }
+</script>
+<form action="/login" on:submit={onSubmit}></form>
+```
+</div>
+
+<p v-click>On peux simplifier ce code de cette façon :</p>
+
+<div v-click class="flex mbs-3">
+
+```svelte
+<script>
+  function onSubmit(e) { ... }
+</script>
+<form action="/login" on:submit|preventDefault={onSubmit}></form>
+```
+</div>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+--- 
+<h1>Les modificateurs d'évènement.</h1>
+
+<p>Voici la liste des modificateurs d'évènement et leur fonction :</p>
+
+<ul class="mbs-5">
+  <li class="flex gap-5 items-center">
+    <b class="shrink-0">|preventDefault</b>
+    <div class="grow h-1 border-be border-dashed border-current opacity-30"></div>
+    <small class="shrink-0">fait un <b>event.preventDefault</b> avant le callback de l'écouteur</small>
+  </li>
+
+  <li class="flex gap-5 items-center">
+    <b class="shrink-0">|stopPropagation</b>
+    <div class="grow h-1 border-be border-dashed border-current opacity-30"></div>
+    <small class="shrink-0">fait un <b>event.stopPropagation</b> avant le callback de l'écouteur</small>
+  </li>
+
+  <li class="flex gap-5 items-center">
+    <b class="shrink-0">|stopImmediatePropagation</b>
+    <div class="grow h-1 border-be border-dashed border-current opacity-30"></div>
+    <small class="shrink-0">fait un <b>event.stopImmediatePropagation</b> avant le callback de l'écouteur</small>
+  </li>
+
+  <li class="flex gap-5 items-center">
+    <b class="shrink-0">|once</b>
+    <div class="grow h-1 border-be border-dashed border-current opacity-30"></div>
+    <small class="shrink-0">Retire l'écouteur apres le premièr déclenchement du callback</small>
+  </li>
+
+  <li class="flex gap-5 items-center">
+    <b class="shrink-0">|self</b>
+    <div class="grow h-1 border-be border-dashed border-current opacity-30"></div>
+    <small class="shrink-0">Ne déclenche le callback que si c'est bien cette élément qui a capté l'évènement, et pas un parent.</small>
+  </li>
+
+  <li class="flex gap-5 items-center">
+    <b class="shrink-0">|trusted</b>
+    <div class="grow h-1 border-be border-dashed border-current opacity-30"></div>
+    <small class="shrink-0">Ne déclenche le callback que si <b>event.isTrusted</b> is <kbd>true</kbd></small>
+  </li>
+
+  <li class="flex gap-5 items-center">
+    <b class="shrink-0">|passive</b>
+    <div class="grow h-1 border-be border-dashed border-current opacity-30"></div>
+    <small class="shrink-0">Améliore les performance sur le scroll pour les évènements type <b>touch/wheel</b>. (automatique dans certains cas)</small>
+  </li>
+
+  <li class="flex gap-5 items-center">
+    <b class="shrink-0">|nonpassive</b>
+    <div class="grow h-1 border-be border-dashed border-current opacity-30"></div>
+    <small class="shrink-0">Met <kbd>passive = false</kbd> de façon explicite</small>
+  </li>
+</ul>
+
+<p v-click>Bien entendu, tous les modicateurs peuvent être ajoutés à un évènement : </p>
+
+<div v-after>
+
+```svelte {lineNumer:false}
+<button on:click|preventDefault|stopImmediatePropagation|once={onClick}>Click me</button>
+```
+</div>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+--- 
+<h1>Les évènements custom.</h1>
+
+<p>On peux avoir besoin d'émettre des évènements custom depuis un composant, pour être écouté par son parent. C'est tout à fait possible avec la fonction <kbd>createEventDispatcher</kbd> de <b>Svelte</b>, voici un exemple :</p>
+
+<div v-click class="flex mbs-5">
+
+```svelte
+<!-- Button.svelte -->
+<script>
+	import { createEventDispatcher } from 'svelte';
+	const dispatch = createEventDispatcher();
+</script>
+
+<button on:click={() => dispatch('btnClick')}>Click me</button>
+```
+</div>
+
+<div v-click class="flex mbs-2">
+
+```svelte
+<!-- App.svelte -->
+<script>
+  import Button from './Button.svelte';
+</script>
+
+<Button on:btnClick|preventDefault={console.log} />
+```
+</div>
+
 <SlideFooter/>
