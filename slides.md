@@ -39,41 +39,17 @@ transition: fade-out
 src: ./slides/accueil.html
 ---
 
-
----
-title: Introduction
-layout: default
-transition: slide-left
-src: ./slides/introduction.html
----
-
----
-title: À propos de moi
-layout: default
-transition: slide-left
-src: ./slides/moi.html
----
-
----
-title: StudioB04
-layout: default
-transition: slide-left
-src: ./slides/StudioB04.html
----
-
----
-title: Table des matières
-layout: default
-transition: slide-left
-src: ./slides/programme-jour1.html
----
-
----
-title: Introduction
+--- 
+title: Introcuction
 src: ./slides/Introduction/index.html
 ---
 
 ---
-title: La réactivité
-src: ./slides/Reactivite/index.html
+title: Les bases
+src: ./slides/Bases/index.html
 ---
+
+# ---
+# title: La réactivité
+# src: ./slides/Reactivite/index.html
+# ---

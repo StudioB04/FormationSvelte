@@ -1,14 +1,27 @@
+---
+layout: center
+transition: slide-up
+---
+<h1 class="!text-5xl">4. Les basesde la syntaxe de Svelte</h1>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+--- 
 <h1>La syntaxe de Svelte</h1>
 
-<p>Un composant <b>Svelte</b> va s'écrire dans un fichier <kbd>.svelte</kbd> qui sera ensuite traduit par le compilateur en code JavaScript.</p>
+<p>Les composants <b>Svelte</b> s'écrivent dans des fichiers <kbd>.svelte</kbd> qui seront ensuite traduit par le compilateur en code JavaScript natif.</p>
 
-<p>Afin de simplifier le développement, les composants <b>Svelte</b> contiennent de l'HTML classique. Pas besoin d'apprendre un nouveau langage.</p>
+<p>Afin de simplifier le développement, les composants <b>Svelte</b> contiennent de l'<b>HTML</b> classique. Pas besoin d'apprendre un nouveau langage.</p>
 
 
 <div class="flex gap-5">
 
 <div v-click>
-<p>Un composant très simple qui va retouner du texte dans un paragraphe :</p>
+<p>Un exemple de composant très simple qui va retouner du texte dans un paragraphe :</p>
 ```svelte
 <!-- MyComponent.svelte -->
 
@@ -27,15 +40,18 @@
 <MyComponent />
 ```
 </div>
-
 </div>
 
 <p v-click>Essayons sur le <a href="https://svelte.dev/playground/e16e6f97c37a473a89b5dc90e5dea6cf?version=4.2.19" target="_blank">Playground</a> de <b>Svelte</b> !</p>
 
 <SlideFooter/>
 
----
 
+
+---
+layout: default
+transition: slide-up
+--- 
 <h1>Dynamiser le composant</h1>
 
 <p>
@@ -61,13 +77,18 @@
 ```
 </div>
 
----
+<SlideFooter/>
 
+
+---
+layout: default
+transition: slide-up
+--- 
 <h1>Ajouter des propriétés</h1>
 
 <p>
   On pourrait avoir besoin d'utiliser le même composant avec des propriété différentes.<br/>
-  Pour cela il suffit d'exporter la variable name<kbd>&lt;script/&gt;</kbd> :
+  Pour cela il suffit d'exporter la variable name<kbd>&lt;script/&gt;</kbd> pour qu'elle deviennent une propriété du composant :
 </p>
 
 <div v-click class="flex mbs-5">
@@ -86,17 +107,22 @@
   import MyComponent from './MyComponent.svelte';
 </script>
 
-<!-- name deviens une propriété du composant -->
+<!-- name devient une propriété du composant -->
 <MyComponent name="John"/>
 <MyComponent name="Bill"/>
 ```
 </div>
+  
+<SlideFooter/>
+
 
 ---
-
+layout: default
+transition: slide-up
+--- 
 <h1>Ajouter des propriétés</h1>
 
-<p>On peux avoir envie de mettre une valeur par défaut pour chaque propriété, c'est faisable en lui affectant une valeur initiale : </p>
+<p>On peux avoir envie de mettre une valeur par défaut pour chaque propriété, pour cela, on lui affecte une valeur à l'initialisation : </p>
 
 <div v-click class="flex gap-5 mbs-5">
 ```svelte
@@ -133,8 +159,11 @@ export let name = undefined;
   
 <SlideFooter/>
 
----
 
+---
+layout: default
+transition: slide-up
+--- 
 <h1>Utilisation de TypeScript</h1>
 
 <p>Si on le souhaite, on peux utiliser <b>Svelte</b> avec TypeScript. Dans ce cas, il faut le préciser grâce à l'attribut <kbd>lang</kbd> de la balise <kbd>&lt;script/&gt;</kbd>.</p>
@@ -149,16 +178,26 @@ export let name = undefined;
 ```
 </div>
 
-  
+
+<div v-click class="mbs-5 flex">
+
+  > <carbon-information class="text-info"/> <span class="text-info">Attention</span> 
+  > Bien sur il faudra installer et configurer <b>TypeScript</b> dans votre projet.
+</div>
+
 <SlideFooter/>
 
----
 
+---
+layout: default
+transition: slide-up
+--- 
 <h1>Ajouter du style</h1>
 
 <p>Pour styliser un composant, c'est également très simple, il suffit d'ajouter une balise <kbd>&lt;style/&gt;</kbd></p>
 
-<div v-click class="flex mbs-5">
+<div class="flex gap-10 mbs-5">
+<div v-click class="w-full">
 ```svelte
 <script>
   export let name = "Bill";
@@ -170,11 +209,26 @@ export let name = undefined;
   }
 </style>
 
-<p>Hello {name} !</p>   <!-- Ce paragraphe sera en rouge -->
+<p>Hello {name} !</p>   
 ```
 </div>
 
-<div v-after class="mbs-3 flex">
+<div v-click class="w-full">
+```svelte
+<script>
+  export let name = "Bill";
+</script>
+
+<style>
+  @import './MyComponent.css';
+</style>
+
+<p>Hello {name} !</p>   
+```
+</div>
+</div>
+
+<div v-click class="mbs-3 flex">
 
   > <carbon-idea class="text-success"/> <span class="text-success">Astuce !</span>
   > Le style déclaré dans un composant est scopé, et ne peux pas impacter les autres éléments de la page !
@@ -182,13 +236,16 @@ export let name = undefined;
 
 <SlideFooter/>
 
----
 
+---
+layout: default
+transition: slide-up
+--- 
 <h1>Utilisation d'un preprocesseur CSS</h1>
 
 <p>Si on le souhaite, on peux utiliser <b>Svelte</b> avec du <b>scss</b> ou du <b>less</b>. Dans ce cas, il faut le préciser grâce à l'attribut <kbd>lang</kbd> de la balise <kbd>&lt;style/&gt;</kbd>.</p>
 
-<div v-click class="flex mbs-5">
+<div v-click class="flex mbs-3">
 ```svelte
 <script>
   export let name = "Bill";
@@ -202,9 +259,16 @@ export let name = undefined;
   }
 </style>
 
-<p>Hello {name} !</p>   <!-- Ce paragraphe sera en rouge -->
+<p>Hello {name} !</p>
 ```
 </div>
 
-  
+
+<div v-click class="mbs-2 flex">
+
+  > <carbon-information class="text-info"/> <span class="text-info">Attention</span> 
+  > Bien sur il faudra installer et configurer <b>Scss</b> ou <b>Less</b> dans votre projet.
+</div>
+
 <SlideFooter/>
+  
