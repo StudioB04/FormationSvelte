@@ -3,7 +3,7 @@ layout: center
 transition: slide-up
 --- 
 
-<h1 class="!text-6xl">5. Les évènements en Svelte</h1>
+<h1 class="!text-6xl">5. Les événements en Svelte</h1>
 <SlideFooter/>
 
 
@@ -11,9 +11,9 @@ transition: slide-up
 layout: default
 transition: slide-up
 --- 
-<h1>Les évènements.</h1>
+<h1>Les événements.</h1>
 
-<p>Le fonctionnement de javascript dans une page web repose sur l'utilisation d'écouteurs d'évènements. En <b>Svelte</b> on peux facilement écouter un évènement avec le <kbd>on:event</kbd>. Par exemple : </p>
+<p>Le fonctionnement de javascript dans une page web repose sur l'utilisation d'écouteurs d'événement. En <b>Svelte</b> On peut  facilement écouter un événement avec le <kbd>on:event</kbd>. Par exemple : </p>
 
 <div v-click class="flex mbs-15">
 
@@ -37,9 +37,9 @@ transition: slide-up
 layout: default
 transition: slide-up
 --- 
-<h1>Les évènements.</h1>
+<h1>Les événements.</h1>
 
-<p>Tous les évènements natifs peuvent être écoutés de cette façon sur différents éléments : </p>
+<p>Tous les événements natifs peuvent être écoutés de cette façon sur différents éléments : </p>
 
 <div v-click class="flex mbs-10">
 
@@ -66,9 +66,9 @@ transition: slide-up
 layout: default
 transition: slide-up
 --- 
-<h1>Les évènements.</h1>
+<h1>Les événements.</h1>
 
-<p>Il est tout à fait possible d'avoir plusieurs écouteurs d'évènement sur le même éléments :</p>
+<p>Il est tout à fait possible d'avoir plusieurs écouteurs d'événement sur le même élément :</p>
 
 <div v-click class="flex mbs-10">
 
@@ -92,9 +92,9 @@ transition: slide-up
 layout: default
 transition: slide-up
 --- 
-<h1>Les modificateurs d'évènement.</h1>
+<h1>Les modificateurs d'événement.</h1>
 
-<p>Il existe de modicateurs qui permettent de modifier la façon dont un évènement va etre interprété. Cela s'avère très pratique et peux voux faire économiser quelques lignes de codes. Prenons un exemple :</p>
+<p>Il existe des modificateurs qui permettent de modifier la façon dont un événement va être interprété. Cela s'avère très pratique et peut vous faire économiser quelques lignes de codes. Prenons un exemple :</p>
 
 <div v-click class="flex mbs-3">
 
@@ -109,7 +109,7 @@ transition: slide-up
 ```
 </div>
 
-<p v-click>On peux simplifier ce code de cette façon :</p>
+<p v-click>On peut  simplifier ce code de cette façon :</p>
 
 <div v-click class="flex mbs-3">
 
@@ -128,9 +128,9 @@ transition: slide-up
 layout: default
 transition: slide-up
 --- 
-<h1>Les modificateurs d'évènement.</h1>
+<h1>Les modificateurs d'événement.</h1>
 
-<p>Voici la liste des modificateurs d'évènement et leur fonction :</p>
+<p>Voici la liste des modificateurs d'événement et leur fonction :</p>
 
 <ul class="mbs-5">
   <li class="flex gap-5 items-center">
@@ -154,13 +154,13 @@ transition: slide-up
   <li class="flex gap-5 items-center">
     <b class="shrink-0">|once</b>
     <div class="grow h-1 border-be border-dashed border-current opacity-30"></div>
-    <small class="shrink-0">Retire l'écouteur apres le premièr déclenchement du callback</small>
+    <small class="shrink-0">Retire l'écouteur après le premier déclenchement du callback</small>
   </li>
 
   <li class="flex gap-5 items-center">
     <b class="shrink-0">|self</b>
     <div class="grow h-1 border-be border-dashed border-current opacity-30"></div>
-    <small class="shrink-0">Ne déclenche le callback que si c'est bien cette élément qui a capté l'évènement, et pas un parent.</small>
+    <small class="shrink-0">Ne déclenche le callback que si c'est bien cet élément qui a capté l'événement, et pas un parent.</small>
   </li>
 
   <li class="flex gap-5 items-center">
@@ -172,7 +172,7 @@ transition: slide-up
   <li class="flex gap-5 items-center">
     <b class="shrink-0">|passive</b>
     <div class="grow h-1 border-be border-dashed border-current opacity-30"></div>
-    <small class="shrink-0">Améliore les performance sur le scroll pour les évènements type <b>touch/wheel</b>. (automatique dans certains cas)</small>
+    <small class="shrink-0">Améliore les performances sur le scroll pour les événements type <b>touch/wheel</b>. (automatique dans certains cas)</small>
   </li>
 
   <li class="flex gap-5 items-center">
@@ -182,7 +182,7 @@ transition: slide-up
   </li>
 </ul>
 
-<p v-click>Bien entendu, tous les modicateurs peuvent être ajoutés à un évènement : </p>
+<p v-click>Bien entendu, tous les modificateurs peuvent être ajoutés à un événement : </p>
 
 <div v-after>
 
@@ -198,9 +198,9 @@ transition: slide-up
 layout: default
 transition: slide-up
 --- 
-<h1>Les évènements custom.</h1>
+<h1>Les événements custom.</h1>
 
-<p>On peux avoir besoin d'émettre des évènements custom depuis un composant, pour être écouté par son parent. C'est tout à fait possible avec la fonction <kbd>createEventDispatcher</kbd> de <b>Svelte</b>, voici un exemple :</p>
+<p>On peut  avoir besoin d'émettre des événements custom depuis un composant, pour être écoutés par leur parents. C'est tout à fait possible avec la fonction <kbd>createEventDispatcher</kbd> de <b>Svelte</b>, voici un exemple :</p>
 
 <div v-click class="flex mbs-5">
 
