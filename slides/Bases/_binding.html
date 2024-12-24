@@ -3,7 +3,7 @@ layout: center
 transition: slide-up
 --- 
 
-<h1 class="!text-6xl">7. Le binding</h1>
+<h1 class="!text-6xl">9. Le binding</h1>
 
 <SlideFooter/>
 
@@ -47,15 +47,15 @@ transition: slide-up
 <div v-click class="flex">
 ```svelte
 <script>
-  let value = undefined;
+  let text = undefined;
 </script>
 
-<input type="text" bind:value={value}>
-<h1>value = {value ?? 'inconnue'}</h1>
+<input type="text" bind:value={text}>
+<h1>value = {text ?? 'inconnue'}</h1>
 ```
 </div>
 
-<p v-click>Encore plus simple :</p>
+<p v-click>Encore plus simple si le nom de la propriété et sa valeur sont identique :</p>
 
 <div v-after class="flex">
 ```svelte

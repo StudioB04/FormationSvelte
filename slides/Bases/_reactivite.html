@@ -95,3 +95,49 @@ transition: slide-up
 
 
 <SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+--- 
+<h1>La réactivité en svelte.</h1>
+
+<p>Le <kbd>$:</kbd> permet également de declencher une fonction ou une liste d'instruction en fonction du changement de valeur d'une variable.</p>
+
+<p>C'est l'équivalent du <kbd>useEffect</kbd> <b>React</b>.</p>
+
+<div v-click class="flex gap-10 mbs-5">
+<div>
+<b>En React : </b>
+```jsx
+import {useEffet} from 'React';
+
+export default MyComponent = ({text}) => {
+  useEffect(() => {
+    console.log(text)
+  }, [text])
+
+  return <p>{text}</p>
+}
+```
+</div>
+
+
+<div>
+  <b>En Svelte : </b>
+```svelte
+<script>
+  export let text = undefined;
+  $: console.log(text);
+</script>
+
+<p>{text}</p>
+```
+</div>
+
+
+</div>
+
+
+<SlideFooter/>

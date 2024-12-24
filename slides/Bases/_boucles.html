@@ -1,0 +1,159 @@
+--- 
+layout: center
+transition: slide-up
+--- 
+
+<h1 class="!text-6xl">8. Les boucles</h1>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Les boucles dans les templates Svelte</h1>
+
+<p>Pour iterer sur des valeurs en <b>Svelte</b>, il faut utilser la syntaxe</p>
+
+
+<div class="flex mbs-3">
+```svelte {*}{lines:false}
+{#each items as item} ... {/each}
+```
+</div>
+
+<p v-click>Prenons un exemple :</p>
+
+<div v-after>
+```svelte
+<script>
+  const users = [ "John", "Bill", "Eric", "Jack", "Jane" ]
+</script>
+
+<ol>
+  {#each users as user}
+    <li>{user}</li>
+  {/each}
+</ol>
+```
+</div>
+
+<div v-after class="mbs-5">
+
+  > Ici, les éléments présents dans le tableau <b>users</b> serons présentés sous forme de liste ordonée.
+</div>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Les boucles dans les templates Svelte</h1>
+
+<p>Si on souhaite récupérer l'index de la chaque élément de la boucle, il faut passer un deuximème paramètre :</p>
+
+
+<div class="flex mbs-3">
+```svelte {*}{lines:false}
+{#each items as item, index} ... {/each}
+```
+</div>
+
+<p v-click>Prenons un exemple :</p>
+
+<div v-after>
+```svelte
+<script>
+  const users = [ "John", "Bill", "Eric", "Jack", "Jane" ]
+</script>
+
+<ul>
+  {#each users as user, index}
+    <li>{index + 1} - {user}</li>
+  {/each}
+</ul>
+```
+</div>
+
+<div v-after class="mbs-5">
+
+  > Ici, les éléments présents dans le tableau <b>users</b> serons présentés sous forme de liste non ordonée mais commencant par un numéro.
+</div>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Les boucles dans les templates Svelte</h1>
+
+<p>En <b>Svelte</b> il est possible très simplement de gérer le cas ou l'objet itérable est vide : </p>
+
+
+<div class="flex mbs-3">
+```svelte {*}{lines:false}
+{#each items as item, index} ... {:else} ... {/each}
+```
+</div>
+
+<p v-click>Prenons un exemple :</p>
+
+<div v-after>
+```svelte
+<script>
+  const users = []
+</script>
+
+<ul>
+  {#each users as user, index}
+    <li>{index + 1} - {user}</li>
+  {:else}
+    <li>Il n'y a aucun utilisateurs</li>
+  {/each}
+</ul>
+```
+</div>
+
+<div v-after class="mbs-5">
+
+  > Ici, le tableau <b>users</b> est vide, par conséquent, le texte <u>Il n'y a aucun utilisateurs</u> sera affiché.
+</div>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Les boucles dans les templates Svelte</h1>
+
+<p>il peut-être parfois indispensable dans les boucle d'identifier chaque élément par une clée unique.</p>
+<p>En <b>React</b> il existe l'attribut <kbd>key</kbd> à placer sur le premier élément de la boucle. En <b>Svelte</b>, c'est plus simple :</p>
+
+
+<div class="flex mbs-3">
+```svelte {*}{lines:false}
+{#each items as item (key)} ... {/each}
+```
+</div>
+
+<div v-after>
+```svelte
+<script>
+  const user = [
+    {firstname: "John", lastname: "Doe" },
+    {firstname: "Bill", lastname: "Gates" }
+  ]
+</script>
+<ul>
+  {#each users as user, index, (user.firstname)}
+    <li>{index + 1} - {user.firstname} {user.lastname}</li>
+  {/each}
+</ul>
+```
+</div>
+
+<div v-after class="mbs-5">
+
+  > Pour mieux comprendre l'utilité des clés dans les boucles, essayons sur le <b><a href="https://svelte.dev/playground/aaea0fbb27204b2a85202a2705653b35?version=5.15.0" target="_blank">Playground</a></b> de <b>Svelte</b>.
+</div>

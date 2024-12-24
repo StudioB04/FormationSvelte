@@ -1,0 +1,128 @@
+--- 
+layout: center
+transition: slide-up
+--- 
+
+<h1 class="!text-6xl">7. Les conditions</h1>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Les conditions dans les templates Svelte</h1>
+
+<p>Si on souhaite afficher un élement en fonction d'une condition, il faut utiliser la syntaxe :</p>
+
+<div class="flex mbs-5">
+```svelte {*}{lines:false}
+{#if expression} ... {/if}
+```
+</div>
+
+<div v-click class="mbs-5">
+```svelte
+<script>
+  let count = 0;
+</script>
+
+<button on:click={count++}>Incrémenter</button>
+
+{#if count > 10}
+  <p>Vous avez cliqué plus de 10 fois</p>
+{/if}
+```
+</div>
+
+<div v-after class="mbs-5">
+
+  > Ici, le texte <u>Vous avez cliqué plus de 10 fois</u> n'apparaitra que si <b>count</b> est supérieur à 10.
+</div>
+
+<SlideFooter/>
+
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Les conditions dans les templates Svelte</h1>
+
+
+<p>Si on souhaite gérer l'autre cas il faut utiliser la syntaxe :</p>
+
+<div class="flex mbs-5">
+```svelte {*}{lines:false}
+{#if expression} ... {:else} ... {/if}
+```
+</div>
+
+
+<div v-click class="mbs-5">
+```svelte
+<script>
+  let count = 0;
+</script>
+
+<button on:click={count++}>Incrémenter</button>
+
+{#if count >= 10}
+  <p>Vous avez cliqué au moins 10 fois</p>
+{:else}
+  <p>Vous avez cliqué moins de 10 fois</p>
+{/if}
+```
+</div>
+
+<div v-after class="mbs-5">
+
+  > Ici, le texte sera différent en fonction de la valeur de <b>count</b>.
+</div>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Les conditions dans les templates Svelte</h1>
+
+
+<p>Comme en javascript, il est possible de gérer plusieurs cas avec la syntaxe :</p>
+
+<div class="flex mbs-2">
+```svelte {*}{lines:false}
+{#if expression} ... {:else if} ... {:else} ... {/if}
+```
+</div>
+
+
+<div v-click class="mbs-2">
+```svelte
+<script>
+  let count = 0;
+</script>
+
+<button on:click={count++}>Incrémenter</button>
+
+{#if count >= 10}
+  <p>Vous avez cliqué au moins 10 fois</p>
+{:else if count >= 5}
+  <p>Vous avez cliqué au moins 5 fois</p>
+{:else}
+  <p>Vous avez cliqué moins de 5 fois</p>
+{/if}
+```
+</div>
+
+<div v-after class="mbs-2">
+
+  > Ici, le texte sera différent en fonction de la valeur de <b>count</b>.
+</div>
+
+
+<SlideFooter/>
