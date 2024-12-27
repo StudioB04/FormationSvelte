@@ -41,16 +41,22 @@
   pre code {
     font-size: 14px;
   }
-
-  .text-success { @apply text-success;}
-  .text-info { @apply text-info;}
-  .text-danger { @apply text-danger;}
-  .text-warning { @apply text-warning;}
-
   blockquote {
     border-inline-start-width: 5px;
     padding-inline: 15px 10px; 
-    @apply bg-slate-100 border-slate-600;
+    @apply bg-slate-100 border-slate-700;
+
+    .text-success { @apply text-success;}
+    .text-info { @apply text-info;}
+    .text-danger { @apply text-danger;}
+    .text-warning { @apply text-warning;}
+
+    .border-s-success { @apply border-s-success;}
+    .border-s-info { @apply border-s-info;}
+    .border-s-danger { @apply border-s-danger;}
+    .border-s-warning { @apply border-s-warning;}
+
+  
 
     p {
      margin: 0;

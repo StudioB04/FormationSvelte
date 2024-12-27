@@ -87,8 +87,7 @@ transition: slide-up
 
 <div v-after class="mbs-5 flex">
   <Alert
-    icon="warning"
-    color="warning"
+    type="warning"
     title="Attention !"
     text="Les variables déclarées avec <kbd>$:</kbd> demandent beaucoup de mémoire et peuvent altérer la performance globale de votre application si elle sont utilisées trop souvent."
   />
@@ -106,7 +105,7 @@ transition: slide-up
 --- 
 <h1>La réactivité en svelte.</h1>
 
-<p>Le <kbd>$:</kbd> permet également de declencher une fonction ou une liste d'instruction en fonction du changement de valeur d'une variable.</p>
+<p>Le <kbd>$:</kbd> permet également de déclencher une fonction ou une liste d'instructions en fonction du changement de valeur d'une variable ou plusieurs variables.</p>
 
 <p>C'est l'équivalent du <kbd>useEffect</kbd> <b>React</b>.</p>
 

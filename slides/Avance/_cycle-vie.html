@@ -92,7 +92,11 @@ transition: slide-up
 </div>
 
 <div v-click class="mbs-2">
-  <Alert icon="Information" color="info" title="Information" text="La fonction **afterUpdate** sera effectuée sur après le changement d'état. Il existe aussi une fonction **beforeUpdate** qui s'exécute juste avant le changement d'état."/>
+  <Alert 
+    type="information" 
+    title="Information" 
+    text="La fonction **afterUpdate** sera lancée sur après le changement d'état. Il existe aussi une fonction **beforeUpdate** qui s'exécute juste avant le changement d'état."
+  />
 </div>
 
 <SlideFooter/>
@@ -127,7 +131,7 @@ transition: slide-up
 ```
 
 <div>
-  <p>Dans cet exemple, le composant <b>Component</b> sera présenbt dans le <b>DOM</b> seulement si la condition est vraie.</p>
+  <p>Dans cet exemple, le composant <b>Component</b> sera présent dans le <b>DOM</b> seulement si la condition est vraie.</p>
   <p>Chaque fois qu'elle passera de vraie à fausse, le message sera loggué dans la console.</p>
 </div>
 </div>
