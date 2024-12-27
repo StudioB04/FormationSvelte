@@ -1,0 +1,279 @@
+---
+layout: center
+transition: slide-up
+---
+<h1 class="!text-5xl">3. La gestion des attributs <u>class</u> et <u>style</u></h1>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>L'attribut class</h1>
+
+<p>En <b>Svelte</b>, les classes s'écrivent exactement comme en <b>HTML</b> classique.</p>
+
+<div v-click class="flex mbs-5">
+```svelte
+<p class="paragraph">
+  Lorem ipsum dolor sit <span>amet</span>.
+</p>
+
+<style>
+  .paragraph {
+    color: #332233;
+    font-weight: normal;
+  }
+  .paragraph span {
+    color: #FF55FF;
+  }
+</style>
+```
+</div>
+      
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Les selecteurs non utilisés</h1>
+
+<p>En revanche si vous essayer d'appliquer du style à un élément qui n'est pas présent dans le composant, un message vous avertira :</p>
+
+<div v-click class="flex mbs-5 gap-10 items-center">
+```svelte
+<p class="paragraph">
+  Lorem ipsum dolor sit <span>amet</span>.
+</p>
+
+<style>
+  .paragraph {
+    color: #332233;
+    font-weight: normal;
+  }
+  .paragraph div {
+    color: #FF55FF;
+  }
+  .otherClass {
+    font-weight: bold;  
+  }
+</style>
+```
+
+<div>
+  <p class="!mbs-45 !text-light">--> Unused CSS selector ".paragraph div"</p>
+  <p class="!mbs-10 !text-light">--> Unused CSS selector ".otherClass"</p>
+</div>
+</div>
+
+<SlideFooter/>
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Le mot clé :global</h1>
+
+<p class="!my-0">On peut dans certains cas avoir envie de styliser un élément qui n'est pas présent dans le composant. </p>
+<p class="!my-0" v-click>Imaginons par exemple une div qui contient un composant <b>&lt;Button /&gt;</b>, On veux que le background de la div soit bleu si elle contient un <b>&lt;Bouton/&gt;</b></p>
+<p class="!my-0" v-click>Dans ce cas il faut utiliser le mot clé <kbd>:global</kbd> :</p>
+
+<div  v-click class="flex mbs-1">
+```svelte
+<button>click me !</button>
+<style>
+  :global(div) {
+    /* Toutes les divs de la page seront impactées ! */
+    background-color: orange; 
+  }
+  :global(div:has(button)) {
+    /* Seules les divs qui contiennent le button seront impactées ! */
+    background-color: blue; 
+  }
+</style>
+```
+</div>
+
+<div v-click class="flex mbs-2">
+  <Alert icon="warning" color="danger" title="Attention !" text="Le **:global** doit être évité dans la mesure du possible car il affecte toute la page dans laquelle le composant est instancié" />
+</div>
+
+<SlideFooter/>
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Les classes conditionnelles</h1>
+
+<p>Il arrive fréquement que l'on souhaite ajouter ou retirer une classe sous certaines conditions. On pourrait tout à fait le faire cette façon :</p>
+
+
+<div v-click class="flex mbs-5">
+```svelte
+<script>
+  let isBold = true;
+</script>
+
+<button on:click={() => isBold = !isBold}>Toggle class</button>
+
+<div class={isBold ? "bold" : null}>
+  Lorem ipsum dolor sit amet consectetur.
+</div>
+```
+</div>
+
+<p v-after>
+  Vous vous en doutez ce n'est pas idéal, ce n'est pas très lisible si on a une condition complexe ou plusieurs cas à gérer. <b>Svelte</b> propose une solution plus claire et plus simple !
+</p>
+
+<SlideFooter/>
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Les classes conditionnelles</h1>
+
+<p>Il est possible d'ajouter simplement une classe sur un élément de façon conditionnelle <br>avec <kbd>class:my-class={condition}</kbd></p>
+
+<div class="flex mbs-15">
+```svelte
+<script>
+  let isBold = true;
+</script>
+
+<button on:click={() => isBold = !isBold}>Toggle class</button>
+
+<div class:bold={isBold}>
+  Lorem ipsum dolor sit amet consectetur.
+</div>
+```
+</div>
+
+<SlideFooter/>
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Les classes conditionnelles</h1>
+
+<p>Comme on l'a vu précédement pour les attributs , si le nom de la classe et la condition sont identique, on peut simplifier :</p>
+
+<div class="flex mbs-3">
+```svelte
+<script>
+  let bold = true;
+</script>
+
+<button on:click={() => condition = !condition}>Toggle class</button>
+
+<div class:bold>
+  Lorem ipsum dolor sit amet consectetur.
+</div>
+```
+</div>
+
+<p v-click class="!my-1">Bien sûr, il est tout à fait possible d'avoir plusieurs classes conditionelles sur un élément, et même de les mixer avec des classes classiques :</p>
+
+<div v-after class="flex">
+```svelte
+<div class:bold class:light={!bold} class="text-xl text-primary">
+  Lorem ipsum dolor sit amet consectetur.
+</div>
+```
+</div>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>L'attribut style</h1>
+
+<p>Il peut arriver qu'on doive utiliser la balise <kbd>&lt;style/&gt;</kbd> pour styliser un composant. Comme pour les classes, <b>Svelte</b> permet d'utiliser la syntaxe <b>HTML</b> standard :</p>
+
+
+<div v-click class="flex mbs-5 gap-20 items-center">
+```svelte
+<p style="color: red; font-size: 20px;">
+  Lorem ipsum dolor sit amet.
+</p>
+```
+</div>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>L'attribut style</h1>
+
+<p>Il existe une autre façon d'écrire le style sur un élément qui ressemble au classes conditionelles avec <kbd>style:</kbd>:</p>
+
+
+<div v-click class="flex mbs-5">
+```svelte
+<p style:color="red" style:font-size='20px'>
+  Lorem ipsum dolor sit amet.
+</p>
+```
+</div>
+
+<p v-click>Encore une fois, ce code peux être raccourci si la varaible et la rêgle CSS sont identiques :</p>
+
+<div v-after class="flex mbs-5">
+```svelte
+<script>
+  let color = "red";
+  let fontSize = "20px";
+</script>
+
+<!-- Cela fonctionne que pour les rêgles qui ne contiennent pas de tirets ! 😒 -->
+<p style:color style:font-size={fontSize}> 
+  Lorem ipsum dolor sit amet.
+</p>
+```
+</div>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>L'attribut style</h1>
+
+
+<p>L'intéret de cette méthode est que cela permet d'utiliser une variable <b>Javascript</b> pour styliser le composant, ce qui n'est pas possible dans la balise <kbd>&lt;style/&gt;</kbd>. Par exemple :</p>
+
+<div v-click class="flex mbs-5">
+```svelte
+<script>
+  let size = 16;
+</script>
+
+<input type="range" min="3" max="50" bind:value={size} />
+
+<p style:font-size={`${size}px`}>Ce texte fait {size}px</p>
+
+<style>
+  p {
+    font-size: 16px; /* Impossible de récupérer la variable "size" ici !! */
+  }
+</style>
+```
+</div>
+
+      
+<SlideFooter/>

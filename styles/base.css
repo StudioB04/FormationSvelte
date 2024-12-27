@@ -42,9 +42,18 @@
     font-size: 14px;
   }
 
+  .text-success { @apply text-success;}
+  .text-info { @apply text-info;}
+  .text-danger { @apply text-danger;}
+  .text-warning { @apply text-warning;}
+
   blockquote {
     border-inline-start-width: 5px;
     padding-inline: 15px 10px; 
-    @apply bg-slate-100 border-slate-600
+    @apply bg-slate-100 border-slate-600;
+
+    p {
+     margin: 0;
+    }
   }
 }

@@ -86,9 +86,12 @@ transition: slide-up
 </div>
 
 <div v-after class="mbs-5 flex">
-
-  > <carbon-warning class="text-warning"/> <span class="text-warning">Attention !</span> 
-  > Les variables déclarées avec <kbd>$:</kbd> demandent beaucoup de mémoire et peuvent altérer la performance globale de votre application si elle sont utilisées trop souvent.
+  <Alert
+    icon="warning"
+    color="warning"
+    title="Attention !"
+    text="Les variables déclarées avec <kbd>$:</kbd> demandent beaucoup de mémoire et peuvent altérer la performance globale de votre application si elle sont utilisées trop souvent."
+  />
 </div>
   
 <p v-click >Essayons sur le <a href="https://svelte.dev/playground/e16e6f97c37a473a89b5dc90e5dea6cf?version=4.2.19" target="_blank">Playground</a> de <b>Svelte</b> !</p>

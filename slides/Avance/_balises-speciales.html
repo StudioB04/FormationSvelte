@@ -1,0 +1,50 @@
+---
+layout: center
+transition: slide-up
+---
+<h1 class="!text-5xl">4. Les balises spéciales</h1>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>La balise &lt;svelte:head&gt;</h1>
+
+<p>Cet élément permet d'insérer des éléments dans le document head.</p>
+
+<div v-click class="flex mbs-5">
+```svelte
+<!-- Component.svelte -->
+<script>
+  export let title = undefined
+  export let descrition = undefined
+</script>
+
+<svelte:head>
+  <title>{title}</title>
+  <meta name="description" content={description} />
+</svelte:head></p>
+
+<!-- App.svelte -->
+<Component title="Formation Svelte" description="Module de formation Svelte"/>
+```
+</div>
+
+
+<div v-click class="mbs-1">
+  <Alert icon="warning" color="warning" title="Attention !" text="Cet élément ne peut apparaître qu’au niveau supérieur de votre composant et ne doit jamais être inclus dans un bloc ou un autre élément."/>
+</div>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>La balise &lt;svelte:window&gt;</h1>
+
+<SlideFooter/>

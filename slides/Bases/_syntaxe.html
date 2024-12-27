@@ -146,9 +146,12 @@ transition: slide-up
 
 
 <div v-click class="mbs-5 flex">
-
-  > <carbon-warning class="text-warning"/> <span class="text-warning">Attention !</span> 
-  > Par convention, si une propriété n'a pas de valeur par défaut, alors on va lui attribuer la valeur <kbd>undefined</kbd>
+  <Alert
+    icon="warning"
+    color="warning"
+    title="Important !"
+    text="Par convention, si une propriété n'a pas de valeur par défaut, alors on va lui attribuer la valeur <kbd>undefined</kbd>"
+  />
 </div>
 
 <div v-after  class="flex mbs-5">
@@ -205,9 +208,12 @@ transition: slide-up
 
 
 <div v-click class="mbs-5 flex">
-
-  > <carbon-information class="text-info"/> <span class="text-info">Attention</span> 
-  > Bien sûr il faudra installer et configurer <b>TypeScript</b> dans votre projet.
+  <Alert
+    icon="information"
+    color="info"
+    title="Important !"
+    text="Bien sûr il faudra installer et configurer **TypeScript** dans votre projet."
+  />
 </div>
 
 <SlideFooter/>
@@ -254,10 +260,14 @@ transition: slide-up
 </div>
 
 <div v-click class="mbs-3 flex">
-
-  > <carbon-idea class="text-success"/> <span class="text-success">Astuce !</span>
-  > Le style déclaré dans un composant est scopé, et ne peux pas impacter les autres éléments de la page !
+  <Alert
+    icon="idea"
+    color="success"
+    title="Astuce !"
+    text="Le style déclaré dans un composant est scopé, et ne peux pas impacter les autres éléments de la page !"
+  />
 </div>
+
 
 <SlideFooter/>
 
@@ -290,9 +300,12 @@ transition: slide-up
 
 
 <div v-click class="mbs-2 flex">
-
-  > <carbon-information class="text-info"/> <span class="text-info">Attention</span> 
-  > Bien sûr il faudra installer et configurer <b>Scss</b> ou <b>Less</b> dans votre projet.
+  <Alert 
+    icon="information"
+    color="info"
+    title="Attention"
+    text="Bien sûr il faudra installer et configurer **Scss** ou **Less** dans votre projet."
+  />
 </div>
 
 <SlideFooter/>

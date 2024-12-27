@@ -16,9 +16,9 @@ transition: slide-up
 <p>Comme dans tous les frameworks <b>Javascript</b>, les composant <b>Svelte</b> passents par plusieurs états :</p>
 
 <ol class="mbs-20 flex flex-col gap-5">
-  <li v-click><b>L'initialisation</b> : c’est le moment où un composant est créé et monté dans le DOM.</li>
-  <li v-click><b>La mise à jour</b> : chaque fois qu’une variable réactive ou une propriété change, <b>Svelte</b> met à jour le DOM.</li>
-  <li v-click><b>La destruction</b> : lorsque le composant est retiré du DOM.</li>
+  <li v-click><b>L'initialisation</b> : c’est le moment où un composant est créé et monté dans le <b>DOM</b>.</li>
+  <li v-click><b>La mise à jour</b> : chaque fois qu’une variable réactive ou une propriété change, <b>Svelte</b> met à jour le <b>DOM</b>.</li>
+  <li v-click><b>La destruction</b> : lorsque le composant est retiré du <b>DOM</b>.</li>
 </ol>
 
 <p v-click class="!mbs-10">Il est possible d'intervenir à chaque étape de ce cycle grâce à des hooks.</p>
@@ -32,7 +32,7 @@ transition: slide-up
 ---
 <h1>L'initialisation</h1>
 
-<p>C’est le moment où un composant est créé et monté dans le DOM.</p>
+<p>C’est le moment où un composant est créé et monté dans le <b>DOM</b>.</p>
 <p>Parfois on doit attendre que le composant soit initialisé pour réaliser une action. Pour cela in faut utiliser le hook <b>onMount</b> :</p>
 
 <div v-click class="flex mbs-5 gap-10 items-center">
@@ -66,7 +66,7 @@ transition: slide-up
 ---
 <h1>La mise à jour</h1>
 
-<p>Chaque fois qu’une variable réactive ou une propriété change, <b>Svelte</b> met à jour le DOM.</p>
+<p>Chaque fois qu’une variable réactive ou une propriété change, <b>Svelte</b> met à jour le <b>DOM</b>.</p>
 
 <div v-click class="flex mbs-2 gap-10 items-center">
 ```svelte
@@ -92,10 +92,7 @@ transition: slide-up
 </div>
 
 <div v-click class="mbs-2">
-
-  > <carbon-information class="text-info"/> <span class="text-info">Information</span> 
-  > La fonction <b>afterUpdate</b> sera effectuée sur après le changement d'état. 
-  > Il existe aussi une fonction <b>beforeUpdate</b> qui s'exécute juste avant le changement d'état.
+  <Alert icon="Information" color="info" title="Information" text="La fonction **afterUpdate** sera effectuée sur après le changement d'état. Il existe aussi une fonction **beforeUpdate** qui s'exécute juste avant le changement d'état."/>
 </div>
 
 <SlideFooter/>
@@ -107,7 +104,7 @@ transition: slide-up
 ---
 <h1>La destruction</h1>
 
-<p>Lorsque le composant est retiré du DOM. Ce hook permet de nettoyer les ressources (supprimer des écouteurs d'événements, annuler des abonnements, etc.).</p>
+<p>Lorsque le composant est retiré du <b>DOM</b>. Ce hook permet de nettoyer les ressources (supprimer des écouteurs d'événements, annuler des abonnements, etc.).</p>
 
 
 <div v-click class="flex mbs-2 gap-10 items-center">
@@ -130,7 +127,7 @@ transition: slide-up
 ```
 
 <div>
-  <p>Dans cet exemple, le composant <b>Component</b> sera présenbt dans le DOM seulement si la condition est vraie.</p>
+  <p>Dans cet exemple, le composant <b>Component</b> sera présenbt dans le <b>DOM</b> seulement si la condition est vraie.</p>
   <p>Chaque fois qu'elle passera de vraie à fausse, le message sera loggué dans la console.</p>
 </div>
 </div>
@@ -158,22 +155,22 @@ transition: slide-up
     <tbody>
       <tr>
         <td><code>onMount</code></td>
-        <td>Lorsque le composant est monté dans le DOM.</td>
+        <td>Lorsque le composant est monté dans le <b>DOM</b>.</td>
         <td>Charger des données ou configurer le composant</td>
       </tr>
       <tr>
         <td><code>beforeUpdate</code></td>
-        <td>Avant chaque mise à jour du DOM (après un changement d’état ou de props).</td>
+        <td>Avant chaque mise à jour du <b>DOM</b> (après un changement d’état ou de props).</td>
         <td>Préparer des données pour le rendu</td>
       </tr>
       <tr>
         <td><code>afterUpdate</code></td>
-        <td>Après chaque mise à jour du DOM.</td>
-        <td>Animer des éléments ou interagir avec le DOM mis à jour</td>
+        <td>Après chaque mise à jour du <b>DOM</b>.</td>
+        <td>Animer des éléments ou interagir avec le <b>DOM</b> mis à jour</td>
       </tr>
       <tr>
         <td><code>onDestroy</code></td>
-        <td>Juste avant que le composant ne soit retiré du DOM.</td>
+        <td>Juste avant que le composant ne soit retiré du <b>DOM</b>.</td>
         <td>Retirer des écouterus d'événement</td>
       </tr>
     </tbody>

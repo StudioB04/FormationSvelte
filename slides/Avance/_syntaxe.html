@@ -47,9 +47,11 @@ transition: slide-up
 </div>
 
 <div v-click class="flex mbs-2">
-
-  > <carbon-warning class="text-danger"/> <span class="text-danger">Attention !</span> 
-  > Cela peux s'avérer dangereux si vous ne connaissez pas d'avance le contenu du code <b>HTML</b>, en effet il pourrait contenir des scripts malveillants. Dans ce cas il faudrait utiliser une fonction qui supprime les balises suspecte comme <kbd>&lt;script/&gt;</kbd> ou <kbd>&lt;embed/&gt;</kbd>
+  <Alert 
+    icon="warning" 
+    color="danger" 
+    title="Attention !" 
+    text="Cela peux s'avérer dangereux si vous ne connaissez pas d'avance le contenu du code **HTML**, en effet il pourrait contenir des scripts malveillants. Dans ce cas il faudrait utiliser une fonction qui supprime les balises suspectes comme **\<script/>** ou **\<embed/>**."/>
 </div>
       
 <SlideFooter/>
@@ -156,9 +158,7 @@ transition: slide-up
 </div>
 
 <div v-click class="flex mbs-2">
-
-  > <carbon-warning class="text-warning"/> <span class="text-warning">Attention !</span> 
-  > le <kbd>@debug</kbd> ne doit servir qu'en phase de developpement, et doit être retiré lors du passage en prod !
+  <Alert icon="warning" color="warning" title="Attention !" text="le **@debug** ne doit servir qu'en phase de developpement, et doit être retiré lors du passage en prod !"/>
 </div>
 
 <SlideFooter/>
