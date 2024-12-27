@@ -1,0 +1,186 @@
+---
+layout: center
+transition: slide-up
+---
+<h1 class="!text-5xl">1. La syntaxe avancée de Svelte</h1>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Le mot clé @html</h1>
+
+
+<p>Lorsqu'on insère du texte via une variable dans un composant <b>Svelte</b>, il est affiché comme du texte brut. C'est à dire que les balises HTML sont échapées :</p>
+
+
+<div v-click class="flex mbs-2 gap-10 items-center">
+<div>
+```svelte
+<script>
+  let text = "<h1>Lorem Ipsum</h1>";
+</script>
+
+{text}
+```
+</div>
+
+<p>Ici, le composant affichera "&lt;h1&gt;Lorem Ipsum&lt;/h1&gt;". Les balises HTML ne seront pas interprétées, mais affichées telles quelles.</p>
+</div>
+
+
+<div v-click class="flex mbs-2 gap-10 items-center">
+<div>
+```svelte
+<script>
+  let text = "<h1>Lorem Ipsum</h1>";
+</script>
+
+{@html text}
+```
+</div>
+
+<p>Ici, le composant affichera Lorem Ipsum dans une une balise h1. Les balises HTML seront donc interprétées.</p>
+</div>
+
+<div v-click class="flex mbs-2">
+
+  > <carbon-warning class="text-danger"/> <span class="text-danger">Attention !</span> 
+  > Cela peux s'avérer dangereux si vous ne connaissez pas d'avance le contenu du code <b>HTML</b>, en effet il pourrait contenir des scripts malveillants. Dans ce cas il faudrait utiliser une fonction qui supprime les balises suspecte comme <kbd>&lt;script/&gt;</kbd> ou <kbd>&lt;embed/&gt;</kbd>
+</div>
+      
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Le mot clé @const</h1>
+
+<p>On l'a vu précedement, on peut déclarer des variables au sein de la balise script, mais on pourrait parfois avoir besoin d'en déclarer aussi directement dans le template.</p>
+
+<div v-click class="flex flex-col">
+<p>Prenons un exemple : </p>
+
+```svelte
+<script>
+  const data = [312, 654, 984, 156, 364, 753, 951];
+</script>
+
+{#each data as number}
+  <Component number={number} double={number * 2}/>
+{/each}
+```
+</div>
+
+<div v-click>
+```svelte {*}{startLine:8}
+{#each data as number}
+  {@const double = number * 2}
+  <Component {number} {double}/>
+{/each}
+```
+</div>
+
+<p v-after>Ici la variable <b>"double"</b> sera scopée dans la boucle {#each ... }.</p>
+
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Le mot clé @const</h1>
+
+<p>C'est particulièrement pratique pour déconstruire des objects complexes :</p>
+
+<div v-click class="flex flex-col mbs-2">
+```svelte
+<script>
+  const users = [
+    { name: 'John Doe', infos: { age: 45, gender: "homme", size: 180 } },
+    { name: 'Jane Doe', infos: { age: 32, gender: "femme", size: 155 } },
+  ]
+</script>
+
+{#each users as user}
+  <p>{user.name}, {user.infos.gender} de {user.infos.age} ans, taile : {user.infos.size}cm.</p>
+{/each}
+```
+</div>
+
+<div v-click class="flex flex-col -mbs-2">
+<p>Simplifions avec <b>@const</b> :</p>
+
+```svelte {*}{startLine:11}
+{#each users as user}
+  {@const {age, gender, size} = user.infos }
+  <p>{user.name}, {gender} de {age} ans, taile : {size}cm.</p>
+{/each}
+
+```
+</div>
+
+
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Le mot clé @debug</h1>
+
+<p>Comme son nom l'indique, il permet de debugguer votre code en affichant dans la console un valeur à un instant T, et en ajoutant un point d'arret dans le code. Reprenons notre exemple précédent :</p>
+
+<div v-click class="flex flex-col mbs-5">
+```svelte
+<script>
+  const users = [
+    { name: 'John Doe', infos: { age: 45, gender: "homme", size: 180 } },
+    { name: 'Jane Doe', infos: { age: 32, gender: "femme", size: 155 } },
+  ]
+</script>
+
+{#each users as user}
+  {@const {age, gender, size} = user.infos }
+  {@debug age, gender, size} <!-- Ces valeurs serons logguées à chaque changement -->
+  <p>{user.name}, {gender} de {age} ans, taile : {size}cm.</p>
+{/each}
+```
+</div>
+
+<div v-click class="flex mbs-2">
+
+  > <carbon-warning class="text-warning"/> <span class="text-warning">Attention !</span> 
+  > le <kbd>@debug</kbd> ne doit servir qu'en phase de developpement, et doit être retiré lors du passage en prod !
+</div>
+
+<SlideFooter/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

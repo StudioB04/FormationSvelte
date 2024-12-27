@@ -1,0 +1,185 @@
+---
+layout: center
+transition: slide-up
+---
+<h1 class="!text-5xl">2. Le cycle de vie des composants</h1>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Le cycle de vie des composants</h1>
+
+<p>Comme dans tous les frameworks <b>Javascript</b>, les composant <b>Svelte</b> passents par plusieurs états :</p>
+
+<ol class="mbs-20 flex flex-col gap-5">
+  <li v-click><b>L'initialisation</b> : c’est le moment où un composant est créé et monté dans le DOM.</li>
+  <li v-click><b>La mise à jour</b> : chaque fois qu’une variable réactive ou une propriété change, <b>Svelte</b> met à jour le DOM.</li>
+  <li v-click><b>La destruction</b> : lorsque le composant est retiré du DOM.</li>
+</ol>
+
+<p v-click class="!mbs-10">Il est possible d'intervenir à chaque étape de ce cycle grâce à des hooks.</p>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>L'initialisation</h1>
+
+<p>C’est le moment où un composant est créé et monté dans le DOM.</p>
+<p>Parfois on doit attendre que le composant soit initialisé pour réaliser une action. Pour cela in faut utiliser le hook <b>onMount</b> :</p>
+
+<div v-click class="flex mbs-5 gap-10 items-center">
+```svelte
+<script>
+  import { onMount } from 'svelte';
+
+  let offsetHeight;
+  console.log(offsetHeight); // undefined
+
+  onMount(() => {
+    console.log(offsetHeight); // 48
+  });
+</script>
+
+<h1 bind:offsetHeight>Titre du composant</h1>
+```
+
+<div>
+  <p>Dans cet exemple, on veux connaitre la hauteur du h1, mais cette hauteur dépend du contexte.</p>
+  <p>Par conséquent on ne connaitra sa valeur réélle qu'après l'initialisation du composant.</p>
+</div>
+</div>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>La mise à jour</h1>
+
+<p>Chaque fois qu’une variable réactive ou une propriété change, <b>Svelte</b> met à jour le DOM.</p>
+
+<div v-click class="flex mbs-2 gap-10 items-center">
+```svelte
+<script>
+  import { afterUpdate } from 'svelte';
+  
+  let count = 0;
+
+  afterUpdate(() => {
+    console.log(`Mise à jour avec count = ${count}`);
+  });
+</script>
+
+<button on:click={() => count++}>
+  Cliquez-moi ({count})
+</button>
+```
+
+<div>
+  <p>Dans cet exemple, on créé un bouton qui incrémente un compteur.</p>
+  <p>Dès que la variable <b>count</b> est modifiée, le composant se met à jour grâce à la réactivité.</p>
+</div>
+</div>
+
+<div v-click class="mbs-2">
+
+  > <carbon-information class="text-info"/> <span class="text-info">Information</span> 
+  > La fonction <b>afterUpdate</b> sera effectuée sur après le changement d'état. 
+  > Il existe aussi une fonction <b>beforeUpdate</b> qui s'exécute juste avant le changement d'état.
+</div>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>La destruction</h1>
+
+<p>Lorsque le composant est retiré du DOM. Ce hook permet de nettoyer les ressources (supprimer des écouteurs d'événements, annuler des abonnements, etc.).</p>
+
+
+<div v-click class="flex mbs-2 gap-10 items-center">
+```svelte
+<!-- Component.svelte -->
+<script>
+  import { onDestroy } from 'svelte';
+
+  onDestroy(() => {
+    console.log(`Composant détruit`);
+  });
+</script>
+
+<h1>Hello World</h1>
+
+<!-- App.svelte -->
+{#if condition}
+  <Component/>
+{/if}
+```
+
+<div>
+  <p>Dans cet exemple, le composant <b>Component</b> sera présenbt dans le DOM seulement si la condition est vraie.</p>
+  <p>Chaque fois qu'elle passera de vraie à fausse, le message sera loggué dans la console.</p>
+</div>
+</div>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Résumé</h1>
+
+<h2 class="text-light">Les différentes étapes du cycle de vie d'un composant :</h2>
+
+<div class="flex gap-10 items-center mbs-10">
+  <table class="text-xs">
+    <thead>
+      <tr>
+        <th class="!font-bold">Hook</th>
+        <th class="!font-bold">Moment de déclenchement</th>
+        <th class="!font-bold">Exemple d'usage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>onMount</code></td>
+        <td>Lorsque le composant est monté dans le DOM.</td>
+        <td>Charger des données ou configurer le composant</td>
+      </tr>
+      <tr>
+        <td><code>beforeUpdate</code></td>
+        <td>Avant chaque mise à jour du DOM (après un changement d’état ou de props).</td>
+        <td>Préparer des données pour le rendu</td>
+      </tr>
+      <tr>
+        <td><code>afterUpdate</code></td>
+        <td>Après chaque mise à jour du DOM.</td>
+        <td>Animer des éléments ou interagir avec le DOM mis à jour</td>
+      </tr>
+      <tr>
+        <td><code>onDestroy</code></td>
+        <td>Juste avant que le composant ne soit retiré du DOM.</td>
+        <td>Retirer des écouterus d'événement</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <img src="/cycle-de-vie.png" alt="" class="w-[300px] h-min shrink-0">
+</div>
+
+<SlideFooter/>

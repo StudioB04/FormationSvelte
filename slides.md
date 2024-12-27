@@ -45,6 +45,11 @@ src: ./slides/Introduction/index.html
 ---
 
 ---
+title: Jour 1
+src: ./slides/Programme/jour-1.html
+---
+
+---
 title: Les bases
 src: ./slides/Bases/index.html
 ---
@@ -52,4 +57,14 @@ src: ./slides/Bases/index.html
 ---
 title: 1er TP.
 src: ./slides/TP/todo.html
+---
+
+---
+title: Jour 2
+src: ./slides/Programme/jour-2.html
+---
+
+---
+title: Avancé
+src: ./slides/Avance/index.html
 ---

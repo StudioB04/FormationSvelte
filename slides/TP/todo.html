@@ -14,7 +14,7 @@ class: text-center
 
 ---
 layout: default
-transition: slide-up
+transition: slide-left
 --- 
 <h1>Création d'une todo list</h1>
 
@@ -22,12 +22,12 @@ transition: slide-up
 <div class="flex gap-10 items-start">
   <div class="shrink-0">
     <img alt="" src="/todo-list.png" class="w-[350px] h-auto" />
-    <p v-click="9" class="!mbs-30">Démonstration sur le <a  href="https://svelte.dev/playground/e16e6f97c37a473a89b5dc90e5dea6cf?version=4.2.19">Playground</a></p>
+    <p v-click="9" class="!mbs-30">Démonstration sur le <a  href="https://svelte.dev/playground/69bcf9700b534fd389a08fe2b0c9a8f0?version=5.16.0" target="_blank">Playground</a></p>
   </div>
 
   <div>
-    <p v-click class="!mbe-0">Pour ce faire nous allons mettre en application les points que nous avons abordés ce matin</p>
-    <h2 v-click class="!mbs-5 !mbe-3 !text-xl text-primary">L'objectif du TP: </h2>
+    <p v-click class="!mbe-0">Nous allons mettre en application les différents points que nous avons abordés ce matin.</p>
+    <h2 v-after class="!mbs-5 !mbe-3 !text-xl text-primary">L'objectif du TP: </h2>
     <ul>
       <ListItem label="On saisi une tâche dans le champs texte, quand on tape **Entrée**, une tâche s'ajoute à la liste"/>
       <ListItem label="Si on coche une case coté **todo**, la tache passe dans l'autre liste et la case est cochée."/>
