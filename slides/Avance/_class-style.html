@@ -275,5 +275,37 @@ transition: slide-up
 ```
 </div>
 
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Les custom-props CSS</h1>
+
+<p>Il est possible de passer des custom-props CSS à un composant grâce à la syntaxe <kbd>style:--prop=" ... "</kbd>.</p>
+<p>Voici un exemple :</p>
+
+<div class="flex">
+```svelte
+<script>
+	let opacity = 0.5;
+</script>
+
+<input type="range" min="0" max="1" step="0.1" bind:value={opacity} />
+
+<div style:--opacity={opacity}></div>
+
+<style>
+	div {
+		background: rgba(255, 62, 0, var(--opacity));
+    width: 500px;
+    height: 100px;
+	}
+</style>
+```
+</div>
+
       
 <SlideFooter/>

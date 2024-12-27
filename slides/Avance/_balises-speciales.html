@@ -11,7 +11,7 @@ transition: slide-up
 layout: default
 transition: slide-up
 ---
-<h1>La balise &lt;svelte:head&gt;</h1>
+<h1>La balise &lt;svelte:head/&gt;</h1>
 
 <p>Cet élément permet d'insérer des éléments dans le document head.</p>
 
@@ -45,6 +45,289 @@ transition: slide-up
 layout: default
 transition: slide-up
 ---
-<h1>La balise &lt;svelte:window&gt;</h1>
+<h1>La balise &lt;svelte:window/&gt;</h1>
+
+<p>Cet élément permet d'ajouter des écouteurs d'événements ou de binder des variables à l'objet window sans avoir à se soucier de les supprimer lorsque le composant est détruit, ni de vérifier l'existence de window lors du rendu côté serveur, Exemple :</p>
+
+<div v-click class="flex mbs-5">
+```svelte
+<script>
+  let windowWidth;
+</script>
+
+<svelte:window bind:innerWidth={windowWidth} on:resize={console.log}/>
+
+<h1>Largeur de la fenêtre : {windowWidth}px</h1>
+```
+</div>
+
+
+<div v-click class="mbs-3">
+  <Alert type="warning" title="Attention !" text="Cet élément ne peut apparaître qu’au niveau supérieur de votre composant et ne doit jamais être inclus dans un bloc ou un autre élément."/>
+</div>
+
+<div v-click class="mbs-3">
+  <Alert type="idea" title="À savoir" text="Sur le même principe il existe aussi les éléments **svelte:body** et **svelte:document**"/>
+</div>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>La balise &lt;svelte:element/&gt;</h1>
+
+<p>
+  Cet élément permet de rendre un élément avec un type spécifié dynamiquement.
+  <br>
+  Si la valeur de this est nulle ou indéfinie, l'élément et ses enfants ne seront pas rendus.
+</p>
+
+<div v-click class="flex mbs-2">
+```svelte
+<script>
+  let tag = "ul";
+  const changeList = () => (tag = tag === 'ul' ? 'ol' : 'ul');
+</script>
+
+<svelte:element this={tag}>
+  <li>Lorem ipsum</li>
+  <li>Lorem ipsum</li>
+  <li>Lorem ipsum</li>
+</svelte:element>
+
+<button on:click={changeList}>Changer le type de liste</button>
+<button on:click={() => (tag = null)}>retirer la liste</button>
+```
+</div>
+
+<div class="flex mbs-3">
+  <Alert type="warning" title="Attention" text="Il n'est pas possible de binder des valeurs sur un élément de type **svelte:element** car sa vraie nature n'est pas connue." />
+</div>
+
+<SlideFooter/>
+
+---
+layout: default
+transition: slide-up
+---
+<h1>La balise &lt;svelte:component/&gt;</h1>
+
+<p>Cet élément permet de rendre un composant de manière dynamique, en utilisant le constructeur de composant spécifié par la propriété <kbd>this</kbd>. Lorsque cette propriété change, le composant est détruit puis recréé.</p>
+<p>Si la valeur de this est nulle ou indéfinie, l'élément et ses enfants ne seront pas rendus.</p>
+
+<div v-click class="flex mbs-3">
+```svelte
+<script>
+  import ComponentA from './ComponentA.svelte';
+  import ComponentB from './ComponentB.svelte';
+
+  let currentComponent = ComponentA;
+</script>
+
+<button on:click={() => currentComponent = ComponentA}>Afficher le composant A</button>
+<button on:click={() => currentComponent = ComponentB}>Afficher le composant B</button>
+
+<svelte:component this={currentComponent} />
+
+```
+</div>
+
+<SlideFooter/>
+
+---
+layout: default
+transition: slide-up
+---
+<h1>La balise &lt;slot/&gt;</h1>
+
+<p>Cet élément permet d'afficher les enfant d'un composant. C'est l'équivalent de la propriété <kbd>children</kbd> en <b>React</b> :</p>
+
+<div class="flex mbs-15 gap-10 items-center">
+
+<div v-click>
+```svelte
+<!-- Widget.svelte -->
+<div>
+	<slot>Pas de slot !</slot>
+</div>
+
+
+<!-- App.svelte -->
+<Widget />
+
+<Widget>
+	<p>Lorem ipsum dolor sit amet.</p>
+</Widget>
+```
+</div>
+
+<div v-click>
+  <p>Le composant <kbd>&lt;Widget /&gt;</kbd> possède un <b>slot</b>. Il est donc possible de passer des élements enfants au composant.</p>
+  <p>Voila ce qui sera rendu :</p>
+
+```html
+<div>
+  Pas de slot !
+</div>
+<div>
+  Lorem ipsum dolor sit amet.
+</div>
+```
+</div>
+</div>
+
+<SlideFooter/>
+
+---
+layout: default
+transition: slide-up
+---
+<h1>La balise &lt;slot/&gt;</h1>
+
+<p>Un composant <b>Svelte</b> peut avoir plusieurs <b>slots</b>. Dans ce cas il conviens de les nommer par un attribut <kbd>name</kbd> :</p>
+
+
+<div class="flex mbs-5 gap-10 items-center">
+<div v-click>
+```svelte
+<!-- Widget.svelte -->
+<div>
+  <slot name="header" />
+  <p>Lorem ipsum dolor sit amet.</p>
+  <slot name="footer" />
+</div>
+
+<!-- App.svelte -->
+<Widget>
+  <h1 slot="header">Hello</h1>
+  <div slot="footer">
+    <p>All rights reserved.</p>
+    <p>Copyright (c) 2024 StudioB04</p>
+  </div>
+</Widget>
+```
+</div>
+
+<div v-click>
+  <p>Le composant <kbd>&lt;Widget /&gt;</kbd> possède 2 slots : <b>header</b> et <b>footer</b>.</p> 
+  <p>Il est donc possible de l'utiliser en lui passant des élements enfants nommés par l'attribut <kbd>slot</kbd>.</p>
+  <p>Voila ce qui sera rendu :</p>
+
+```html
+<div>
+  <h1>Hello</h1>
+  <p>Lorem ipsum dolor sit amet.</p>
+  <div>
+    <p>All rights reserved.</p>
+    <p>Copyright (c) 2024 StudioB04</p>
+  </div>
+</div>
+```
+</div>
+</div>
+
+
+<SlideFooter/>
+
+---
+layout: default
+transition: slide-up
+---
+<h1>La balise &lt;svelte:fragment/&gt;</h1>
+
+<p>Cet élément vous permet de placer des elements dans un <kbd>slot</kbd> sans qu'il soit wrappé dans un container. C'est l'équivalent de <kbd>&lt;&gt;&lt;/&gt;</kbd> ou <kbd>&lt;React.fragment/&gt;</kbd> en <b>React</b>. Dans l'exemple précédent, si je ne veux pas que les 2 paragraphes du footer soit dans une <kbd>div</kbd> : </p>
+
+<div class="flex mbs-1 gap-10 items-center">
+<div v-click>
+```svelte
+<!-- Widget.svelte -->
+<div>
+  <slot name="header" />
+  <p>Lorem ipsum dolor sit amet.</p>
+  <slot name="footer" />
+</div>
+
+<!-- App.svelte -->
+<Widget>
+  <h1 slot="header">Hello</h1>
+  <svelte:fragment slot="footer">
+    <p>All rights reserved.</p>
+    <p>Copyright (c) 2024 StudioB04</p>
+  </svelte:fragment>
+</Widget>
+```
+</div>
+
+<div v-click>
+  <p>Le composant <kbd>&lt;Widget /&gt;</kbd> possède 2 slots : <b>header</b> et <b>footer</b>.</p> 
+  <p>Il est donc possible de l'utiliser en lui passant des élements enfants nommés.</p>
+  <p>Voila ce qui sera rendu :</p>
+
+```html
+<div>
+  <h1>Hello</h1>
+  <p>Lorem ipsum dolor sit amet.</p>
+  <p>All rights reserved.</p>
+  <p>Copyright (c) 2024 StudioB04</p>
+</div>
+```
+</div>
+</div>
+
+
+<SlideFooter/>
+
+---
+layout: default
+transition: slide-up
+---
+<h1>La balise &lt;svelte:self/&gt;</h1>
+
+<p>Cet élément permet à un composant de s'appeller lui même de façon recursive.</p>
+
+<p>Exemple : </p>
+
+<div class="flex gap-10 items-center">
+<div v-click>
+```svelte
+<!-- Widget.svelte -->
+<script>
+  /** @type {number} */
+  export let count;
+</script>
+
+{#if count > 0}
+  <p>{count}...</p>
+  <svelte:self count={count - 1} />
+{:else}
+  <p>Décolage !!!! 🚀</p>
+{/if}
+
+<!-- App.svelte -->
+<Test count={10}/>
+```
+</div>
+
+
+<div v-click>
+<p>Ici le composant <kbd>Widget</kbd> va s'appeller lui même avec une propriété <kbd>count</kbd> qui vaux <b>count - 1</b> si <b>count > 0</b>.</p>
+<p>Voila ce qui sera rendu :</p>
+
+```html
+<p>10...</p>
+<p>9...</p>
+<p>8...</p>
+...
+<p>3...</p>
+<p>2...</p>
+<p>1...</p>
+<p>Décolage !!!! 🚀</p>
+```
+</div>
+
+</div>
 
 <SlideFooter/>
