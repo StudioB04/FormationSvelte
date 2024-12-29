@@ -1,0 +1,415 @@
+---
+layout: center
+transition: slide-up
+---
+<h1 class="!text-5xl">7. Les transitions</h1>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Les transitions</h1>
+
+<p><b>Svelte</b> propose des outils qui permettent d'animer très simplement l'apparition ou la dispartion d'un élément du <b>DOM</b>. Le module <kbd>svelte/transition</kbd> exporte 7 fonctions d'animations : <kbd>fade</kbd>, <kbd>blur</kbd>, <kbd>fly</kbd>, <kbd>slide</kbd>, <kbd>scale</kbd>, <kbd>draw</kbd> et <kbd>crossfade</kbd>.</p>
+
+<p v-click>Voici un exemple :</p>
+
+<div v-after class="flex items-center gap-5 mbs-5">
+```svelte
+<script>
+  import { fade } from "svelte/transition";
+  let visible = false
+</script>
+
+<button on:click={() => (visible = !visible)}>
+  Display block
+</button>
+
+{#if visible}
+  <p transition:fade>Lorem ipsum dolor sit amet.</p>
+{/if}
+```
+<p>Le bloc de texte apparaitra et disparaitre en fondu lorsque <b>visible</b> sera modifié</p>
+</div>
+
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Les transitions</h1>
+
+<p>Les transitions peuvent prendre des paramètres comme <b>delay</b> ou <b>duration</b> pour modifier la façon dont l'animation va se jouer.</p>
+
+
+<p v-click>Voici un exemple :</p>
+
+<div v-after class="flex items-center gap-5 mbs-5">
+<div class="shrink-0">
+```svelte
+<script>
+  import { fade } from "svelte/transition";
+  let visible = false
+</script>
+
+<button on:click={() => (visible = !visible)}>
+  Display block
+</button>
+
+{#if visible}
+  <p transition:fade={{ delay: 500, duration: 1000 }}>
+    Lorem ipsum dolor sit amet.
+  </p>
+{/if}
+```
+</div>
+
+<div>
+  <p class="text-balance">Ici l'animation sera retardée de 500 millisecondes et durera 1 seconde.</p>
+  <Alert type="idea" title="Information" text="Chaque transition a des propriétés qui lui sont propres et acceptent certains paramètres."/>
+</div>
+</div>
+
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>fade</h1>
+
+<p>La transition <kbd>fade</kbd> joue sur l'opacité de l'élément à afficher. Voici la liste des paramètres autorisés :</p>
+
+<ul class="flex flex-col my-3 mis-5">
+  <Option title="delay" details="(number, default 0)" description="delai avant démarrage de l'animation en ms." />
+  <Option title="duration" details="(number, default 0)" description="durée de l'animation en ms." />
+  <Option title="easing" details='([easing function](https://v4.svelte.dev/docs/svelte-easing), default "linear")' description="progression de l'animation." />
+</ul>
+
+```svelte
+<script>
+	import { fade } from 'svelte/transition';
+</script>
+
+{#if condition}
+	<div transition:fade={{ delay: 250, duration: 300, ease: cubic }}>
+    fades in and out
+  </div>
+{/if}
+```
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>blur</h1>
+
+<p>La transition <kbd>blur</kbd> joue sur l'opacité et le flou de l'élément à afficher. Voici la liste des paramètres autorisés :</p>
+
+<ul class="flex flex-col my-3 mis-5">
+  <Option title="delay" details="(number, default 0)" description="delai avant démarrage de l'animation en ms." />
+  <Option title="duration" details="(number, default 0)" description="durée de l'animation en ms." />
+  <Option title="easing" details='([easing function](https://v4.svelte.dev/docs/svelte-easing), default "linear")' description="progression de l'animation." />
+  <Option title="opacity" details="(number, default 0)" description="Opacité de départ de l'animation." />
+  <Option title="amount" details="(number | string, default 5)" description="Profondeur du flou (en unité css)" />
+</ul>
+
+```svelte
+<script>
+	import { blur } from 'svelte/transition';
+</script>
+
+{#if condition}
+	<div transition:blur={{ delay: 250, duration: 300, opacity: 0.5, amount: "4rem" }}>
+    blur in and out
+  </div>
+{/if}
+```
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>fly</h1>
+
+<p>La transition <kbd>fly</kbd> joue sur l'opacité et la position de l'élément à afficher. Voici la liste des paramètres autorisés :</p>
+
+<ul class="flex flex-col my-2 mis-5">
+  <Option title="delay" details="(number, default 0)" description="delai avant démarrage de l'animation en ms." />
+  <Option title="duration" details="(number, default 0)" description="durée de l'animation en ms." />
+  <Option title="easing" details='([easing function](https://v4.svelte.dev/docs/svelte-easing), default "linear")' description="progression de l'animation." />
+  <Option title="opacity" details="(number, default 0)" description="Opacité de départ de l'animation." />
+  <Option title="x" details="(number | string, default 0)" description="Position de départ de l'animation en X" />
+  <Option title="y" details="(number | string, default 0)" description="Position de départ de l'animation en Y" />
+</ul>
+
+```svelte
+<script>
+	import { fly } from 'svelte/transition';
+</script>
+{#if condition}
+	<div transition:fly={{ delay: 250, duration: 300, opacity: 0.5, x: 0, y: -100 }}>
+    fly in and out
+  </div>
+{/if}
+```
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>slide</h1>
+
+<p>La transition <kbd>slide</kbd> fait glisser l'élément horizontalement ou verticalement. Voici la liste des paramètres autorisés :</p>
+
+<ul class="flex flex-col my-2 mis-5">
+  <Option title="delay" details="(number, default 0)" description="delai avant démarrage de l'animation en ms." />
+  <Option title="duration" details="(number, default 0)" description="durée de l'animation en ms." />
+  <Option title="easing" details='([easing function](https://v4.svelte.dev/docs/svelte-easing), default "linear")' description="progression de l'animation." />
+  <Option title="axis" details="(x | y, default y)" description="Axe de l'animation" />
+</ul>
+
+```svelte
+<script>
+	import { slide } from 'svelte/transition';
+</script>
+{#if condition}
+	<div transition:slide={{ delay: 250, duration: 300, axis: "x" }}>
+    slide in and out
+  </div>
+{/if}
+```
+
+<SlideFooter/>
+
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>scale</h1>
+
+<p>La transition <kbd>scale</kbd> joue sur l'opacité et l'échelle de l'élément à afficher. Voici la liste des paramètres autorisés :</p>
+
+<ul class="flex flex-col my-2 mis-5">
+  <Option title="delay" details="(number, default 0)" description="delai avant démarrage de l'animation en ms." />
+  <Option title="duration" details="(number, default 0)" description="durée de l'animation en ms." />
+  <Option title="easing" details='([easing function](https://v4.svelte.dev/docs/svelte-easing), default "linear")' description="progression de l'animation." />
+  <Option title="start" details="(number, default 0)" description="échelle au démarrage de l'animation." />
+  <Option title="opacity" details="(number, default 0)" description="opacité au démarrage de l'animation." />
+</ul>
+
+```svelte
+<script>
+	import { scale } from 'svelte/transition';
+</script>
+{#if condition}
+  <div transition:scale={{ delay: 0, duration: 300, start: 0.5, opacity:0 }}>
+    scale in and out
+  </div>
+{/if}
+```
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>draw</h1>
+
+<p>La transition <kbd>draw</kbd> permet d'animer le tracé d'un SVG. Voici la liste des paramètres autorisés :</p>
+
+<ul class="flex flex-col my-2 mis-5">
+  <Option title="delay" details="(number, default 0)" description="delai avant démarrage de l'animation en ms." />
+  <Option title="duration" details="(number | function, default 800)" description="durée de l'animation en ms." />
+  <Option title="speed" details="(number, default undefined)" description="vitesse de l'animation." />
+  <Option title="easing" details='([easing function](https://v4.svelte.dev/docs/svelte-easing), default "linear")' description="progression de l'animation." />
+</ul>
+
+```svelte
+<script>
+  import { draw } from 'svelte/transition';
+</script>
+
+<svg viewBox="0 0 5 5" xmlns="http://www.w3.org/2000/svg">
+	{#if condition}
+    <path transition:draw={{ duration: 3000, easing: 'elasticInOut' }}
+      d="M2 1 h1 v1 h1 v1 h-1 v1 h-1 v-1 h-1 v-1 h1 z"
+      fill="none" stroke="cornflowerblue" stroke-width="0.1px" />
+	{/if}
+</svg>
+```
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>crossfade</h1>
+
+<p>La transition <kbd>crossfade</kbd> crée une paire de transitions appelées envoi et réception. Lorsqu'un élément est "envoyé", il recherche un élément correspondant "reçu" et génère une transition qui transforme l'élément à la position de son homologue et l'efface. Voici la liste des paramètres autorisés :</p>
+
+<ul class="flex flex-col my-5 mis-5">
+  <Option title="delay" details="(number, default 0)" description="delai avant démarrage de l'animation en ms." />
+  <Option title="duration" details="(number | function, default 800)" description="durée de l'animation en ms." />
+  <Option title="easing" details='([easing function](https://v4.svelte.dev/docs/svelte-easing), default "linear")' description="progression de l'animation." />
+  <Option title="fallback" details='(function)' description="
+  Une transition de secours." />
+</ul>
+
+
+<div class="mbs-15">
+  <Alert type="idea" title="Exemple" text="Voici un exemple sur le **[Playground](https://svelte.dev/playground/5fc4b5dd5dec49d2be3fa160693372ce?version=4.2.19)** de **Svelte**"/>
+</div>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Les transitions</h1>
+
+<p>Jusqu'à présent, nous avons utilisé le mot clé <kbd>transition:</kbd> pour réaliser une animation identique l'apparition et à la disparition de l'élément.</p>
+
+<p v-click>Il est tout à fait possible d'avoir une transition différente, pour cela in faut utiliser les mot clés <kbd>in:</kbd> et <kbd>out:</kbd></p>
+
+<div v-click class="div flex mbs-10">
+```svelte
+<script>
+	import { fade, slide } from 'svelte/transition';
+</script>
+
+{#if condition}
+	<div in:slide={{ duration: 500, y: -150 }} out:fade={{ duration: 300}}>
+    Lorem ipsum dolor sit amet.
+  </div>
+{/if}
+```
+</div>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Les callback de transition</h1>
+
+<p><b>Svelte</b> permet de savoir précisément quand l'animation démarre ou s'arrète grâce à 4 callbaks : </p>
+
+<ul v-click class="my-2 mis-5">
+  <li>
+    <div class="flex gap-2 items-center">
+      <kbd>introstart</kbd>
+      <span class="grow mx-3 h-1 border-be border-dashed border-current opacity-30"></span>
+      <small>démarrage de l'animation d'apparition</small>
+    </div>
+  </li>
+  <li>
+    <div class="flex gap-2 items-center">
+      <kbd>introend</kbd>
+      <span class="grow mx-3 h-1 border-be border-dashed border-current opacity-30"></span>
+      <small>fin de l'animation d'apparition</small>
+    </div>
+  </li>
+  <li>
+    <div class="flex gap-2 items-center">
+      <kbd>outrostart</kbd>
+      <span class="grow mx-3 h-1 border-be border-dashed border-current opacity-30"></span>
+      <small>démarrage de l'animation de disparition</small>
+    </div>
+  </li>
+  <li>
+    <div class="flex gap-2 items-center">
+      <kbd>outroend</kbd>
+      <span class="grow mx-3 h-1 border-be border-dashed border-current opacity-30"></span>
+      <small>fin de l'animation de disparition</small>
+    </div>
+  </li>
+</ul>
+
+<div v-click class="flex mbs-3 gap-10 mx-20">
+<div>
+```svelte
+{#if condition}
+  <div 
+    in:fade out:blur 
+    on:introstart={onIntroStart}
+    on:outroend={onOutroEnd}
+  >
+    Lorem ipsum, dolor sit amet !!
+  </div>
+{/if}
+```
+</div>
+
+<div>
+  <p>Ici, la <b>div</b> apparaitra avec une animation <kbd>fade</kbd>, et disparaitra avec une animation <kbd>blur</kbd>.</p>
+  <p>La fonction <b>onIntroStart</b> sera jouée au démarrage de l'apparition de la <b>div</b>.</p>
+  <p>La fonction <b>onOutroEnd</b> sera jouée à la fin de la disparition de la <b>div</b>.</p>
+</div>
+</div>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>En conclusion</h1>
+
+<p><b>Svelte</b> propose tous les outils nécéssaires pour rendre vos interfaces interactives et fonctionnelles, mais attention toutefois à ne pas abuser des animations car les performance de votre application pourrait en pâtir.</p>
+
+<div v-click class="flex mbs-5">
+  <Alert type="information" title="Rappel" text="Pensez à laisser l'utilisateur le pouvoir de désactiver vos animation si il le souhaite, c'est un prérequis d'accessibilité !" />
+</div>
+
+<div v-click class="flex flex-col items-start">
+<p class="!mbe-0">Exemple en CSS : </p>
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition-duration: 0s !important;
+  }
+}
+```
+</div>
+
+<div v-click class="flex flex-col items-start">
+<p class="!mbe-0">Exemple en JavaScript : </p>
+
+```js
+
+const transition = !window.matchMedia(`(prefers-reduced-motion: reduce)`);  
+```
+</div>
+
+<SlideFooter/>

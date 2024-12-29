@@ -12,3 +12,150 @@ layout: default
 transition: slide-up
 ---
 <h1>La directive :use</h1>
+
+<p>La directive <kbd>:use</kbd> en <b>Svelte</b> est utilisée pour appliquer des actions à des éléments <b>DOM</b>.</p>
+<p v-click>Les actions sont des fonctions <b>JavaScript</b> qui permettent d’ajouter des comportements spécifiques à un élément, comme gérer des événements, manipuler des classes, ou interagir avec des <b>API DOM</b>.</p>
+
+<div class="flex gap-5">
+
+<div v-click>
+<b>highlight.js</b>
+
+```js
+export function highlight(element) {
+  element.style.backgroundColor = 'yellow';
+
+  return {
+    destroy() {
+      element.style.backgroundColor = '';
+    }
+  };
+}
+```
+</div>
+
+<div v-click>
+<b>Component.svelte</b>
+
+```svelte
+<script>
+  import { highlight } from './highlight.js';
+</script>
+
+<p use:highlight>
+  Ce texte sera surligné.
+</p>
+```
+</div>
+
+</div>
+
+<div v-click class="flex mbs-5">
+  <Alert type="warning" title="Important" text="Il faut penser à annuler l'effet d'un <kbd>:use</kbd> quand le composant est détruit. C'est pourquoi il y a une fonction **destroy()** retournée."/>
+</div>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>La directive :use</h1>
+
+<p>On peut transmettre des options à l'action sous forme d'arguments. Reprenons l'exemple précédent :</p>
+
+
+<div class="flex gap-3 mbs-2">
+
+<div v-click>
+<b>highlight.js</b>
+
+```js
+export function highlight(element, color) {
+  element.style.backgroundColor = color;
+
+  return {
+    update(newColor) {
+      element.style.backgroundColor = newColor;
+    },
+    destroy() {
+      element.style.backgroundColor = '';
+    }
+  };
+}
+```
+</div>
+
+<div v-click>
+<b>Component.svelte</b>
+
+```svelte
+<script>
+  import { highlight } from './highlight.js';
+  let color = 'yellow';
+</script>
+
+<label for="color">Entrez une couleur</label>
+<input id="color" bind:value={color} />
+
+<p use:highlight={color}>
+  Ce texte change de couleur.
+</p>
+```
+</div>
+
+</div>
+
+<div v-click class="flex mbs-2">
+  <Alert type="warning" title="Important" text="Le premier argument fait toujours référence à l'élémént **DOM** sur lequel la directive <kbd>:use</kbd> est appliquée. Les paramètres suivants sont des arguments de la fonction."/>
+</div>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>La directive :use</h1>
+
+<p>Voici un exemple d'utilisation de <kbd>:use</kbd> : Créer une action autofocus. <br>Cette action place le focus sur un élément dès qu'il est monté dans le <b>DOM</b>.</p>
+
+<div v-click class="flex gap-5 mbs-5">
+
+
+<div>
+```js
+// autofocus.js
+export const autofocus = element => {
+  setTimeout(() => element.focus(), 100);
+}
+```
+
+<div class="flex flex-col gap-5 mbs-5">
+  <Alert type="idea" title="Astuce 1" text="Ici on ajoute un délai de 100ms pour laisser au navigateur le temps d'ajouter l'élément au **DOM** avant de placer le focus sur lui."/>
+  <Alert type="idea" title="Astuce 2" text="Il n'est pas nécessaire de nettoyer l'action avec **destroy()** puisque le champs va disparaitre et donc perdre le focus !"/>
+</div>
+</div>
+
+
+```svelte
+<script>
+  import { autofocus } from './autofocus.js';
+  let showForm = false;
+</script>
+
+<button on:click={() => (showForm = !showForm)}>
+  Toggle Form
+</button>
+
+{#if showForm}
+  <div class="modal">
+    <input type="text" use:autofocus>
+  </div>
+{/if}
+```
+</div>
+
+<SlideFooter/>

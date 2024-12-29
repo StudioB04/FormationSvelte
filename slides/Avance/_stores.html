@@ -1,0 +1,242 @@
+---
+layout: center
+transition: slide-up
+---
+<h1 class="!text-5xl">6. Les stores</h1>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Les stores</h1>
+
+<p>Lorsqu'on utilise un framework comme <b>Svelte</b>, ou <b>React</b>, il est important de comprendre que les composants sont indépendants les uns des autres et qu'ils sont agnostiques.</p>
+
+<p>C'est à dire qu'il ne communique pas entre eux (sauf avec les événements) et qu'il n'ont pas connaissance de leur environement.</p>
+
+<p>Parfois il peux etre utile de partager des informations entre plusieurs composants. On pourrait y arriver en passant des données en cascade à tous les composants via des props mais ce serait très fastidieux !</p>
+
+<h2 v-click class="text-light text-center !text-xl w-100 mx-auto !mbs-20">"En Svelte, les stores sont une façon simple de partager des données entre différents composants"</h2>
+
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Les stores</h1>
+
+<p>Un store est un objet qui contient une valeur réactive. Lorsqu'on modifie la valeur du store, tous les composants qui l'utilisent sont automatiquement mis à jour.</p>
+
+<p v-click><b>Svelte</b> propose un module (svelte/store) qui exporte 3 fonctions : </p>
+
+<ul class="mis-10 mbs-5">
+  <ListItem label="**Writable** (modifiable) : Peut être modifié à tout moment"/>
+  <ListItem label="**Readable** (lecture seule) : Utilisé pour les données qu'on ne veut pas modifier directement."/>
+  <ListItem label="**Derived** (dérivé) : Calculé à partir d'autres stores."/>
+</ul>
+
+<div v-click class="flex flex-col mbs-3">
+<p>Voici un exemple de store <b>"Writable"</b> :</p>
+
+```js
+// store.js
+import { writable } from 'svelte/store';
+
+export const count = writable(0); // Store modifiable dont la valeur initiale est 0.
+```
+</div>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Les stores "Writable"</h1>
+
+<p>Utilisons ce store dans des composants <b>Svelte</b>.</p>
+
+
+<div v-click class="flex mbs-5 gap-5">
+
+```svelte
+<!-- Buttons.svelte -->
+<script>
+  import { count } from './store.js';
+</script>
+
+<button on:click={() => $count++}>Incrémenter</button>
+<button on:click={() => $count--}>Décrémenter</button>
+```
+
+<div>
+  <p>Ici nous avons un composant qui permet de modifier la valeur du store <b>count</b>.</p>
+  <Alert type="idea" title="Astuce" text="Notez l'utilisation du symbole <kbd>$</kbd> lorsque qu'on fait référence à un store !"/>
+</div>
+</div>
+
+<div v-click class="flex mbs-5 gap-5">
+```svelte
+<!-- Display.svelte -->
+<script>
+  import { count } from './store.js';
+</script>
+
+<p>Compteur est : {$count}</p>
+```
+
+<div>
+  <p>Ici nous avons un composant qui permet d'afficher la valeur du store <b>count</b>.</p>
+  <Alert type="idea" title="Astuce" text="La valeur du store sera automatiquement mise à jour dans tous les composants qui l'utilisent."/>
+</div>
+</div>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Les stores "Readable"</h1>
+
+<p>Un store <b>"Readable"</b> est utile lorsque vous voulez qu'un composant puisse lire des données sans pouvoir les modifier directement. Cela permet par exemple de partager une donnée à toute l'application.</p>
+
+<div v-click class="!-mbs-2">
+  <p>Imaginons une fonction qui retourne la date : </p>
+
+```js
+// date.store.js
+import { readable } from 'svelte/store';
+
+export const currentDate = readable(new Date(), (set) => {
+  const interval = setInterval(() => {
+    set(new Date()); // Met à jour la valeur du store
+  }, 1000);
+
+  return () => {
+    clearInterval(interval); // Nettoie l'intervalle quand le store n'est plus utilisé
+  };
+});
+```
+
+<div class="mbs-2">
+  <Alert type="idea" title="Astuce" text="La fonction <kbd>set</kbd> en deuxième paramètre est utilisée pour mettre à jour la valeur du store."/>
+</div>
+
+</div>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Les stores "Readable"</h1>
+
+<p>Il est désormais possible de connaitre la date depuis n'importe quel composant de l'application sans avoir à la recalculer.</p>
+
+<div v-click class="mbs-15 flex">
+```svelte
+<script>
+  import { currentDate } from './date.store.js'
+</script>
+
+<p>La date est {$currentDate.toTimeString()}</p>
+```
+</div>
+
+<div v-after class="mbs-5 flex">
+  <Alert type="idea" title="Astuce" text="Le texte du composant sera mis à jour automatiquement toutes les 1000ms puisque la valeur du store change !"/>
+</div>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Les stores "Derived"</h1>
+
+<p>Un store <b>"Derived"</b> est un store basé sur un ou plusieurs autres stores, voici un exemple :</p>
+
+<div v-click class="flex mbs-5">
+```js
+// store.js
+import { derived, writable } from 'svelte/store';
+
+export const price = writable(100);
+export const quantity = writable(2);
+
+export const total = derived([price, quantity], ([$price, $quantity]) => $price * $quantity);
+```
+</div>
+
+<div v-after class="flex mbs-5">
+  <Alert 
+    type="idea" 
+    title="Explication" 
+    text='Ici nous avons 2 stores **"Writable"** : *price* et *quantity*. Le store total est calculé par rapport à la valeur courante des autres stores. <br/> Le premier argument de la fonction **derived** est un tableau des stores dont il va dépendre.<br/>Le deuxième arguement est une fonction qui va realiser un traitement avec les valeurs des stores comme paramètres.'
+  />
+</div>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Les stores "Derived"</h1>
+
+<p>Et voici un exemple concret de l'utilisation de ce store :</p>
+
+<div v-click class="flex mbs-5">
+```svelte
+<script>
+  import { price, quantity, total } from "./store.js"
+</script>
+
+<label for="price">Price</label>
+<input id="price" type="number" bind:value={$price}>
+
+<label for="quantity">Quantity</label>
+<input id="quantity" type="number" bind:value={$quantity}>
+
+<h2>Total : {$total}</h2>
+```
+</div>
+
+<div v-after class="flex mbs-5">
+  <Alert 
+    type="idea" 
+    title="Explication" 
+    text='La value des champs number est bindée sur la valeur des stores **price** et **quantity**. <br/> En modifiant leur valeur, la valeur de **total** est automatiquement recalculée pour tous les composants qui l&apos;utilisent'
+  />
+</div>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>En résumé</h1>
+
+<p>Les <b>stores</b> sont très importants pour le fonctionnement d'une application <b>Svelte</b>. Ils permettent de faire communiquer entre eux les différentes briques de votre applications.</p>
+
+<p>Les <b>stores</b> peuvent être utilisés dans des composants <b>Svelte</b>, mais peuvent également être consommés par des utilitaires <b>JavaScript</b> via la function <kbd>get</kbd></p>
+
+<p class="!mbs-15">Retrouver toute la documentation sur les <b>stores</b> <a href="https://v4.svelte.dev/docs/svelte-store" target="_blank">sur le site officiel de Svelte</a>.</p>
+
+<SlideFooter/>
