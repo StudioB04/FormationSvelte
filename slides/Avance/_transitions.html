@@ -4,6 +4,7 @@ transition: slide-up
 ---
 <h1 class="!text-5xl">7. Les transitions</h1>
 
+
 <SlideFooter/>
 
 
@@ -373,43 +374,6 @@ transition: slide-up
   <p>La fonction <b>onIntroStart</b> sera jouée au démarrage de l'apparition de la <b>div</b>.</p>
   <p>La fonction <b>onOutroEnd</b> sera jouée à la fin de la disparition de la <b>div</b>.</p>
 </div>
-</div>
-
-<SlideFooter/>
-
-
----
-layout: default
-transition: slide-up
----
-<h1>En conclusion</h1>
-
-<p><b>Svelte</b> propose tous les outils nécéssaires pour rendre vos interfaces interactives et fonctionnelles, mais attention toutefois à ne pas abuser des animations car les performance de votre application pourrait en pâtir.</p>
-
-<div v-click class="flex mbs-5">
-  <Alert type="information" title="Rappel" text="Pensez à laisser l'utilisateur le pouvoir de désactiver vos animation si il le souhaite, c'est un prérequis d'accessibilité !" />
-</div>
-
-<div v-click class="flex flex-col items-start">
-<p class="!mbe-0">Exemple en CSS : </p>
-
-```css
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation: none !important;
-    transition-duration: 0s !important;
-  }
-}
-```
-</div>
-
-<div v-click class="flex flex-col items-start">
-<p class="!mbe-0">Exemple en JavaScript : </p>
-
-```js
-
-const transition = !window.matchMedia(`(prefers-reduced-motion: reduce)`);  
-```
 </div>
 
 <SlideFooter/>

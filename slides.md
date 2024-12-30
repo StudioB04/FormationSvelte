@@ -39,6 +39,8 @@ transition: fade-out
 src: ./slides/accueil.html
 ---
 
+# <span v-mark.red="3"><code>v-mark</code> directive</span>
+
 --- 
 title: Introcuction
 src: ./slides/Introduction/index.html
@@ -67,4 +69,10 @@ src: ./slides/Programme/jour-2.html
 ---
 title: Avancé
 src: ./slides/Avance/index.html
+---
+
+
+---
+title: SvelteKit
+src: ./slides/SvelteKit/index.html
 ---
