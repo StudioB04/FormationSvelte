@@ -1,0 +1,189 @@
+---
+layout: default
+transition: slide-up
+---
+<h1>Organisation des fichiers</h1>
+
+<p>Si l'installation s'es déroulé comme prévu, vous devriez avoir des dossiers et des fichiers dans votre repertoire <b>/formationSvelte</b>. Voici les plus important :</p>
+
+
+<blockquote v-click class="flex gap-5 mbs-5 mx-20">
+
+``` html {*}{lines:false} 
+📁 formationSvelte
+  └─── 📁 .svelte-kit
+  │     └─── ...
+  └─── 📁 src
+  │     └─── 📁 lib
+  │     └─── 📁 routes
+  │          └─── 📃 +page.svelte
+  │     └─── 📃 app.html
+  └─── 📁 static
+  │     └─── ...
+  ...
+  └─── 📃 svelte.config.js
+  └─── 📃 vite.config.js
+```
+</blockquote>
+
+
+<SlideFooter/>
+
+---
+layout: default
+transition: slide-up
+---
+<h1>svelte.config.js</h1>
+
+<p>Ce fichier permet de <a href="https://svelte.dev/docs/kit/configuration" target="_blank">configurer votre projet <b>SvelteKit</b></a>, et notamment les <a href="https://svelte.dev/docs/kit/adapters" target="_blank"><b>adapters</b>.</a></p>
+
+<p>Les adapteurs sont des utilitaires qui permettent de builder votre projet en fonction de la plateforme sur laquelle il sera deployé (<b>Cloudflare</b>, <b>Netlify</b>, <b>Node</b>, <b>Vercel</b>, <b>static</b>, <b>etc</b>.)</p>
+
+
+<div class="mbs-10">
+```js
+import adapter from '@sveltejs/adapter-auto';
+
+/** @type {import('@sveltejs/kit').Config} */
+const config = {
+	kit: {
+		adapter: adapter()
+	}
+};
+
+export default config;
+```
+</div>
+
+
+<SlideFooter/>
+
+---
+layout: default
+transition: slide-up
+---
+<h1>vite.config.js</h1>
+
+<p>Ce fichier permet de gérér la <a href="https://vite.dev/config/" target="_blank">configuration de <b>Vite</b></a>.</p>
+
+<p>Vous pouvez y créer des alias de dossiers, changer le réprtoire de dev ou de build, ajouter des plugins, etc.</p>
+
+
+
+<div class="mbs-15">
+```js
+import { sveltekit } from '@sveltejs/kit/vite';
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+	plugins: [sveltekit()]
+});
+```
+</div>
+
+
+<SlideFooter/>
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Le dossier /static</h1>
+
+<p>C'est le dossier qui contient tous les assets de votre projet, accessibles depuis le front.</p>
+
+<p>Vous pouvez y stocker des images, des videos, des fichers CSS, etc. Ils seront accessibles depuis vos composant à la racine de votre projet.</p>
+
+<p>Exemple :</p>
+
+<div class="mbs-5">
+
+```html
+└─── 📁 static
+      └─── 📁 images
+          └─── 📃 photo.jpg
+```
+</div>
+
+<div class="mbs-5">
+
+```svelte
+<div>
+  <img src="/images/photo.jpg" alt="my photo">
+</div>
+```
+</div>
+
+
+<SlideFooter/>
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Le dossier /src</h1>
+
+<p>C'est le dossier qui contient toutes les sources de votre projet et notamment les routes. Vous etes libres d'y créer autant de sous dossiers que vous souhaitez, et créer des alias dans le fichier <b>svelte.config.js</b> si besoin. Exemple :</p>
+
+<div class="mbs-5">
+
+```html {*}{lines:false}
+└─── 📁 src
+      └─── 📁 utils
+          └─── 📃 date.js
+```
+</div>
+
+<div class="mbs-2">
+
+```js
+/** @type {import('@sveltejs/kit').Config} */
+const config = {
+  ...
+	kit: { 
+    alias: { '@utils': './src/utils/' }
+  }
+};
+```
+</div>
+
+<div class="mbs-2">
+
+```svelte
+<script>
+  import { formatDate } from "@utils/date";
+</script>
+```
+</div>
+
+
+<SlideFooter/>
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Créons un dossier /components</h1>
+
+<p>Dans le dossier <b>/src</b>, nous allons créer un sous-dossier <b>components</b>, qui contiendra tous les composants de notre application, et créer l'alias correspondant :</p>
+
+
+
+<div class="mbs-10">
+
+```js
+/** @type {import('@sveltejs/kit').Config} */
+const config = {
+  ...
+  kit: { 
+    alias: { 
+      /* vous pouvez nommer l'alias comme vous le souhaitez ! */
+      '@components': './src/components/'    
+    }
+  }
+};
+```
+</div>
+
+
+<SlideFooter/>

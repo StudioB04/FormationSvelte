@@ -1,0 +1,43 @@
+---
+layout: default
+transition: slide-up
+---
+<h1>C'est quoi SvelteKit ?</h1>
+
+<ul class="mis-10 mbs-10 flex flex-col gap-5">
+  <ListItem label="**SvelteKit** est un framework basé sur **Svelte**, permettant de développer rapidement des applications web robustes et performantes."/>
+  <ListItem label="**SvelteKit** permet de créer des applications complexes grâce à la puissance et la simplicité de **Svelte**, tout en conservant sa légèreté."/>
+  <ListItem label="**SvelteKit** est capable de générer les pages côté serveur **(SSR)** pour des performances et un référencement optimal."/>
+  <ListItem label="**SvelteKit** propose des outils pour réaliser un site web complet de A à Z (routeur, optimisation du build, préchargement des pages, optimisation des images, etc.)"/>
+</ul>
+
+<div v-click class="flex mbs-10">
+  <Alert type="information" title="Comparaison" text="**SvelteKit** est l'équivalent de **Next** pour **React**, ou **Nuxt** pour **VueJS**."/>
+</div>
+
+<SlideFooter/>
+
+
+---
+layout: image-right
+image: /code.jpg
+transition: slide-up
+---
+<h1>Installons SvelteKit !</h1>
+
+<p>Pour créer un nouveau projet, rien de plus simple !</p>
+
+<div class="flex mbs-10">
+```bash {1|1-2|1-3|all}
+npx sv create formationSvelte
+cd formationSvelte
+npm install
+npm run dev
+```
+</div>
+
+<div class="flex mbs-10">
+  <Alert type="idea" title="Important" text="**SvelteKit** embarque **Vite** pour faciliter le développement."/>
+</div>
+
+<!-- Installation en mode le plus simple possible, sans TS, sans libs -->

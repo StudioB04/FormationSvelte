@@ -1,0 +1,373 @@
+---
+layout: center
+transition: slide-up
+---
+
+<h1 class="!text-6xl">Les routes</h1>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Les routes avec SvelteKit</h1>
+
+<h2 class="!text-[18px] text-light">De quoi parles-t-on ?</h2>
+
+<p v-click>Les routes désignent les chemins par lesquels on accède à tel ou tel écran de votre application ou page de votre site web.</p>
+
+<p v-click>Imaginons que notre site contiennent une page de contact, et que nous voulions y acceder via l'URL <kbd>/contact</kbd>. Dans ce cas, il suffit de créer un sous-dossier <b>/contact</b> dans le dossier <b>/src/routes</b> et d'y ajouter un fichier <b>+page.svelte</b>.</p>
+
+<div v-after class="flex">
+  <Alert type="warning" title="Important !" text="Le préfixe <kbd>+</kbd> est important, il indique à <b>SvelteKit</b> que ce fichier et lié au routage."/>
+</div>
+
+<p v-click>Chaque sous dossier du dossier <b>/src/route</b> corresponds à une URL. <br>Ainsi le fichier <b>/src/route/contact/newletter/+page.svelte</b> sera accessible via l'URL <kbd>/contact/newletter</kbd>.</p>
+
+<p v-click>Le fichier <b>+page.svelte</b> à la racine du dossier <b>/src/routes</b> corresponds à la page d'accueil de votre projet.</p>
+
+
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Les routes dynamiques</h1>
+
+<p v-click>
+  Il est possible de gérer des routes avec des paramaètres. Imaginons qur vous concevez un site sur le cinéma. Vous souhaitez créer des pages pour des films, vous pourriez tout a fait créer un dossier et un fichier <b>+page.svelte</b> par film mais cela serait un peu compliqué à gérer.
+</p>
+
+
+<div class="mbs-5 flex gap-5 items-center">
+
+```html {*}{lines:false}
+└─── 📁 src
+      └─── 📁 routes
+            └─── 📁 films
+                  └─── 📁 titanic
+                        └─── 📃 +page.svelte
+                  └─── 📁 avatar
+                        └─── 📃 +page.svelte
+                  └─── 📁 alien
+                        └─── 📃 +page.svelte
+                  └─── 📁 toy-story
+                        └─── 📃 +page.svelte
+                  ...                    
+```
+
+<div v-click>
+  <p>Chaque page de film est bien accessible par une URL propre, par exemple <kbd>/films/avatar</kbd>.</p>
+  <Alert type="warning" title="Oui mais c'est pas top ! 😕" text="Cette solution est trop compliquée à maintenir, trop lourde à gérer, trop de code dupliqué, etc."/>
+</div>
+</div> 
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Les routes dynamiques</h1>
+
+<p>Dans ce cas précis, nous allons utiliser une route dynamique. Pour ce faire, le dossier doit être entre crochets : </p>
+
+
+
+<div class="mbs-5 flex gap-5 items-center">
+
+```html {*}{lines:false}
+└─── 📁 src
+      └─── 📁 routes
+            └─── 📁 films
+                  └─── 📁 [title]
+                        └─── 📃 +page.svelte
+```
+
+<div v-click>
+  <p>Maintenant, tous les chemins derrière l'URL <kbd>/films/XXXX</kbd> feront référence au bon template.</p>
+  <Alert type="idea" title="Beaucoup mieux ! 😁" text="Cette solution est plus simple à maintenir, un seul fichier à maintenir."/>
+</div>
+</div> 
+
+<div v-click>
+  <p>Maintenant, toutes ces routes fairont appel au même fichier <b>+page.svelte</b>:</p>
+
+  <ul class="mis-10">
+    <li><kbd>/films/titanic</kbd></li>
+    <li><kbd>/films/avatar</kbd></li>
+    <li><kbd>/films/alien</kbd></li>
+    <li><kbd>/films/toy-story</kbd></li>
+    <li><kbd>/films/...</kbd></li>
+  </ul>
+</div>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Les contrôleurs</h1>
+
+<p>Chaque route peut avoir un contrôleur spécifique pour gérer la donnée à afficher. Si on reprends notre exemple de tout à l'heure, lorsque je visite l'URL <kbd>/films/avatar</kbd> je souhaite afficher les données du film Avatar. Pour cela il faudra faire un appel à une base de donnée ou une API. C'est le rôle du contrôleur.</p>
+
+<p v-click>Les contrôleurs doivent être nommés <b>+page.js</b> (ou <b>+page.ts</b> si vous utilisez typescript), et être dans le dossier de la route associée :</p>
+
+<div v-after class="mbs-5 gap-5 items-center">
+
+```html {*}{lines:false}
+└─── 📁 src
+      └─── 📁 routes
+            └─── 📁 films
+                  └─── 📁 [title]
+                        └─── 📃 +page.svelte
+                        └─── 📃 +page.js
+```
+</div>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Les contrôleurs</h1>
+
+
+<p>Voici un exemple de contrôleur :</p>
+
+<div v-click class="flex mbs-5">
+```js
+/** /src/films/+page.js */
+export async function load(route) {
+  const data = await fetch(`https://cinema-api.com/${route.params.title}`);
+  return data;
+}
+```
+</div>
+
+<div v-click class="flex mbs-5 gap-5 items-center">
+```svelte
+<!-- /src/films/+page.svelte -->
+<script>
+  export let data = undefined;
+</script>
+
+<h1>{data.title}</h1>
+<p>{data.content}</p>
+```
+
+<div>
+  <p>Le contrôleur va instancier le composant <b>+page.svelte</b> avec la propriété <b>data</b> qui contiendra la réponse de l'API.</p>
+
+  <Alert type="warning" title="Attention !" text="Notez que le le script est asynchrone, ce qui va provoquer un délai dans l'affichage de la page."/>
+</div>
+</div>
+
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Les contrôleurs</h1>
+
+<p>On à parfois besoin de passer des paramètre dans les URL. Imaginons maintenant que l'on veuille créer une page qui liste les films par année de sortie et par avis.</p>
+
+<p v-click>On pourrait avoir une URL qui resemblerai à ça : <kbd>/films/list?year=2024&rating=5</kbd>. Dans le contrôleur on peut récupérer les valeurs de <b>year</b> et <b>rating</b> avec <b>url.searchParams</b></p>
+
+<div v-click class="flex mbs-5">
+```js
+/** /src/films/list/+page.js */
+export async function load(route) {
+  const data = await fetch(`https://cinema-api.com/list`, {
+    method: "GET",
+    body: JSON.stringify({ 
+      year: route.url.searchParams.get('year');
+      rating: route.url.searchParams.get('rating');
+    }),
+  });
+
+  return data;
+}
+```
+</div>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Les layouts</h1>
+
+
+<p class="!m-2">Jusqu'à présent, nous avons traité les pages comme des composants entièrement indépendants. Lors d'une navigation, le composant existant <b>+page.svelte</b> sera détruit, et un nouveau le remplacera.</p>
+
+<p class="!m-2">Cependant, certains éléments doivent être visibles sur chaque page, comme une navigation principale ou un pied de page. Au lieu de les répéter dans chaque +page.svelte, et nous ne voulons pas qu'il soient détruit à chaque changement de page. Pour se faire on va utiliser les <b>layouts</b>.</p>
+
+<p v-click class="!m-2">
+  les layouts s'écrivent <b>+layout.svelte</b> et se placent dans un sous dossier de <b>/src/routes</b>. Toutes les pages qui sont contenues dans ce dossier ou dans un de ses sous-dossiers héritera de ce layout.
+</p>
+  
+
+<div v-after class="mbs-2">
+
+```html {*}{lines:false}
+└─── 📁 routes
+      └─── 📃 +layout.svelte <!-- Layout commun à toutes les routes -->
+      └─── 📁 films
+            └─── 📁 [title]
+            │     └─── 📃 +page.svelte
+            │     └─── 📃 +page.js
+            └─── 📁 list
+            └─── 📃 +layout.svelte <!-- Layout spécifique à la route /film/list -->
+            └─── 📃 +page.svelte
+            └─── 📃 +page.js
+```
+</div>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Les layouts</h1>
+
+<p>Pour l'exemple, nous allons créer un composant <kbd>Header</kbd> qui sera ajouté au layout global.</p>
+
+
+<div v-click class="flex mbs-2">
+
+```html {*}{lines:false}
+└─── 📁 components
+      └─── 📁 Header
+            └─── 📃 Header.svelte
+            └─── 📃 Header.css
+```
+</div>
+
+
+<div v-click class="flex gap-5 -mbs-3">
+
+<div>
+<p class="!mbe-0">Header.svelte :</p>
+
+```svelte
+<script>
+  export let title = undefined;
+</script>
+
+<header>
+  <h1>{title}</h1>
+</header>
+
+<style>
+  @import './Header.css';
+</style>
+```
+</div>  
+
+<div>
+<p class="!mbe-0">Header.css :</p>
+
+```css
+header {
+  padding: 10px;
+  background-color: #eeeeee;
+  border-block-end: 1px solid #333333;
+  margin-block-end: 20px;
+}
+
+header h1 {
+  margin: 0;
+}
+```
+</div>  
+</div>  
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Les layouts</h1>
+
+<p>Dorénavant, il suffit de créer un fichier <b>+layout.svelte</b> à la racine du dossier <b>/src/route</b> pour y ajouter le header :</p>
+
+<div v-click class="mbs-2">
+
+<p class="!mbe-0">+layout.css :</p>
+```svelte
+<script>
+  import Header from "../components/Header/Header.svelte";
+  export let data = undefined
+
+  const title = data?.title;
+</script>
+
+<Header {title}/>
+
+<slot />
+```
+
+<p class="!mbe-0">+layout.js :</p>
+```js
+export function load(route) {
+  return { title: route?.params?.slug };
+}
+```
+</div>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Gestion des erreurs</h1>
+
+<p><b>SvelteKit</b> propose une solution très simple pour la gestion des pages d'erreur. Il suffit d'ajouter un ficher <b>+error.svelte</b> dans le dossier <b>/src/routes</b></p>
+
+<p>Il est possible de créer une page <b>+error.svelte</b> différentes pour chaque sous-dossier du dossier <b>/src/routes</b>, et les pages d'erreur héritent elles aussi des layouts</p>
+
+
+<div v-click class="flex mbs-5 gap-5 items-center">
+<div>
+<p>src/routes/+error.svelte</p>
+
+```svelte
+<script>
+	import { page } from '$app/state';
+</script>
+
+<h1>{page.error.message}</h1>
+
+<p>Une erreur s'est produite.</p>
+
+<a href="/">Retour à l'accueil</a>
+```
+</div>
+
+
+<Alert v-after type="idea" title="Information" text="**$app/state** est un **store** qui contient des informations sur l'état de page courante." />
+</div>
+
+<SlideFooter/>
