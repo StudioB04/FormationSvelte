@@ -1,0 +1,54 @@
+---
+layout: center
+transition: slide-up
+class: text-center
+---
+
+<h1 class="!text-6xl">$state</h1>
+<h2 class="text-lighter">La réactivité</h2>
+
+
+<SlideFooter/>
+
+---
+layout: default
+transition: slide-up
+---
+<h1>$state</h1>
+
+<p>La rune <kbd>$state</kbd> de <b>Svelte 5</b> est une nouveauté majeure qui améliore considérablement la gestion de l'état en permettant de déclarer, manipuler et observer des états globaux de manière plus fluide et intuitive.</p>
+
+<p>C'est l'équivalent du <kbd>useState</kbd> en <b>React</b>.</p>
+
+
+
+<div class="grid grid-cols-[auto_1fr] mbs-5 mx-10 gap-x-10 gap-y-2 items-center ">
+<p v-click>Avec <b>Svelte 4</b>: </p>
+
+<div v-after>
+```svelte
+<script>
+	let count = 0;
+</script>
+
+<button onclick={() => count++}>clicks: {count}</button>
+```
+</div>
+
+
+<p v-click>Avec <b>Svelte 5</b>: </p>
+
+<div v-after>
+```svelte
+<script>
+	let count = $state(0);
+</script>
+
+<button onclick={() => count++}>clicks: {count}</button>
+```
+</div>
+  
+</div>
+
+
+<SlideFooter/>

@@ -1,0 +1,127 @@
+--- 
+layout: center
+transition: slide-up
+class: text-center
+--- 
+
+<h1 class="!text-6xl">Le projet de formation</h1>
+
+<h2 v-click class="text-light">Création d'un portail sur le cinéma.</h2>
+
+<SlideFooter/>
+
+
+
+---
+layout: default
+transition: slide-left
+--- 
+<h1>Le projet de formation</h1>
+
+<p>Pour ce projet en binôme, vous devrez coder un site web basé sur <b>SvelteKit</b> et sur l'API
+  <a
+    style="
+    font-size: 1.5em;
+    font-weight: bold;
+    background-color: #2b90b6 !important;
+    background-image: linear-gradient(to right, #01e4d5, #01b4e4) !important;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border: none;
+  " 
+    href="https://developer.themoviedb.org/docs/getting-started" target="_blank" class="TMBD"
+  >
+    TMDB
+  </a>.
+</p>
+
+<ul class="mis-5 mbs-2">
+  <li v-click v-motion :duration="250" :initial="{ x: 200 }" :enter="{ x: 0 }">
+    Votre projet doit être basé sur la version <b>4</b> ou <b>5</b> de <b>SvelteKit</b>.
+  </li>
+  <li v-click v-motion :duration="250" :initial="{ x: 200 }" :enter="{ x: 0 }">
+    Votre site doit proposer au moins un <b>champs de recherche</b>, une page de <b>résultat de recherche</b>, une page <b>film</b> avec un maximum d'informations, et une page d'<b>erreur</b>.
+  </li>
+
+  <li v-click v-motion :duration="250" :initial="{ x: 200 }" :enter="{ x: 0 }">
+    Vos pages devront partager <b>au moins un layout</b> et <b>des composants commum</b>.
+  </li>
+
+  <li v-click v-motion :duration="250" :initial="{ x: 200 }" :enter="{ x: 0 }">
+    Vous êtes libres de proposer le design de votre choix (ou de prendre un template libre de droit). 
+  </li>
+
+  <li v-click v-motion :duration="250" :initial="{ x: 200 }" :enter="{ x: 0 }">
+    Votre site doit être décliné en <b>mode clair</b> et <b>mode sombre</b> (Utiliser les stores !)
+  </li>
+
+  <li v-click v-motion :duration="250" :initial="{ x: 200 }" :enter="{ x: 0 }">
+    Vous êtes libres d'utiliser toutes les librairies que vous souhaitez mais <b>vous devrez le justifier</b>.
+  </li>
+
+  <li v-click v-motion :duration="250" :initial="{ x: 200 }" :enter="{ x: 0 }">
+    Votre projet doit etre disponible sur un <b>repo Github public</b>, et documenté (<b>README.md</b>). 
+  </li>
+</ul>
+
+<h2 v-click class="text-center text-light">Voici un exemple : <a href="https://mymoviesvelte.netlify.app/" target="_blank">MyMovieSvelte</a>.</h2>
+
+
+
+
+<SlideFooter/>
+
+
+
+---
+layout: default
+transition: slide-left
+--- 
+<h1>Le projet de formation</h1>
+
+<p>Avant de commencer, vous allez devoir :</p>
+
+<ul class="mis-5 mbs-2">
+  <li v-click v-motion :duration="250" :initial="{ x: 200 }" :enter="{ x: 0 }">
+    Créer un compte sur <a href="https:/www.themoviedb.org" target="_blank">www.themoviedb.org</a> pour obtenir une <b>clé API</b>.
+  </li>
+  
+  <li v-click v-motion :duration="250" :initial="{ x: 200 }" :enter="{ x: 0 }">
+    Créer un nouveau dépot public sur <a href="https://github/com" target="_blank">github</a> pour y sauvegarder votre projet.
+  </li>
+  
+  <li v-click v-motion :duration="250" :initial="{ x: 200 }" :enter="{ x: 0 }">
+    Initier un nouveau projet <b>SvelteKit</b> et le mettre sur le dépot. (configurez le comme vous souhaitez)
+  </li>
+  
+  <li v-click v-motion :duration="250" :initial="{ x: 200 }" :enter="{ x: 0 }">
+    Stocker votre clé API et les informations sensibles dans un fichier <b>.env</b> (voir les variables d'environement)
+  </li>
+</ul>
+
+<p v-click class="!mbs-10 !block">Vous pouvez gagner des points en proposant des choses en plus comme :</p>
+
+<ul class="mis-5 mbs-2">
+  <li v-click v-motion :duration="250" :initial="{ x: 200 }" :enter="{ x: 0 }">
+    Proposer d'autres pages que celles demandées (page "acteur", page de recherche avec filtres, etc.)
+  </li>
+
+  <li v-click v-motion :duration="250" :initial="{ x: 200 }" :enter="{ x: 0 }">
+    Gérer le <b>SSR</b>.
+  </li>
+
+  <li v-click v-motion :duration="250" :initial="{ x: 200 }" :enter="{ x: 0 }">
+    Optimiser le référencenent en avec les balises <kbd>meta</kbd> (via la balise <kbd>svelte:head</kbd>)
+  </li>
+
+  <li v-click v-motion :duration="250" :initial="{ x: 200 }" :enter="{ x: 0 }">
+    Héberger votre projet sur <a href="https://www.netlify.com/" target="_blank">Netlify</a>. (voir la documentation sur les adapters)
+  </li>
+
+  <li v-click v-motion :duration="250" :initial="{ x: 200 }" :enter="{ x: 0 }">
+    etc...
+  </li>
+</ul>
+
+<SlideFooter/>

@@ -68,7 +68,7 @@ transition: slide-up
 --- 
 <h1>La réactivité en svelte.</h1>
 
-<p>Pour rendre la variable <b>double</b> réactive et donc changer sa valeur dès que <b>count</b> change, il faut utiliser le <kbd>$:</kbd></p>
+<p>Pour rendre la variable <b>double</b> réactive et donc changer sa valeur dès que <b>count</b> change, il faut utiliser le <kbd>$:</kbd>. Elle deviens donc une variable dérivée.</p>
 
 <div v-click class="flex mbs-5">
 
@@ -89,7 +89,7 @@ transition: slide-up
   <Alert
     type="warning"
     title="Attention !"
-    text="Les variables déclarées avec <kbd>$:</kbd> demandent beaucoup de mémoire et peuvent altérer la performance globale de votre application si elle sont utilisées trop souvent."
+    text="Les variables dérivées demandent beaucoup de mémoire et peuvent altérer la performance globale de votre application si elle sont utilisées trop souvent."
   />
 </div>
   

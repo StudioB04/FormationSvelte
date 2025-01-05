@@ -81,6 +81,37 @@ export default defineConfig({
 ```
 </div>
 
+<SlideFooter/>
+
+---
+layout: default
+transition: slide-up
+---
+<h1>app.html</h1>
+
+<p>C'est le point d'entrée de votre application. Toutes les pages seront basées sur ce fichier de base.</p>
+
+<div class="flex mbs-3">
+
+```html
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		%sveltekit.head%
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">%sveltekit.body%</div>
+	</body>
+</html>
+```
+</div>
+
+<div class="flex mbs-3">
+  <Alert type="idea" title="Remarque" text="Notez les blocs **%sveltekit.head%** qui contiendra tout ce qui sera injecté via la balise <kbd>svelte:head</kbd> <br>et **%sveltekit.body%**, qui contiendra vos composants." />
+</div>
 
 <SlideFooter/>
 

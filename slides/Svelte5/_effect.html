@@ -1,0 +1,54 @@
+---
+layout: center
+transition: slide-up
+class: text-center
+---
+
+<h1 class="!text-6xl">$effect</h1>
+<h2 class="text-lighter">Les effets de bord</h2>
+
+
+<SlideFooter/>
+
+---
+layout: default
+transition: slide-up
+---
+<h1>$effect</h1>
+
+<p>La rune <kbd>$effect</kbd> de <b>Svelte 5</b> Permet d'executer des instrucions quand la valeur d'une variable évolue. <br>C'est l'équivalent de <kbd>useEffet</kbd> en <b>React</b>.</p>
+
+
+<div class="grid grid-cols-[auto_1fr] mbs-5 mx-10 gap-x-10 gap-y-2 items-center ">
+<p v-click>Avec <b>Svelte 4</b>: </p>
+
+<div v-after>
+```svelte
+<script>
+  let count = 0;
+  $: console.log('la valeur de count à changé : ', count)
+</script>
+
+<button onclick={() => count++}>clicks: {count}</button>
+```
+</div>
+
+
+<p v-click>Avec <b>Svelte 5</b>: </p>
+
+<div v-after>
+```svelte
+<script>
+  let count  = $state(0);
+  $effect(() => {
+    console.log('la valeur de count à changé : ', count)
+  })
+</script>
+
+<button onclick={() => count++}>clicks: {count}</button>
+```
+</div>
+  
+</div>
+
+<SlideFooter/>

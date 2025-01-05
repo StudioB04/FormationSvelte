@@ -1,0 +1,80 @@
+---
+layout: center
+transition: slide-up
+class: text-center
+---
+
+<h1 class="!text-6xl">$inspect</h1>
+<h2 class="text-lighter">Pour debugger facilement</h2>
+
+
+<SlideFooter/>
+
+---
+layout: default
+transition: slide-up
+---
+<h1>$inspect</h1>
+
+<p>La rune <kbd>$inspect</kbd> de <b>Svelte 5</b> est utile au développement. Elle permet de loguer dans la console tout changement d'état d'une variable, y compris les changements profonds dans les objects.</p>
+
+<div v-click class="mbs-10 flex gap-10 items-center">
+```svelte
+<script>
+	let count = $state(0);
+	let message = $state('hello');
+
+  // will console.log when 'count' or 'message' change
+	$inspect(count, message);
+</script>
+
+<button onclick={() => count++}>Increment</button>
+<input bind:value={message} />
+```
+
+<p>Chaque fois que la valeur de <b>count</b> ou <b>message</b> changera, leur valeur sera loguée dans la console.</p>
+</div>
+
+
+<div v-click class="flex mbs-5">
+  <Alert type="idea" title="Pratique !" text="la rune <kbd>$inspect</kbd> ne fonctionne qu'en phase développement, elle sera ignorée lors du build."/>
+</div>
+
+
+<SlideFooter/>
+
+---
+layout: default
+transition: slide-up
+---
+<h1>$inspect(...).with</h1>
+
+<p>La rune <kbd>$inspect</kbd> retourne une fonction <b>"with"</b> qu'il est possible d'invoquer avec une fonction de callback. Cette callback sera invoquée à la place du <b>console.log</b>. Son premier argument sera <b>"init"</b> ou <b>"update"</b>. Exemple :</p>
+
+<div v-click class="flex mbs-2 gap-10 items-center">
+```svelte
+<script>
+  let count  = $state(0);
+  let double = $derived(count * 2);
+
+  $inspect(count).with((type, count) => {
+    if (type === 'update') {
+      console.log("`count` was updated.");
+    }	
+    console.log(count);
+  });
+
+
+  $inspect(double).with(console.trace);
+</script>
+
+<button onclick={() => count++}>Increment</button>
+```
+
+<div>
+  <p>la variable <b>count</b> sera loguée avec le message "`count` was updated." dès que sa valeur changera.</p>
+<p>la variable <b>double</b> sera loguée avec la methode <b>console.trace</b>.</p>
+</div>
+</div>
+
+<SlideFooter/>

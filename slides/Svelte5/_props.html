@@ -1,0 +1,113 @@
+---
+layout: center
+transition: slide-up
+class: text-center
+---
+
+<h1 class="!text-6xl">$props</h1>
+<h2 class="text-lighter">Les propriétés des composants</h2>
+
+
+<SlideFooter/>
+
+---
+layout: default
+transition: slide-up
+---
+<h1>$props</h1>
+
+
+<p>La rune <kbd>$props</kbd> de <b>Svelte 5</b> permet de récupérer toutes les propriétés passées à un composant.</p>
+
+<div class="grid grid-cols-[auto_1fr] mbs-2 gap-x-20 items-center">
+
+<p v-click>Avec <b>Svelte 4</b>, pour déclarer une propriété, il suffisait d'exporter une variable : </p>
+
+<div v-after>
+```svelte
+<script>
+  export let title = undefined;
+</script>
+
+<h1>{title}</h1>
+```
+</div>
+
+
+<p v-click>Avec <b>Svelte 5</b>, il faut utiliser la rune <b>$props</b> qui contient toutes les propriétés passées au composants, sans avoir besoin de les déclarer au préalable.</p>
+
+<div v-after>
+```svelte
+<script>
+	let props = $props();
+</script>
+
+<h1>{props.title}</h1>
+```
+</div>
+
+<p v-click>On alors aura tendance à utiliser la déstructuration pour récupérer les props qui nous intéresse.</p>
+
+<div v-after>
+```svelte
+<script>
+	let { title } = $props();
+</script>
+
+<h1>{title}</h1>
+```
+</div>
+
+</div>
+
+<SlideFooter/>
+
+---
+layout: default
+transition: slide-up
+---
+<h1>$props</h1>
+
+<div class="grid grid-cols-[auto_1fr] gap-x-10 items-center">
+<p>Il est toujours possible de passer une valeur par défaut.</p>
+
+<div>
+```svelte
+<script>
+  let { title = "Hello World" } = $props();
+</script>
+
+<h1>{title}</h1>
+```
+</div>
+
+
+<p v-click>Il est également possible de renommer une propriété lors de la déstructuration. Cela peux s'avérer utile si la propriété est un mot réservé ou si elle est deja utilisée</p>
+
+<div v-after>
+```svelte
+<script>
+  // "super" est un mot réservé en JavaScript
+	let { super: title = "Hello World" } = $props();
+</script>
+
+<h1>{title}</h1>
+```
+</div>
+
+
+<p v-click>Pour récupérer les autres propriétés d'un coup, on utilise la syntaxe "..."</p>
+
+<div v-after>
+```svelte
+<script>
+	let { title = "Hello World", ...otherProps } = $props();
+</script>
+
+<h1>{title}</h1>
+```
+</div>
+
+</div>
+
+<SlideFooter/>

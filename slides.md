@@ -76,3 +76,21 @@ src: ./slides/Avance/index.html
 title: SvelteKit
 src: ./slides/SvelteKit/index.html
 ---
+
+---
+title: Projet de fortmation.
+src: ./slides/TP/projet.html
+---
+
+
+---
+title: Svelte 5.
+src: ./slides/Svelte5/index.html
+---
+
+
+
+---
+title: Merci.
+src: ./slides/fin.html
+---

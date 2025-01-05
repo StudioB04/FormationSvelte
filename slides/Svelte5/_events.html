@@ -1,0 +1,149 @@
+---
+layout: center
+transition: slide-up
+class: text-center
+---
+
+<h1 class="!text-6xl">Les évènements</h1>
+<h2 class="text-lighter">onevent</h2>
+
+
+<SlideFooter/>
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Les évènements</h1>
+
+<p>La version 5 de <b>Svelte</b> introduit une nouvelle manière d'écouter les événements.</p>
+
+<div class="grid grid-cols-2 gap-x-10 mbs-2 items-center">
+
+<div v-click>
+<p>Avec <b>Svelte 4</b> :</p>
+```svelte
+<script>
+  let count = 0;
+</script>
+
+<button on:click={() => { count++ }}>
+  {count}
+</button>
+```
+</div>
+
+<div v-click>
+<p>Avec <b>Svelte 5</b> :</p>
+```svelte
+<script>
+  let count = 0;
+</script>
+
+<button onclick={() => { count++ }}>
+  {count}
+</button>
+```
+</div>
+
+</div>
+
+<div v-click class="flex gap-10 items-center mbs-5">
+<p>Cela permet notamment d'utiliser l'écriture courte des propriétés si la fonction s'appelle <b>onclick</b></p>
+```svelte
+<script>
+  import { onclick } from '$libs/utils/events';
+  let count = $state(0);
+</script>
+
+<button {onclick}>{count}</button>
+```
+
+</div>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Les évènements customs</h1>
+
+<p>Avec <b>Svelte 4</b>, nous avons vu la méthode <kbd>createEventDispatcher</kbd> qui permet de créer un événement custom :</p>
+
+<div v-click class="mbs-5">
+<b>Button.svelte</b>
+
+<div class="flex">
+```svelte
+<script>
+  import { createEventDispatcher } from 'svelte';
+  const dispatch = createEventDispatcher();
+</script>
+
+<button on:click={() => dispatch("myEvent", "Hello")}>Say Hello !</button>
+```
+</div>
+</div>
+
+
+<div v-click class="mbs-5">
+<b>App.svelte</b>
+
+<div class="flex">
+```svelte
+<script>
+  import Button from "./Button.svelte";
+</script>
+
+<Button on:myEvent={console.log} />
+```
+</div>
+
+</div>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Les évènements customs</h1>
+
+<p>Cette méthode devient obsolète avec <b>Svelte 5</b>. Les événements se comportent éxactement comme de simples propriétés.</p>
+
+
+<div v-click class="mbs-5">
+<b>Button.svelte</b>
+
+<div class="flex">
+```svelte
+<script>
+  const { myEvent } = $props();
+</script>
+
+<button onclick={() => myEvent("Hello")}>Say Hello !</button>
+```
+</div>
+</div>
+
+
+<div v-click class="mbs-5">
+<b>App.svelte</b>
+
+<div class="flex">
+```svelte
+<script>
+  import Button from "./Button.svelte";
+</script>
+
+<Button myEvent={console.log} />
+```
+</div>
+
+</div>
+
+
+<SlideFooter/>

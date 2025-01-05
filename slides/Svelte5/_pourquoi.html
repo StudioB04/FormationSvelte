@@ -1,0 +1,147 @@
+---
+layout: center
+transition: slide-up
+class: text-center
+---
+
+<h1 class="!text-6xl">À quoi ça sert ?</h1>
+<h2 class="text-lighter">Pourquoi changer de syntaxe ?</h2>
+
+
+<SlideFooter/>
+
+---
+layout: default
+transition: slide-up
+---
+<h1>À quoi ça sert ?</h1>
+
+<p>On pourrais penser que tous les changements de syntaxe que l'on a vu n'apportent pas grand chose puisqu'il s'agit simplment d'une façon différente de faire la même chose.</p>
+
+<p>En réalité ils apportent une plus grande clarté au code, et une simplification des applications. En effet il est moins souvent nécéssaire d'avoir recours à des stores ou des événements custom pour gérer des états complexes.</p>
+
+<p v-click>Mais la grande force des <b>Runes</b>, c'est qu'elle permettent de dissocier les composants de leur logique.</p>
+
+<div v-after class="flex mbs-10">
+  <Alert type="information" title="Important" text="Les fichiers qui vont contenir de la logie **Svelte** basée sur les **Runes** devront avoir une extension en <kbd>.svelte.js</kbd> (ou <kbd>.svelte.ts</kbd> si vous utilisez TypeScript)." />
+</div>
+
+<SlideFooter/>
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Voici un exemple</h1>
+
+<p>Prenons en exemple ce composant <kbd>Counter.svelte</kbd> :</p>
+
+<div v-click class="flex mbs-5">
+```svelte
+<script>
+  let { title } = $props();
+  
+  let count = $state(0);
+  let double = $derived(count * 2);
+
+  $effect(() => console.log('counter was updated to : ', count));
+
+  const increment = () => { count +=1 };
+</script>
+
+<h1>{title}</h1>
+<button onclick={increment}>{count}</button>
+```
+</div>
+
+<SlideFooter/>
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Voici un exemple</h1>
+
+<p>On pourra alors créer un fichier, que l'on appellera <kbd>counter.svelte.js</kbd> et qui contiendra la logique de notre composant :</p>
+
+<div class="flex mbs-1 items-center gap-10">
+
+<div v-click>
+```js
+export function createCounter() {
+  let count = $state(0);
+  let double = $derived(count * 2);
+  const increment = () => { count ++ };
+  
+  $effect(() => console.log('counter was updated to : ', count));
+
+  return {
+    increment,
+    get count () {
+      return count;
+    },
+    get double () {
+      return double;
+    }
+  }
+}
+```
+</div>
+
+<div class="flex flex-col gap-5">
+  <Alert v-click type="information" title="Explication" text="le fichier exporte une fonction qui va initier le composant. Un même fichier pourra donc être utilisé pour plusieurs composants."/>
+  <Alert v-click type="warning" title="Important" text="Notez que nous devons retourner les variables **count** et **double** sous form de **getter** pour conserver la réactivité !"/>
+</div>
+
+</div>
+
+<SlideFooter/>
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Voici un exemple</h1>
+
+<p>Le composant <kbd>Counter.svelte</kbd> pourra ainsi être récris comme ceci :</p>
+
+<div v-click class="flex mbs-5">
+```svelte
+<script>
+  import { createCounter } from "./counter.svelte.js";
+  const counter = createCounter();
+</script>
+
+<h1>{counter.title}</h1>
+<button onclick={counter.increment}>{counter.count}</button>
+```
+</div>
+
+
+<p v-click class="!mbs-10">Notez que pour conserver la réactivité, counter ne doit pas être déstrucuré !</p>
+
+<div class="grid grid-cols-[auto_1fr] gap-x-10 items-center justify-around">
+
+<div v-click>
+```js {*}{lines:false}
+const { title, count } = createCounter();
+```
+</div>
+<div v-after class="flex">
+  <Alert type="danger" title="La réactivité est perdue" text="" />
+</div>
+
+
+<div v-click>
+```js {*}{lines:false}
+const counter = createCounter();
+```
+</div>
+<div v-after class="flex">
+  <Alert type="success" title="La réactivité est conservée" text="" />
+</div>
+
+</div>
+
+ 
+<SlideFooter/>

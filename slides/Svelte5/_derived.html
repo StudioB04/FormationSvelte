@@ -1,0 +1,54 @@
+---
+layout: center
+transition: slide-up
+class: text-center
+---
+
+<h1 class="!text-6xl">$derived</h1>
+<h2 class="text-lighter">Les variables dérivées</h2>
+
+
+<SlideFooter/>
+
+---
+layout: default
+transition: slide-up
+---
+<h1>$derived</h1>
+
+<p>La rune <kbd>$derived</kbd> de <b>Svelte 5</b> permet de déclarer une variabe dérivée. C'est à dire une variable dont la valaur dépent d'une autre variable.</p>
+
+
+<div class="grid grid-cols-[auto_1fr] mbs-5 mx-10 gap-x-10 gap-y-2 items-center ">
+<p v-click>Avec <b>Svelte 4</b>: </p>
+
+<div v-after>
+```svelte
+<script>
+  let count = 0;
+  $double = count * 2;
+</script>
+
+<button onclick={() => count++}>clicks: {count}</button>
+<p>double = {double}</p>
+```
+</div>
+
+
+<p v-click>Avec <b>Svelte 5</b>: </p>
+
+<div v-after>
+```svelte
+<script>
+  let count  = $state(0);
+  let double = $derived(count * 2);
+</script>
+
+<button onclick={() => count++}>clicks: {count}</button>
+<p>double = {double}</p>
+```
+</div>
+  
+</div>
+
+<SlideFooter/>

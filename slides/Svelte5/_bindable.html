@@ -1,0 +1,55 @@
+---
+layout: center
+transition: slide-up
+class: text-center
+---
+
+<h1 class="!text-6xl">$bindable</h1>
+<h2 class="text-lighter">La liaison de valeurs</h2>
+
+
+<SlideFooter/>
+
+---
+layout: default
+transition: slide-up
+---
+<h1>$bindable</h1>
+
+<p>en <b>Svelte</b>, les propriétés circulent du parent vers l'enfant. La rune <kbd>$bindable</kbd> de <b>Svelte 5</b> permet de faire remonter les données de l'enfant vers le parent.</p>
+
+
+<div class="grid grid-cols-[auto_1fr] mbs-5 gap-x-10 items-center">
+<p v-click>Le composant enfant : <b>Input.svelte</b></p>
+
+<div v-after>
+```svelte
+<script>
+  let { value = $bindable('default value'), ...props } = $props();
+</script>
+
+<input bind:value={value} {...props} />
+```
+</div>
+
+
+<p v-click>Le composant parent : <b>App.svelte</b></p>
+
+<div v-after>
+```svelte
+<script>
+  import Input from './Input.svelte';
+  let message = $state('hello');
+</script>
+
+<Input bind:value={message} />
+```
+</div>
+
+</div>
+
+<p v-click>Ici, la valeur de message du composant parent sera impacté par la valeur du champs du composant enfant. </p>
+
+
+
+<SlideFooter/>
