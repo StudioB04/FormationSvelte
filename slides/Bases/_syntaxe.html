@@ -13,7 +13,9 @@ transition: slide-up
 --- 
 <h1>La syntaxe de Svelte</h1>
 
-<p>Les composants <b>Svelte</b> s'écrivent dans des fichiers <kbd>.svelte</kbd> qui seront ensuite traduits par le compilateur en code JavaScript natif.</p>
+<p>Les composants <b>Svelte</b> s'écrivent dans des fichiers <kbd>.svelte</kbd>.</p>
+
+<p>Ils seront ensuite traduits par le compilateur en code JavaScript natif.</p>
 
 <p>Afin de simplifier le développement, les composants <b>Svelte</b> contiennent de l'<b>HTML</b> classique. Pas besoin d'apprendre un nouveau langage.</p>
 
@@ -21,23 +23,23 @@ transition: slide-up
 <div class="flex gap-5">
 
 <div v-click>
-<p>Un exemple de composant très simple qui va retourner du texte dans un paragraphe :</p>
-```svelte
-<!-- MyComponent.svelte -->
+<p>Voici un exemple de composant très simple qui va retourner du texte dans un paragraphe :</p>
 
+<b>MyComponent.svelte</b>
+```svelte
 <p>Hello World !</p>
 ```
 </div>
 
 <div v-click>
 <p>Pour utiliser ce composant :</p>
+<b>App.svelte</b>
 ```svelte
-<!-- App.svelte -->
 <script>
   import MyComponent from './MyComponent.svelte';
 </script>
 
-<MyComponent />
+<MyComponent /> <!-- Hello World -->
 ```
 </div>
 </div>
@@ -59,22 +61,29 @@ transition: slide-up
   Pour cela nous allons ajouter une balise <kbd>&lt;script/&gt;</kbd> :
 </p>
 
-<div v-click class="flex gap-10 mbs-10">
+<div class="flex gap-5 mbs-15">
+
+<div v-click>
+<b>MyComponent.svelte</b>
 ```svelte
 <script>
-  let name = "John";
+  const name = "John";
 </script>
 
-<p>Hello {name} !</p>
+<p>Hello { name } !</p>
 ```
+</div>
 
-```html
+<div v-click>
+<b>App.svelte</b>
+```svelte
 <script>
   import MyComponent from './MyComponent.svelte';
 </script>
 
 <MyComponent /> <!-- Hello John -->
 ```
+</div>
 </div>
 
 <SlideFooter/>
@@ -91,26 +100,35 @@ transition: slide-up
   Pour cela il suffit d'exporter la variable <kbd>name</kbd> pour qu'elle deviennent une propriété du composant :
 </p>
 
-<div v-click class="flex mbs-5">
+
+<div class="flex gap-5 mbs-10">
+
+<div v-click>
+<b>MyComponent.svelte</b>
 ```svelte
 <script>
   export let name;
 </script>
 
-<p>Hello {name} !</p>
+<p>Hello { name } !</p>
 ```
 </div>
 
-<div v-click class="flex mbs-2">
+<div v-click>
+<b>App.svelte</b>
 ```svelte
 <script>
   import MyComponent from './MyComponent.svelte';
 </script>
 
-<!-- name devient une propriété du composant -->
-<MyComponent name="John"/>
-<MyComponent name="Bill"/>
+<MyComponent name="John"/> <!-- Hello John -->
+<MyComponent name="Bill"/> <!-- Hello Bill -->
 ```
+</div>
+</div>
+
+<div v-after class="flex mbs-10">
+  <Alert type="information" title="Important" text="Un propriété est par définition une variable qui peux prendre plusieurs valeurs. <br/>Par conséquent, il faut utiliser une **var** et non pas une **const** !"/>
 </div>
   
 <SlideFooter/>
@@ -122,39 +140,46 @@ transition: slide-up
 --- 
 <h1>Ajouter des propriétés</h1>
 
-<p>On peut  avoir envie de mettre une valeur par défaut pour chaque propriété, pour cela, on lui affecte une valeur à l'initialisation : </p>
+<p class="!text-balance">On peut avoir envie de mettre une valeur par défaut pour chaque propriété, pour cela, on lui affecte une valeur à l'initialisation : </p>
 
-<div v-click class="flex gap-5 mbs-5">
+
+
+
+<div class="flex gap-5 mbs-10">
+
+<div v-click>
+<b>MyComponent.svelte</b>
 ```svelte
 <script>
-  export let name = "Bill";
+  export let name = "World";
 </script>
 
-<p>Hello {name} !</p>
+<p>Hello { name } !</p>
 ```
+</div>
 
-
+<div v-click>
+<b>App.svelte</b>
 ```svelte
 <script>
   import MyComponent from './MyComponent.svelte';
 </script>
 
-<MyComponent /> <!-- Hello Bill ! -->
-<MyComponent name="John"/> <!-- Hello John ! -->
+<MyComponent /> <!-- Hello World -->
+<MyComponent name="John"/> <!-- Hello John -->
 ```
 </div>
-
-
-<div v-click class="mbs-5 flex">
-  <Alert
-    type="warning"
-    title="Important !"
-    text="Par convention, si une propriété n'a pas de valeur par défaut, alors on va lui attribuer la valeur <kbd>undefined</kbd>"
-  />
 </div>
 
-<div v-after  class="flex mbs-5">
-```js
+
+<div v-click class="mbs-5 flex items-center gap-10">
+<Alert
+  type="warning"
+  title="Important !"
+  text="Par convention, si une propriété n'a pas de valeur par défaut, alors on va lui attribuer la valeur <kbd>undefined</kbd>. <br/> Le compilateur de **Svelte** affichera un avertissement dans la console si ce n'est pas fait."
+/>
+
+```js {*}{lines:false}
 export let name = undefined;
 ```
 </div>
@@ -168,9 +193,9 @@ transition: slide-up
 --- 
 <h1>Les propriétées raccourcies</h1>
 
-<p>En <b>Svelte</b>, si le nom de la propriété et sa valeur sont la même, on peut  utiliser une écriture simplifiée :</p>
+<p>En <b>Svelte</b>, si le nom de la propriété et sa valeur sont identiques, on peut  utiliser une écriture simplifiée :</p>
 
-<div v-click class="flex mbs-5">
+<div v-click class="flex mbs-15">
 ```svelte
 <script>
   const src = "https://picsum.photos/200";
@@ -179,7 +204,8 @@ transition: slide-up
 </script>
 
 <img src={src} width={width} alt={alt} />
-<!-- ou -->
+
+<!-- On peut écrire  -->
 <img {src} {width} {alt} />
 ```
 </div>
@@ -223,7 +249,7 @@ transition: slide-up
 --- 
 <h1>Ajouter du style</h1>
 
-<p>Pour styliser un composant, c'est également très simple, il suffit d'ajouter une balise <kbd>&lt;style/&gt;</kbd></p>
+<p>Pour styliser un composant, c'est également très simple, il suffit d'ajouter une balise <kbd>&lt;style/&gt;</kbd> :</p>
 
 <div class="flex gap-10 mbs-5">
 <div v-click class="w-full">
@@ -271,11 +297,14 @@ transition: slide-up
 
 ---
 layout: default
-transition: slide-up
+transition: slide-left
 --- 
 <h1>Utilisation d'un preprocesseur CSS</h1>
 
-<p>Si on le souhaite, on peut  utiliser <b>Svelte</b> avec du <b>scss</b> ou du <b>less</b>. Dans ce cas, il faut le préciser grâce à l'attribut <kbd>lang</kbd> de la balise <kbd>&lt;style/&gt;</kbd>.</p>
+<p>
+  Si on le souhaite, on peut utiliser <b>Svelte</b> avec un préprocesseur CSS comme <b>scss</b> ou du <b>less</b>. <br>
+  Dans ce cas, il faut le préciser grâce à l'attribut <kbd>lang</kbd> de la balise <kbd>&lt;style/&gt;</kbd>.
+</p>
 
 <div v-click class="flex mbs-3">
 ```svelte

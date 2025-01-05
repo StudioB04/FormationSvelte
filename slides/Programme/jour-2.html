@@ -30,7 +30,7 @@ transition: slide-up
 
 ---
 layout: default
-transition: slide-up
+transition: slide-left
 ---
 <h1>Au programme de cette formation</h1>
 
@@ -47,9 +47,10 @@ transition: slide-up
     </div>
    <img
       v-click
-      src="/todo-list.png"
+      v-motion :duration="500" :initial="{ y: 500 }" :enter="{ y: 0 }"
+      src="/myMovie.jpg"
       alt=""
-      class="absolute right-10 top-40 w-[400px] h-auto"
+      class="absolute right-10 bottom-0 w-[220px] h-auto"
     />
   </div>
 </div>

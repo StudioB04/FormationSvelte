@@ -14,15 +14,15 @@ transition: slide-up
 ---
 <h1>Les conditions dans les templates Svelte</h1>
 
-<p>Si on souhaite afficher un élement en fonction d'une condition, il faut utiliser la syntaxe :</p>
+<p>Si l'on souhaite afficher un élement en fonction d'une condition booléene, il faut utiliser la syntaxe :</p>
 
-<div class="flex mbs-5">
+<div class="flex mbs-1">
 ```svelte {*}{lines:false}
 {#if expression} ... {/if}
 ```
 </div>
 
-<div v-click class="mbs-5">
+<div v-click class="mbs-5 flex">
 ```svelte
 <script>
   let count = 0;
@@ -36,8 +36,8 @@ transition: slide-up
 ```
 </div>
 
-<div v-after class="mbs-5">
-  <Alert text="Ici, le texte <u>Vous avez cliqué plus de 10 fois</u> n'apparaitra que si **count** est supérieur à 10."/>
+<div v-after class="mbs-5 flex">
+  <Alert text="Ici, le texte **<u>Vous avez cliqué plus de 10 fois</u>** n'apparaitra que si **count** est supérieur à 10."/>
 </div>
 
 <SlideFooter/>
@@ -51,16 +51,16 @@ transition: slide-up
 <h1>Les conditions dans les templates Svelte</h1>
 
 
-<p>Si on souhaite gérer l'autre cas il faut utiliser la syntaxe :</p>
+<p>Si on souhaite gérer le cas contraire il faut utiliser la syntaxe :</p>
 
-<div class="flex mbs-5">
+<div class="flex mbs-1">
 ```svelte {*}{lines:false}
 {#if expression} ... {:else} ... {/if}
 ```
 </div>
 
 
-<div v-click class="mbs-5">
+<div v-click class="flex mbs-5">
 ```svelte
 <script>
   let count = 0;
@@ -76,7 +76,7 @@ transition: slide-up
 ```
 </div>
 
-<div v-after class="mbs-5">
+<div v-after class="flex mbs-5">
   <Alert text="Ici, le texte sera différent en fonction de la valeur de **count**."/>
 </div>
 
@@ -85,21 +85,20 @@ transition: slide-up
 
 ---
 layout: default
-transition: slide-up
+transition: slide-left
 ---
 <h1>Les conditions dans les templates Svelte</h1>
 
-
 <p>Comme en javascript, il est possible de gérer plusieurs cas avec la syntaxe :</p>
 
-<div class="flex mbs-2">
+<div class="flex mbs-1">
 ```svelte {*}{lines:false}
 {#if expression} ... {:else if} ... {:else} ... {/if}
 ```
 </div>
 
 
-<div v-click class="mbs-2">
+<div v-click class="flex mbs-3">
 ```svelte
 <script>
   let count = 0;
@@ -117,7 +116,7 @@ transition: slide-up
 ```
 </div>
 
-<div v-after class="mbs-2">
+<div v-after class="flex mbs-1">
   <Alert text="Ici, le texte sera différent en fonction de la valeur de **count**."/>
 </div>
 

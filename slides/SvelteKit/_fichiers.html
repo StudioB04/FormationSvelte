@@ -4,7 +4,7 @@ transition: slide-up
 ---
 <h1>Organisation des fichiers</h1>
 
-<p>Si l'installation s'es déroulé comme prévu, vous devriez avoir des dossiers et des fichiers dans votre repertoire <b>/formationSvelte</b>. Voici les plus important :</p>
+<p>Si l'installation s'est déroulée comme prévu, vous devriez avoir des dossiers et des fichiers dans votre repertoire <b>/formationSvelte</b>. Voici les plus important :</p>
 
 
 <blockquote v-click class="flex gap-5 mbs-5 mx-20">
@@ -91,7 +91,7 @@ transition: slide-up
 
 <p>C'est le point d'entrée de votre application. Toutes les pages seront basées sur ce fichier de base.</p>
 
-<div class="flex mbs-3">
+<div class="flex mbs-1">
 
 ```html
 <!doctype html>
@@ -109,8 +109,8 @@ transition: slide-up
 ```
 </div>
 
-<div class="flex mbs-3">
-  <Alert type="idea" title="Remarque" text="Notez les blocs **%sveltekit.head%** qui contiendra tout ce qui sera injecté via la balise <kbd>svelte:head</kbd> <br>et **%sveltekit.body%**, qui contiendra vos composants." />
+<div class="flex mbs-1">
+  <Alert type="idea" title="Remarque" text="Notez les blocs <br/>**%sveltekit.head%** - qui contiendra tout ce qui sera injecté via la balise <kbd>svelte:head</kbd><br>**%sveltekit.body%** - qui contiendra vos composants <br/>**%sveltekit.assets%% qui fait référence à votre dossier <kbd>/public</kbd>." />
 </div>
 
 <SlideFooter/>
@@ -192,7 +192,7 @@ const config = {
 
 ---
 layout: default
-transition: slide-up
+transition: slide-left
 ---
 <h1>Créons un dossier /components</h1>
 

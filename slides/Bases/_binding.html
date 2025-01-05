@@ -13,9 +13,9 @@ transition: slide-up
 ---
 <h1>Le binding</h1>
 
-<p>Les données circulent généralement du parent à l'enfant. La directive <kbd>bind:</kbd> permet aux données de circuler dans l'autre sens, de l'enfant au parent.</p>
+<p>En <b>Svelte</b>, les données circulent généralement du parent à l'enfant. La directive <kbd>bind:</kbd> permet aux données de circuler dans l'autre sens, de l'enfant au parent.</p>
 
-<p>Le mot clé <kbd>bind</kbd> permet de faire correspondre un attribut HTML à une variable, par exemple ce code peut facilement être simplifié :</p>
+<p>Le mot clé <kbd>bind</kbd> permet de faire correspondre un attribut HTML à une variable. <br>Par exemple ce code peut facilement être simplifié :</p>
 
 <div v-click class="flex">
 ```svelte
@@ -89,7 +89,7 @@ transition: slide-up
 ```
 </div>
 
-<div v-click class="flex mbs-1">
+<div v-click class="flex">
 ```svelte
 <script>
   let direction = "row";
@@ -99,6 +99,7 @@ transition: slide-up
   <option value="column" selected={direction === "column"}>column</option>
 </select>
 <div style="display: flex; gap: 10px; flex-direction: {direction};">
+  <p>Lorem ipsum dolor sit amet.</p>
   <p>Lorem ipsum dolor sit amet.</p>
   <p>Lorem ipsum dolor sit amet.</p>
 </div>

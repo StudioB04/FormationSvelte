@@ -39,12 +39,15 @@ transition: slide-up
 ---
 <h1>Les routes dynamiques</h1>
 
-<p v-click>
-  Il est possible de gérer des routes avec des paramaètres. Imaginons qur vous concevez un site sur le cinéma. Vous souhaitez créer des pages pour des films, vous pourriez tout a fait créer un dossier et un fichier <b>+page.svelte</b> par film mais cela serait un peu compliqué à gérer.
+<p class="!text-balance">
+  Il est possible de gérer des routes dynamiques, c'est à dire, qui contiennent un "slug".
+</p>
+<p class="!text-balance">
+  Imaginons que vous conceviez un site sur le cinéma. Vous souhaitez créer des pages pour des films, vous pourriez tout à fait créer un dossier et un fichier <b>+page.svelte</b> par film mais cela serait un peu compliqué à gérer.
 </p>
 
 
-<div class="mbs-5 flex gap-5 items-center">
+<div v-click class="mbs-5 flex gap-10 items-center">
 
 ```html {*}{lines:false}
 └─── 📁 src
@@ -97,7 +100,7 @@ transition: slide-up
 </div> 
 
 <div v-click>
-  <p>Maintenant, toutes ces routes fairont appel au même fichier <b>+page.svelte</b>:</p>
+  <p>Toutes ces routes fairont appel au même fichier <b>+page.svelte</b>:</p>
 
   <ul class="mis-10">
     <li><kbd>/films/titanic</kbd></li>
@@ -117,7 +120,8 @@ transition: slide-up
 ---
 <h1>Les contrôleurs</h1>
 
-<p>Chaque route peut avoir un contrôleur spécifique pour gérer la donnée à afficher. Si on reprends notre exemple de tout à l'heure, lorsque je visite l'URL <kbd>/films/avatar</kbd> je souhaite afficher les données du film Avatar. Pour cela il faudra faire un appel à une base de donnée ou une API. C'est le rôle du contrôleur.</p>
+<p class="!text-balance">Chaque route peut avoir un contrôleur spécifique pour gérer la donnée à afficher. Si on reprends notre exemple de tout à l'heure, lorsque je visite l'URL <kbd>/films/avatar</kbd> je souhaite afficher les données du film <b>Avatar</b>.</p>
+<p class="!text-balance">Pour cela il faudra faire un appel à une base de donnée ou une API. C'est le rôle du contrôleur.</p>
 
 <p v-click>Les contrôleurs doivent être nommés <b>+page.js</b> (ou <b>+page.ts</b> si vous utilisez typescript), et être dans le dossier de la route associée :</p>
 
@@ -219,7 +223,7 @@ transition: slide-up
 <p class="!m-2">Cependant, certains éléments doivent être visibles sur chaque page, comme une navigation principale ou un pied de page. Au lieu de les répéter dans chaque +page.svelte, et nous ne voulons pas qu'il soient détruit à chaque changement de page. Pour se faire on va utiliser les <b>layouts</b>.</p>
 
 <p v-click class="!m-2">
-  les layouts s'écrivent <b>+layout.svelte</b> et se placent dans un sous dossier de <b>/src/routes</b>. Toutes les pages qui sont contenues dans ce dossier ou dans un de ses sous-dossiers héritera de ce layout.
+  les layouts s'écrivent <b>+layout.svelte</b> et se placent dans un sous dossier de <b>/src/routes</b>. Toutes les pages qui sont contenues dans ce dossier ou dans un de ses sous-dossiers hériter de ce layout.
 </p>
   
 
@@ -265,7 +269,7 @@ transition: slide-up
 <div v-click class="flex gap-5 -mbs-3">
 
 <div>
-<p class="!mbe-0">Header.svelte :</p>
+<p class="!mbe-0"><b>Header.svelte :</b></p>
 
 ```svelte
 <script>
@@ -283,7 +287,7 @@ transition: slide-up
 </div>  
 
 <div>
-<p class="!mbe-0">Header.css :</p>
+<p class="!mbe-0"><b>Header.css :</b></p>
 
 ```css
 header {
@@ -313,7 +317,14 @@ transition: slide-up
 
 <div v-click class="mbs-2">
 
-<p class="!mbe-0">+layout.css :</p>
+<p class="!mbe-0"><b>+layout.js :</b></p>
+```js
+export function load(route) {
+  return { title: route?.params?.slug };
+}
+```
+
+<p class="!mbe-0"><b>+layout.svelte :</b></p>
 ```svelte
 <script>
   import Header from "../components/Header/Header.svelte";
@@ -326,13 +337,6 @@ transition: slide-up
 
 <slot />
 ```
-
-<p class="!mbe-0">+layout.js :</p>
-```js
-export function load(route) {
-  return { title: route?.params?.slug };
-}
-```
 </div>
 
 <SlideFooter/>
@@ -344,14 +348,14 @@ transition: slide-up
 ---
 <h1>Gestion des erreurs</h1>
 
-<p><b>SvelteKit</b> propose une solution très simple pour la gestion des pages d'erreur. Il suffit d'ajouter un ficher <b>+error.svelte</b> dans le dossier <b>/src/routes</b></p>
+<p><b>SvelteKit</b> propose une solution très simple pour la gestion des pages d'erreur. Il suffit d'ajouter un fichier <b>+error.svelte</b> dans le dossier <b>/src/routes</b>.</p>
 
-<p>Il est possible de créer une page <b>+error.svelte</b> différentes pour chaque sous-dossier du dossier <b>/src/routes</b>, et les pages d'erreur héritent elles aussi des layouts</p>
+<p>Il est possible de créer une page <b>+error.svelte</b> différentes pour chaque sous-dossier du dossier <b>/src/routes</b>, et les pages d'erreur héritent elles aussi des layouts.</p>
 
 
 <div v-click class="flex mbs-5 gap-5 items-center">
 <div>
-<p>src/routes/+error.svelte</p>
+<p><b>src/routes/+error.svelte</b></p>
 
 ```svelte
 <script>

@@ -13,13 +13,15 @@ transition: slide-up
 ---
 <h1>Les stores</h1>
 
-<p>Lorsqu'on utilise un framework comme <b>Svelte</b>, ou <b>React</b>, il est important de comprendre que les composants sont indépendants les uns des autres et qu'ils sont agnostiques.</p>
+<p class="!text-balance">Lorsqu'on utilise un framework comme <b>Svelte</b>, ou <b>React</b>, il est important de comprendre que les composants sont indépendants les uns des autres et qu'ils sont agnostiques.</p>
 
-<p>C'est à dire qu'il ne communique pas entre eux (sauf avec les événements) et qu'il n'ont pas connaissance de leur environement.</p>
+<p class="!text-balance">C'est à dire qu'il ne communiquent pas entre eux (sauf avec les événements) et qu'il n'ont pas connaissance de leur environement. </p>
 
-<p>Parfois il peux etre utile de partager des informations entre plusieurs composants. On pourrait y arriver en passant des données en cascade à tous les composants via des props mais ce serait très fastidieux !</p>
+<p class="!text-balance">Parfois il peut etre utile de partager des informations entre plusieurs composants. On pourrait y arriver en passant des données en cascade à tous les composants via des props mais ce serait très fastidieux !</p>
 
-<h2 v-click class="text-light text-center !text-xl w-100 mx-auto !mbs-20">"En Svelte, les stores sont une façon simple de partager des données entre différents composants"</h2>
+<p class="!text-balance">Par exemple, dans certains composants, on peut avoir besoin de savoir si un utilisateur est connecté ou pas.</p>
+
+<h2 v-click class="text-light text-center !text-xl w-100 mx-auto !mbs-10">"En Svelte, les stores sont une façon simple de partager des données entre différents composants."</h2>
 
 
 <SlideFooter/>
@@ -33,23 +35,27 @@ transition: slide-up
 
 <p>Un store est un objet qui contient une valeur réactive. Lorsqu'on modifie la valeur du store, tous les composants qui l'utilisent sont automatiquement mis à jour.</p>
 
-<p v-click><b>Svelte</b> propose un module (svelte/store) qui exporte 3 fonctions : </p>
+<p v-click><b>Svelte</b> propose un module <kbd>svelte/store</kbd> qui exporte 3 fonctions : </p>
 
 <ul class="mis-10 mbs-5">
-  <ListItem label="**Writable** (modifiable) : Peut être modifié à tout moment"/>
+  <ListItem label="**Writable** (modifiable) : pour stocker une donnée qui peut être modifié à tout moment"/>
   <ListItem label="**Readable** (lecture seule) : Utilisé pour les données qu'on ne veut pas modifier directement."/>
   <ListItem label="**Derived** (dérivé) : Calculé à partir d'autres stores."/>
 </ul>
 
-<div v-click class="flex flex-col mbs-3">
+<div v-click class="flex flex-col">
 <p>Voici un exemple de store <b>"Writable"</b> :</p>
 
+<p class="!mbe-0"><b>store.js</b></p>
+
+<div class="flex">
 ```js
-// store.js
 import { writable } from 'svelte/store';
 
 export const count = writable(0); // Store modifiable dont la valeur initiale est 0.
 ```
+</div>
+
 </div>
 
 <SlideFooter/>
@@ -61,13 +67,15 @@ transition: slide-up
 ---
 <h1>Les stores "Writable"</h1>
 
-<p>Utilisons ce store dans des composants <b>Svelte</b>.</p>
+<p>Utilisons ce store dans un composant <b>Svelte</b>.</p>
 
 
 <div v-click class="flex mbs-5 gap-5">
 
+<div>
+<b>Buttons.svelte :</b>
+
 ```svelte
-<!-- Buttons.svelte -->
 <script>
   import { count } from './store.js';
 </script>
@@ -75,6 +83,7 @@ transition: slide-up
 <button on:click={() => $count++}>Incrémenter</button>
 <button on:click={() => $count--}>Décrémenter</button>
 ```
+</div>
 
 <div>
   <p>Ici nous avons un composant qui permet de modifier la valeur du store <b>count</b>.</p>
@@ -83,14 +92,17 @@ transition: slide-up
 </div>
 
 <div v-click class="flex mbs-5 gap-5">
+
+<div>
+<b>Display.svelte :</b>
 ```svelte
-<!-- Display.svelte -->
 <script>
   import { count } from './store.js';
 </script>
 
 <p>Compteur est : {$count}</p>
 ```
+</div>
 
 <div>
   <p>Ici nous avons un composant qui permet d'afficher la valeur du store <b>count</b>.</p>
@@ -113,12 +125,11 @@ transition: slide-up
   <p>Imaginons une fonction qui retourne la date : </p>
 
 ```js
-// date.store.js
 import { readable } from 'svelte/store';
 
 export const currentDate = readable(new Date(), (set) => {
   const interval = setInterval(() => {
-    set(new Date()); // Met à jour la valeur du store
+    set(new Date()); // Met à jour la valeur du store toutes les secondes
   }, 1000);
 
   return () => {
@@ -142,9 +153,9 @@ transition: slide-up
 ---
 <h1>Les stores "Readable"</h1>
 
-<p>Il est désormais possible de connaitre la date depuis n'importe quel composant de l'application sans avoir à la recalculer.</p>
+<p class="!text-balance">Il est désormais possible de connaitre la date depuis n'importe quel composant de l'application sans avoir à la recalculer.:</p>
 
-<div v-click class="mbs-15 flex">
+<div v-click class="mbs-10 flex">
 ```svelte
 <script>
   import { currentDate } from './date.store.js'
@@ -229,14 +240,23 @@ transition: slide-up
 
 ---
 layout: default
-transition: slide-up
+transition: slide-left
 ---
 <h1>En résumé</h1>
 
 <p>Les <b>stores</b> sont très importants pour le fonctionnement d'une application <b>Svelte</b>. Ils permettent de faire communiquer entre eux les différentes briques de votre applications.</p>
 
-<p>Les <b>stores</b> peuvent être utilisés dans des composants <b>Svelte</b>, mais peuvent également être consommés par des utilitaires <b>JavaScript</b> via la function <kbd>get</kbd></p>
+<p>Les <b>stores</b> peuvent être utilisés dans des composants <b>Svelte</b>, mais peuvent également être consommés par des utilitaires <b>JavaScript</b> via la function <kbd>get</kbd> :</p>
 
-<p class="!mbs-15">Retrouver toute la documentation sur les <b>stores</b> <a href="https://v4.svelte.dev/docs/svelte-store" target="_blank">sur le site officiel de Svelte</a>.</p>
+<div v-click class="flex mbs-5">
+```js
+import { currentDate } from './date.store.js'
+import { get } from 'svelte/store';
+
+const value = get(currentDate);
+```
+</div>
+
+<p v-click class="!mbs-15">Retrouvez toute la documentation sur les <b>stores</b> sur le <a href="https://v4.svelte.dev/docs/svelte-store" target="_blank">site officiel de Svelte</a>.</p>
 
 <SlideFooter/>

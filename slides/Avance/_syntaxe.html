@@ -13,8 +13,9 @@ transition: slide-up
 ---
 <h1>Le mot clé @html</h1>
 
-
-<p>Lorsqu'on insère du texte via une variable dans un composant <b>Svelte</b>, il est affiché comme du texte brut. C'est à dire que les balises HTML sont échapées :</p>
+<p class="!text-balance">
+  Lorsqu'on insère du texte via une variable dans un composant <b>Svelte</b>, il est affiché comme du texte brut. Si ce texte contient des balises HTML, elles ne seront pas interprétées mais affichées telles quelles :
+</p>
 
 
 <div v-click class="flex mbs-2 gap-10 items-center">
@@ -28,7 +29,9 @@ transition: slide-up
 ```
 </div>
 
-<p>Ici, le composant affichera "&lt;h1&gt;Lorem Ipsum&lt;/h1&gt;". Les balises HTML ne seront pas interprétées, mais affichées telles quelles.</p>
+<p>
+  Ici, le composant affichera <b>"&lt;h1&gt;Lorem Ipsum&lt;/h1&gt;"</b>. 
+</p>
 </div>
 
 
@@ -43,14 +46,17 @@ transition: slide-up
 ```
 </div>
 
-<p>Ici, le composant affichera Lorem Ipsum dans une une balise h1. Les balises HTML seront donc interprétées.</p>
+<p>
+  Maintenant, le composant affichera <b>Lorem Ipsum</b> dans une une balise <kbd>h1</kbd>. <br><br>
+  Les balises HTML seront donc interprétées.
+</p>
 </div>
 
 <div v-click class="flex mbs-2">
   <Alert 
     type="warning" 
     title="Attention !" 
-    text="Cela peux s'avérer dangereux si vous ne connaissez pas d'avance le contenu du code **HTML**, en effet il pourrait contenir des scripts malveillants. Dans ce cas il faudrait utiliser une fonction qui supprime les balises suspectes comme **\<script/>** ou **\<embed/>**."/>
+    text="Cela peux s'avérer dangereux si vous ne connaissez pas d'avance le contenu du code **HTML**, en effet il pourrait contenir des scripts malveillants. Dans ce cas il faudrait utiliser une fonction qui supprime les balises suspectes comme **\<script/>**, **\<iframe/>** ou **\<embed/>**."/>
 </div>
       
 <SlideFooter/>
@@ -62,7 +68,9 @@ transition: slide-up
 ---
 <h1>Le mot clé @const</h1>
 
-<p>On l'a vu précedement, on peut déclarer des variables au sein de la balise script, mais on pourrait parfois avoir besoin d'en déclarer aussi directement dans le template.</p>
+<p class="!text-balance">
+  On l'a vu précedement, on peut déclarer des variables au sein de la balise script, mais on pourrait parfois avoir besoin d'en déclarer aussi directement dans le template.
+</p>
 
 <div v-click class="flex flex-col">
 <p>Prenons un exemple : </p>
@@ -87,7 +95,7 @@ transition: slide-up
 ```
 </div>
 
-<p v-after>Ici la variable <b>"double"</b> sera scopée dans la boucle {#each ... }.</p>
+<p v-after>Ici la variable <b>"double"</b> sera scopée dans la boucle <b>{#each ... }</b>.</p>
 
 
 <SlideFooter/>
@@ -120,9 +128,9 @@ transition: slide-up
 <p>Simplifions avec <b>@const</b> :</p>
 
 ```svelte {*}{startLine:11}
-{#each users as user}
+{#each users as {name, infos}}
   {@const {age, gender, size} = user.infos }
-  <p>{user.name}, {gender} de {age} ans, taile : {size}cm.</p>
+  <p>{name}, {gender} de {age} ans, taile : {size}cm.</p>
 {/each}
 
 ```
@@ -133,11 +141,13 @@ transition: slide-up
 
 ---
 layout: default
-transition: slide-up
+transition: slide-left
 ---
 <h1>Le mot clé @debug</h1>
 
-<p>Comme son nom l'indique, il permet de debugguer votre code en affichant dans la console un valeur à un instant T, et en ajoutant un point d'arret dans le code. Reprenons notre exemple précédent :</p>
+<p class="!text-balance">
+  Comme son nom l'indique, il permet de debugguer votre code en affichant dans la console une valeur à un instant T, et en ajoutant un point d'arret dans le code. Reprenons notre exemple précédent :
+</p>
 
 <div v-click class="flex flex-col mbs-5">
 ```svelte
@@ -150,7 +160,7 @@ transition: slide-up
 
 {#each users as user}
   {@const {age, gender, size} = user.infos }
-  {@debug age, gender, size} <!-- Ces valeurs serons logguées à chaque changement -->
+  {@debug age, gender, size} <!-- Ces valeurs serons loguées à chaque changement -->
   <p>{user.name}, {gender} de {age} ans, taile : {size}cm.</p>
 {/each}
 ```

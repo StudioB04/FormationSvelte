@@ -13,10 +13,10 @@ transition: slide-up
 ---
 <h1>Le cycle de vie des composants</h1>
 
-<p>Comme dans tous les frameworks <b>Javascript</b>, les composant <b>Svelte</b> passents par plusieurs états :</p>
+<p>Comme dans tous les frameworks <b>Javascript</b>, les composant <b>Svelte</b> passent par plusieurs états :</p>
 
 <ol class="mbs-20 flex flex-col gap-5">
-  <li v-click><b>L'initialisation</b> : c’est le moment où un composant est créé et monté dans le <b>DOM</b>.</li>
+  <li v-click><b>L'initialisation</b> : c’est le moment où un composant est créé et "monté" dans le <b>DOM</b>.</li>
   <li v-click><b>La mise à jour</b> : chaque fois qu’une variable réactive ou une propriété change, <b>Svelte</b> met à jour le <b>DOM</b>.</li>
   <li v-click><b>La destruction</b> : lorsque le composant est retiré du <b>DOM</b>.</li>
 </ol>
@@ -32,8 +32,8 @@ transition: slide-up
 ---
 <h1>L'initialisation</h1>
 
-<p>C’est le moment où un composant est créé et monté dans le <b>DOM</b>.</p>
-<p>Parfois on doit attendre que le composant soit initialisé pour réaliser une action. Pour cela in faut utiliser le hook <b>onMount</b> :</p>
+<p class="!text-balance">C’est le moment où un composant est créé et monté dans le <b>DOM</b>.</p>
+<p class="!text-balance">Parfois on doit attendre que le composant soit initialisé pour réaliser une action. Pour cela in faut utiliser le hook <b>onMount</b> :</p>
 
 <div v-click class="flex mbs-5 gap-10 items-center">
 ```svelte
@@ -53,7 +53,7 @@ transition: slide-up
 
 <div>
   <p>Dans cet exemple, on veux connaitre la hauteur du h1, mais cette hauteur dépend du contexte.</p>
-  <p>Par conséquent on ne connaitra sa valeur réélle qu'après l'initialisation du composant.</p>
+  <p>Par conséquent on ne connaitra sa valeur réelle qu'après l'initialisation du composant.</p>
 </div>
 </div>
 
@@ -91,11 +91,11 @@ transition: slide-up
 </div>
 </div>
 
-<div v-click class="mbs-2">
+<div v-click class="mbs-2 flex">
   <Alert 
     type="information" 
     title="Information" 
-    text="La fonction **afterUpdate** sera lancée sur après le changement d'état. Il existe aussi une fonction **beforeUpdate** qui s'exécute juste avant le changement d'état."
+    text="La fonction **afterUpdate** sera lancée juste après le changement d'état. <br/>Il existe aussi une fonction **beforeUpdate** qui s'exécute juste avant le changement d'état."
   />
 </div>
 
@@ -108,7 +108,7 @@ transition: slide-up
 ---
 <h1>La destruction</h1>
 
-<p>Lorsque le composant est retiré du <b>DOM</b>. Ce hook permet de nettoyer les ressources (supprimer des écouteurs d'événements, annuler des abonnements, etc.).</p>
+<p class="!text-balance">Lorsque le composant est retiré du <b>DOM</b>. Le hook <b>onDestroy</b> permet de nettoyer les ressources (supprimer des écouteurs d'événements, annuler des abonnements, etc.).</p>
 
 
 <div v-click class="flex mbs-2 gap-10 items-center">
@@ -132,7 +132,7 @@ transition: slide-up
 
 <div>
   <p>Dans cet exemple, le composant <b>Component</b> sera présent dans le <b>DOM</b> seulement si la condition est vraie.</p>
-  <p>Chaque fois qu'elle passera de vraie à fausse, le message sera loggué dans la console.</p>
+  <p>Chaque fois qu'elle passera de vraie à fausse, le message sera logué dans la console.</p>
 </div>
 </div>
 
@@ -141,7 +141,7 @@ transition: slide-up
 
 ---
 layout: default
-transition: slide-up
+transition: slide-left
 ---
 <h1>Résumé</h1>
 

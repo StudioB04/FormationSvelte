@@ -14,9 +14,11 @@ transition: slide-up
 --- 
 <h1>La réactivité en svelte.</h1>
 
-<p>Contrairement à d'autres frameworks comme <b>React</b>, les variables déclarées dans un composant <b>Svelte</b> sont par nature réactives. Démonstration : </p>
+<p class="!text-balance">
+  Contrairement à d'autres frameworks comme <b>React</b>, les variables déclarées dans un composant <b>Svelte</b> sont par nature réactives :
+</p>
 
-<div v-click class="flex mbs-10">
+<div v-click class="flex my-10 items-center gap-5">
 
 ```svelte
 <script>
@@ -27,9 +29,13 @@ transition: slide-up
 
 <button onclick={() => count++}>Click me !</button>
 ```
+
+<p class="!text-balance">
+  Le message <b><i>"Vous avez cliqué X fois sur le bouton."</i></b> sera mis à jour à chaque changement de la valeur de <b>count</b>, car la variable est réactive.
+</p>
 </div>
 
-<p v-click >Essayons sur le <a href="https://svelte.dev/playground/e16e6f97c37a473a89b5dc90e5dea6cf?version=4.2.19" target="_blank">Playground</a> de <b>Svelte</b> !</p>
+<p v-click>Essayons sur le <a href="https://svelte.dev/playground/e16e6f97c37a473a89b5dc90e5dea6cf?version=4.2.19" target="_blank">Playground</a> de <b>Svelte</b> !</p>
 
 <SlideFooter/>
 
@@ -42,7 +48,7 @@ transition: slide-up
 
 <p>En revanche, si une variable est calculée par rapport à une autre variable, alors sa valeur ne sera pas mise à jour :</p>
 
-<div v-click class="flex mbs-10">
+<div v-click class="flex my-10">
 
 ```svelte
 <script>
@@ -66,9 +72,9 @@ transition: slide-up
 layout: default
 transition: slide-up
 --- 
-<h1>La réactivité en svelte.</h1>
+<h1>Les variables dérivées.</h1>
 
-<p>Pour rendre la variable <b>double</b> réactive et donc changer sa valeur dès que <b>count</b> change, il faut utiliser le <kbd>$:</kbd>. Elle deviens donc une variable dérivée.</p>
+<p class="!text-balance">Pour rendre la variable <b>double</b> réactive et donc changer sa valeur dès que <b>count</b> change, il faut utiliser le <kbd>$:</kbd>. On parles de variables dérivées.</p>
 
 <div v-click class="flex mbs-5">
 
@@ -89,7 +95,7 @@ transition: slide-up
   <Alert
     type="warning"
     title="Attention !"
-    text="Les variables dérivées demandent beaucoup de mémoire et peuvent altérer la performance globale de votre application si elle sont utilisées trop souvent."
+    text="Les variables dérivées demandent beaucoup de mémoire <br/>et peuvent altérer la performance globale de votre application si elle sont utilisées trop souvent."
   />
 </div>
   
@@ -101,9 +107,9 @@ transition: slide-up
 
 ---
 layout: default
-transition: slide-up
+transition: slide-left
 --- 
-<h1>La réactivité en svelte.</h1>
+<h1>Les effets de bord.</h1>
 
 <p>Le <kbd>$:</kbd> permet également de déclencher une fonction ou une liste d'instructions en fonction du changement de valeur d'une variable ou plusieurs variables.</p>
 

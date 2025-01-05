@@ -14,7 +14,10 @@ transition: slide-up
 ---
 <h1>Les transitions</h1>
 
-<p><b>Svelte</b> propose des outils qui permettent d'animer très simplement l'apparition ou la dispartion d'un élément du <b>DOM</b>. Le module <kbd>svelte/transition</kbd> exporte 7 fonctions d'animations : <kbd>fade</kbd>, <kbd>blur</kbd>, <kbd>fly</kbd>, <kbd>slide</kbd>, <kbd>scale</kbd>, <kbd>draw</kbd> et <kbd>crossfade</kbd>.</p>
+<p>
+  <b>Svelte</b> propose des outils qui permettent d'animer très simplement l'apparition ou la disparition d'un élément du <b>DOM</b>. 
+  Le module <kbd>svelte/transition</kbd> exporte 7 fonctions d'animations : <br><kbd>fade</kbd>, <kbd>blur</kbd>, <kbd>fly</kbd>, <kbd>slide</kbd>, <kbd>scale</kbd>, <kbd>draw</kbd> et <kbd>crossfade</kbd>.
+</p>
 
 <p v-click>Voici un exemple :</p>
 
@@ -49,9 +52,7 @@ transition: slide-up
 <p>Les transitions peuvent prendre des paramètres comme <b>delay</b> ou <b>duration</b> pour modifier la façon dont l'animation va se jouer.</p>
 
 
-<p v-click>Voici un exemple :</p>
-
-<div v-after class="flex items-center gap-5 mbs-5">
+<div v-click class="flex items-center gap-5 mbs-5">
 <div class="shrink-0">
 ```svelte
 <script>
@@ -191,6 +192,7 @@ transition: slide-up
 <script>
 	import { slide } from 'svelte/transition';
 </script>
+
 {#if condition}
 	<div transition:slide={{ delay: 250, duration: 300, axis: "x" }}>
     slide in and out
@@ -222,6 +224,7 @@ transition: slide-up
 <script>
 	import { scale } from 'svelte/transition';
 </script>
+
 {#if condition}
   <div transition:scale={{ delay: 0, duration: 300, start: 0.5, opacity:0 }}>
     scale in and out
@@ -238,7 +241,7 @@ transition: slide-up
 ---
 <h1>draw</h1>
 
-<p>La transition <kbd>draw</kbd> permet d'animer le tracé d'un SVG. Voici la liste des paramètres autorisés :</p>
+<p>La transition <kbd>draw</kbd> permet d'animer le tracé d'un élément SVG. Voici la liste des paramètres autorisés :</p>
 
 <ul class="flex flex-col my-2 mis-5">
   <Option title="delay" details="(number, default 0)" description="delai avant démarrage de l'animation en ms." />
@@ -317,11 +320,11 @@ transition: slide-up
 
 ---
 layout: default
-transition: slide-up
+transition: slide-left
 ---
 <h1>Les callback de transition</h1>
 
-<p><b>Svelte</b> permet de savoir précisément quand l'animation démarre ou s'arrète grâce à 4 callbaks : </p>
+<p><b>Svelte</b> permet de connaitre précisément le moment ou l'animation démarre ou s'arrète grâce à 4 callbaks : </p>
 
 <ul v-click class="my-2 mis-5">
   <li>
@@ -354,25 +357,15 @@ transition: slide-up
   </li>
 </ul>
 
-<div v-click class="flex mbs-3 gap-10 mx-20">
+<div v-click class="mbs-5">
 <div>
 ```svelte
 {#if condition}
-  <div 
-    in:fade out:blur 
-    on:introstart={onIntroStart}
-    on:outroend={onOutroEnd}
-  >
+  <div in:fade out:blur on:introstart={ ... } on:outroend={ ... }>
     Lorem ipsum, dolor sit amet !!
   </div>
 {/if}
 ```
-</div>
-
-<div>
-  <p>Ici, la <b>div</b> apparaitra avec une animation <kbd>fade</kbd>, et disparaitra avec une animation <kbd>blur</kbd>.</p>
-  <p>La fonction <b>onIntroStart</b> sera jouée au démarrage de l'apparition de la <b>div</b>.</p>
-  <p>La fonction <b>onOutroEnd</b> sera jouée à la fin de la disparition de la <b>div</b>.</p>
 </div>
 </div>
 

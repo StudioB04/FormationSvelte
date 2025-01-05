@@ -108,7 +108,7 @@ export function highlight(element, color) {
 </div>
 
 <div v-click class="flex mbs-2">
-  <Alert type="warning" title="Important" text="Le premier argument fait toujours référence à l'élémént **DOM** sur lequel la directive <kbd>:use</kbd> est appliquée. Les paramètres suivants sont des arguments de la fonction."/>
+  <Alert type="warning" title="Important" text="Le premier argument fait toujours référence à l'élémént **DOM** sur lequel la directive <kbd>:use</kbd> est appliquée. <br/>Les paramètres suivants sont des arguments de la fonction."/>
 </div>
 
 <SlideFooter/>
@@ -116,7 +116,7 @@ export function highlight(element, color) {
 
 ---
 layout: default
-transition: slide-up
+transition: slide-left
 ---
 <h1>La directive :use</h1>
 
@@ -134,8 +134,8 @@ export const autofocus = element => {
 ```
 
 <div class="flex flex-col gap-5 mbs-5">
-  <Alert type="idea" title="Astuce 1" text="Ici on ajoute un délai de 100ms pour laisser au navigateur le temps d'ajouter l'élément au **DOM** avant de placer le focus sur lui."/>
-  <Alert type="idea" title="Astuce 2" text="Il n'est pas nécessaire de nettoyer l'action avec **destroy()** puisque le champs va disparaitre et donc perdre le focus !"/>
+  <Alert v-click="2" type="idea" title="Astuce 1" text="Ici on ajoute un délai de 100ms pour laisser au navigateur le temps d'ajouter l'élément au **DOM** avant de placer le focus sur lui."/>
+  <Alert v-click="3" type="idea" title="Astuce 2" text="Il n'est pas nécessaire de nettoyer l'action avec **destroy()** puisque le champs va disparaitre et donc perdre le focus !"/>
 </div>
 </div>
 

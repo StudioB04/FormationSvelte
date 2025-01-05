@@ -16,8 +16,7 @@ transition: slide-up
 
 <p>Pour iterer sur des valeurs en <b>Svelte</b>, il faut utilser la syntaxe</p>
 
-
-<div class="flex mbs-3">
+<div class="flex mbs-1">
 ```svelte {*}{lines:false}
 {#each items as item} ... {/each}
 ```
@@ -25,7 +24,7 @@ transition: slide-up
 
 <p v-click>Prenons un exemple :</p>
 
-<div v-after>
+<div v-after class="flex">
 ```svelte
 <script>
   const users = [ "John", "Bill", "Eric", "Jack", "Jane" ]
@@ -39,10 +38,11 @@ transition: slide-up
 ```
 </div>
 
-<div v-after class="mbs-5">
+<div v-after class="mbs-5 flex">
   <Alert text="Ici, les éléments présents dans le tableau <b>users</b> serons présentés sous forme de liste ordonée."/>
 </div>
 
+<SlideFooter/>
 
 ---
 layout: default
@@ -52,16 +52,15 @@ transition: slide-up
 
 <p>Si on souhaite récupérer l'index de la chaque élément de la boucle, il faut passer un deuximème paramètre :</p>
 
-
-<div class="flex mbs-3">
+<div class="flex mbs-1">
 ```svelte {*}{lines:false}
 {#each items as item, index} ... {/each}
 ```
 </div>
 
-<p v-click>Prenons un exemple :</p>
+<p v-click>Dans notre exemple précédent :</p>
 
-<div v-after>
+<div v-after class="flex">
 ```svelte
 <script>
   const users = [ "John", "Bill", "Eric", "Jack", "Jane" ]
@@ -75,9 +74,11 @@ transition: slide-up
 ```
 </div>
 
-<div v-after class="mbs-5">
+<div v-after class="mbs-5 flex">
   <Alert text="Ici, les éléments présents dans le tableau <b>users</b> serons présentés sous forme de liste non ordonée mais commencant par un numéro."/>
 </div>
+
+<SlideFooter/>
 
 
 ---
@@ -88,14 +89,13 @@ transition: slide-up
 
 <p>En <b>Svelte</b> il est possible très simplement de gérer le cas ou l'objet itérable est vide : </p>
 
-
-<div class="flex mbs-3">
+<div class="flex mbs-1">
 ```svelte {*}{lines:false}
 {#each items as item, index} ... {:else} ... {/each}
 ```
 </div>
 
-<p v-click>Prenons un exemple :</p>
+<p v-click>Dans notre exemple précédent :</p>
 
 <div v-after>
 ```svelte
@@ -113,22 +113,22 @@ transition: slide-up
 ```
 </div>
 
-<div v-after class="mbs-5">
-  <Alert text="Ici, le tableau **users** est vide, par conséquent, le texte <u>Il n'y a aucun utilisateurs</u> sera affiché."/>
+<div v-after class="mbs-2">
+  <Alert text="Ici, le tableau **users** est vide, par conséquent, le texte **<u>Il n'y a aucun utilisateurs</u>** sera affiché."/>
 </div>
 
+<SlideFooter/>
 
 ---
 layout: default
-transition: slide-up
+transition: slide-left
 ---
 <h1>Les boucles dans les templates Svelte</h1>
 
-<p>il peut-être parfois indispensable dans les boucle d'identifier chaque élément par une clée unique.</p>
-<p>En <b>React</b> il existe l'attribut <kbd>key</kbd> à placer sur le premier élément de la boucle. En <b>Svelte</b>, c'est plus simple :</p>
+<p class="!text-balance">il peut-être parfois indispensable dans les boucle d'identifier chaque élément par une clée unique.</p>
+<p class="!text-balance !mbe-0">En <b>React</b> il existe l'attribut <kbd>key</kbd> à placer sur le premier élément de la boucle. En <b>Svelte</b>, c'est plus simple, on précise simplement la clé entre parenthèse dans la boucle :</p>
 
-
-<div class="flex mbs-3">
+<div class="flex mbs-1">
 ```svelte {*}{lines:false}
 {#each items as item (key)} ... {/each}
 ```
@@ -150,6 +150,8 @@ transition: slide-up
 ```
 </div>
 
-<div v-after class="mbs-5">
+<div v-after class="mbs-1">
   <Alert text="Pour mieux comprendre l'utilité des clés dans les boucles, essayons sur le **[Playground](https://svelte.dev/playground/aaea0fbb27204b2a85202a2705653b35?version=5.15.0)** de **Svelte**."/>
 </div>
+
+<SlideFooter/>

@@ -38,6 +38,11 @@
 
     header {
       color: var(--color);
+      margin-block-end: 0.25rem;
+    }
+
+    div * {
+      line-height: 1.35;
     }
   }
 

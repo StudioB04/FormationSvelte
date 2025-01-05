@@ -6,7 +6,7 @@ titleTemplate: '%s | StudioB04'
 title: Formation Svelte
 keywords: Formation, Svelte, Web, Javascript
 favicon: favicon.png
-colorSchema: auto
+colorSchema: light
 contextMenu: false
 htmlAttrs:
   dir: ltr  

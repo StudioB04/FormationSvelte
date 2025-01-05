@@ -42,6 +42,7 @@ transition: slide-up
     <p v-click>TP 2 : Création d'une "To-do List".</p>
     <img
       v-click
+      v-motion :duration="250" :initial="{ x: 200 }" :enter="{ x: 0 }"
       src="/todo-list.png"
       alt=""
       class="absolute right-10 top-40 w-[400px] h-auto"
