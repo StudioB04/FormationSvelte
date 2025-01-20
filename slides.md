@@ -42,7 +42,7 @@ src: ./slides/accueil.html
 # <span v-mark.red="3"><code>v-mark</code> directive</span>
 
 --- 
-title: Introcuction
+title: Introduction
 src: ./slides/Introduction/index.html
 ---
 
