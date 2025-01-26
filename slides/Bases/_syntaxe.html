@@ -128,7 +128,7 @@ transition: slide-up
 </div>
 
 <div v-after class="flex mbs-10">
-  <Alert type="information" title="Important" text="Un propriété est par définition une variable qui peux prendre plusieurs valeurs. <br/>Par conséquent, il faut utiliser une **var** et non pas une **const** !"/>
+  <Alert type="information" title="Important" text="Un propriété est par définition une variable qui peux prendre plusieurs valeurs. <br/>Par conséquent, il faut utiliser une **let** et non pas une **const** !"/>
 </div>
   
 <SlideFooter/>
@@ -193,9 +193,9 @@ transition: slide-up
 --- 
 <h1>Les propriétées raccourcies</h1>
 
-<p>En <b>Svelte</b>, si le nom de la propriété et sa valeur sont identiques, on peut  utiliser une écriture simplifiée :</p>
+<p>En <b>Svelte</b>, si le nom d'une propriété HTML et sa valeur sont identiques, on peut alors utiliser une écriture simplifiée :</p>
 
-<div v-click class="flex mbs-15">
+<div v-click class="flex mbs-5">
 ```svelte
 <script>
   const src = "https://picsum.photos/200";
@@ -204,8 +204,13 @@ transition: slide-up
 </script>
 
 <img src={src} width={width} alt={alt} />
+```
+</div>
 
-<!-- On peut écrire  -->
+<p v-click>On peut simplifier l'écriture comme ceci :</p>
+
+<div v-after class="flex mbs-5">
+```svelte {*}{startLine:8}
 <img {src} {width} {alt} />
 ```
 </div>

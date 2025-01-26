@@ -30,7 +30,13 @@ transition: slide-up
 </script>
 
 <button on:click={e => onClick(e)}>Click me</button>
-<!-- ou -->
+```
+</div>
+
+<p v-click>Ou encore</p>
+
+<div v-after class="flex mbs-5">
+```svelte {*}{startLine:8}
 <button on:click={onClick}>Click me</button>
 ```
 </div>
@@ -78,7 +84,13 @@ transition: slide-up
 <div v-click class="flex mbs-10">
 
 ```svelte
-<button on:click={ ... } on:click={ ... } on:click={ ... } on:focus={ ... } on:blur={ ... }>
+<button 
+  on:click={ ... } 
+  on:click={ ... } 
+  on:click={ ... } 
+  on:focus={ ... } 
+  on:blur={ ... }
+>
   Click me
 </button>
 ```
@@ -93,9 +105,9 @@ transition: slide-up
 --- 
 <h1>Les modificateurs d'événement.</h1>
 
-<p>Il existe des modificateurs qui permettent de modifier la façon dont un événement va être interprété. Cela s'avère très pratique et peut vous faire économiser quelques lignes de codes. Prenons un exemple :</p>
+<p><b>Svelte</b> propose des modificateurs d'événement qui permettent de modifier la façon dont un événement va être interprété. Cela s'avère très pratique et peut vous faire économiser quelques lignes de codes. Prenons un exemple :</p>
 
-<div v-click class="flex mbs-3">
+<div v-click class="flex">
 
 ```svelte
 <script>
@@ -111,7 +123,7 @@ transition: slide-up
 
 <p v-click>On peut  simplifier ce code de cette façon :</p>
 
-<div v-click class="flex mbs-3">
+<div v-after class="flex -mbs-3">
 
 ```svelte
 <script>
@@ -159,7 +171,7 @@ transition: slide-up
 layout: default
 transition: slide-left
 --- 
-<h1>Les événements custom.</h1>
+<h1>Les événements custom</h1>
 
 <p class="!text-balance">
   On peut  avoir besoin d'émettre des événements custom depuis un composant, afin qu'ils soient écoutés par leur parents. <br>
@@ -168,8 +180,8 @@ transition: slide-left
 
 <div class="grid grid-cols-[auto_1fr] mbs-5 items-center gap-x-10">
 
-<b v-after>Button.svelte</b>
-<div v-click>
+<b v-click>Button.svelte</b>
+<div v-after>
 ```svelte
 <script>
   import { createEventDispatcher } from 'svelte';
@@ -181,8 +193,8 @@ transition: slide-left
 </div>
 
 
-<b v-after>App.svelte</b>
-<div v-click>
+<b v-click>App.svelte</b>
+<div v-after>
 ```svelte
 <script>
   import Button from './Button.svelte';
