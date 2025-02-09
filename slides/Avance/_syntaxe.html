@@ -14,7 +14,7 @@ transition: slide-up
 <h1>Le mot clé @html</h1>
 
 <p class="!text-balance">
-  Lorsqu'on insère du texte via une variable dans un composant <b>Svelte</b>, il est affiché comme du texte brut. Si ce texte contient des balises HTML, elles ne seront pas interprétées mais affichées telles quelles :
+  Lorsqu'on insère du texte via une variable dans un composant <b>Svelte</b>, il est affiché comme du texte brut. Si ce texte contient <b>des balises HTML</b>, elles ne seront pas interprétées mais affichées telles quelles :
 </p>
 
 
@@ -56,7 +56,7 @@ transition: slide-up
   <Alert 
     type="warning" 
     title="Attention !" 
-    text="Cela peux s'avérer dangereux si vous ne connaissez pas d'avance le contenu du code **HTML**, en effet il pourrait contenir des scripts malveillants. Dans ce cas il faudrait utiliser une fonction qui supprime les balises suspectes comme **\<script/>**, **\<iframe/>** ou **\<embed/>**."/>
+    text="Cela peut s'avérer dangereux si vous ne connaissez pas d'avance le contenu du code **HTML**, en effet il pourrait contenir des scripts malveillants. Dans ce cas il faudrait utiliser une fonction qui supprime les balises suspectes comme **\<script/>**, **\<iframe/>** ou **\<embed/>**."/>
 </div>
       
 <SlideFooter/>
@@ -69,7 +69,7 @@ transition: slide-up
 <h1>Le mot clé @const</h1>
 
 <p class="!text-balance">
-  On l'a vu précedement, on peut déclarer des variables au sein de la balise script, mais on pourrait parfois avoir besoin d'en déclarer aussi directement dans le template.
+  On l'a vu précédement, on peut déclarer des variables au sein de la balise script, mais on pourrait parfois avoir besoin d'en déclarer aussi directement dans le template.
 </p>
 
 <div v-click class="flex flex-col">
@@ -146,7 +146,7 @@ transition: slide-left
 <h1>Le mot clé @debug</h1>
 
 <p class="!text-balance">
-  Comme son nom l'indique, il permet de debugguer votre code en affichant dans la console une valeur à un instant T, et en ajoutant un point d'arret dans le code. Reprenons notre exemple précédent :
+  Comme son nom l'indique, il permet de debugguer votre code en affichant dans la console une valeur à un instant T, et en ajoutant un point d'arrêt dans le code. Reprenons notre exemple précédent :
 </p>
 
 <div v-click class="flex flex-col mbs-5">

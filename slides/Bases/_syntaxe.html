@@ -15,7 +15,7 @@ transition: slide-up
 
 <p>Les composants <b>Svelte</b> s'écrivent dans des fichiers <kbd>.svelte</kbd>.</p>
 
-<p>Ils seront ensuite traduits par le compilateur en code JavaScript natif.</p>
+<p>Ils seront ensuite traduits par le compilateur en code <b>JavaScript</b> natif.</p>
 
 <p>Afin de simplifier le développement, les composants <b>Svelte</b> contiennent de l'<b>HTML</b> classique. Pas besoin d'apprendre un nouveau langage.</p>
 
@@ -74,7 +74,7 @@ transition: slide-up
 ```
 </div>
 
-<div v-click>
+<div v-after>
 <b>App.svelte</b>
 ```svelte
 <script>
@@ -84,6 +84,13 @@ transition: slide-up
 <MyComponent /> <!-- Hello John -->
 ```
 </div>
+</div>
+
+<div v-click class="mbs-10 flex gap-10 items-center">
+<Alert type="idea" title="Astuce" text="Le code entre les accolades est au format **JavaScript**, il est donc possible d'utiliser des fonctions."/>
+```svelte
+<p>Hello { name.toUpperCase() }</p>
+```
 </div>
 
 <SlideFooter/>
@@ -96,8 +103,8 @@ transition: slide-up
 <h1>Ajouter des propriétés</h1>
 
 <p>
-  On pourrait avoir besoin d'utiliser le même composant avec des propriété différentes.<br/>
-  Pour cela il suffit d'exporter la variable <kbd>name</kbd> pour qu'elle deviennent une propriété du composant :
+  On pourrait avoir besoin d'utiliser le même composant avec des propriétés différentes.<br/>
+  Pour cela il suffit d'exporter la variable <kbd>name</kbd> pour qu'elle devienne une propriété du composant :
 </p>
 
 
@@ -128,7 +135,7 @@ transition: slide-up
 </div>
 
 <div v-after class="flex mbs-10">
-  <Alert type="information" title="Important" text="Un propriété est par définition une variable qui peux prendre plusieurs valeurs. <br/>Par conséquent, il faut utiliser une **let** et non pas une **const** !"/>
+  <Alert type="information" title="Important" text="Une propriété est par définition une variable qui peut prendre plusieurs valeurs. <br/>Par conséquent, il faut utiliser une **let** et non pas une **const** !"/>
 </div>
   
 <SlideFooter/>
@@ -158,7 +165,7 @@ transition: slide-up
 ```
 </div>
 
-<div v-click>
+<div v-after>
 <b>App.svelte</b>
 ```svelte
 <script>
@@ -193,7 +200,7 @@ transition: slide-up
 --- 
 <h1>Les propriétées raccourcies</h1>
 
-<p>En <b>Svelte</b>, si le nom d'une propriété HTML et sa valeur sont identiques, on peut alors utiliser une écriture simplifiée :</p>
+<p>En <b>Svelte</b>, si le nom d'une propriété <b>HTML</b> et sa valeur sont identiques, on peut alors utiliser une écriture simplifiée :</p>
 
 <div v-click class="flex mbs-5">
 ```svelte
@@ -292,7 +299,7 @@ transition: slide-up
   <Alert
     type="idea"
     title="Astuce !"
-    text="Le style déclaré dans un composant est scopé, et ne peux pas impacter les autres éléments de la page !"
+    text="Le style déclaré dans un composant est scopé, et ne peut pas impacter les autres éléments de la page !"
   />
 </div>
 

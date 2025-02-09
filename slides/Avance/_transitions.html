@@ -36,7 +36,7 @@ transition: slide-up
   <p transition:fade>Lorem ipsum dolor sit amet.</p>
 {/if}
 ```
-<p>Le bloc de texte apparaitra et disparaitre en fondu lorsque <b>visible</b> sera modifié</p>
+<p>Le bloc de texte apparaitra et disparaitra en fondu lorsque <b>visible</b> sera modifié</p>
 </div>
 
 
@@ -91,7 +91,7 @@ transition: slide-up
 <p>La transition <kbd>fade</kbd> joue sur l'opacité de l'élément à afficher. Voici la liste des paramètres autorisés :</p>
 
 <ul class="flex flex-col my-3 mis-5">
-  <Option title="delay" details="(number, default 0)" description="delai avant démarrage de l'animation en ms." />
+  <Option title="delay" details="(number, default 0)" description="délai avant démarrage de l'animation en ms." />
   <Option title="duration" details="(number, default 0)" description="durée de l'animation en ms." />
   <Option title="easing" details='([easing function](https://v4.svelte.dev/docs/svelte-easing), default "linear")' description="progression de l'animation." />
 </ul>
@@ -120,7 +120,7 @@ transition: slide-up
 <p>La transition <kbd>blur</kbd> joue sur l'opacité et le flou de l'élément à afficher. Voici la liste des paramètres autorisés :</p>
 
 <ul class="flex flex-col my-3 mis-5">
-  <Option title="delay" details="(number, default 0)" description="delai avant démarrage de l'animation en ms." />
+  <Option title="delay" details="(number, default 0)" description="délai avant démarrage de l'animation en ms." />
   <Option title="duration" details="(number, default 0)" description="durée de l'animation en ms." />
   <Option title="easing" details='([easing function](https://v4.svelte.dev/docs/svelte-easing), default "linear")' description="progression de l'animation." />
   <Option title="opacity" details="(number, default 0)" description="Opacité de départ de l'animation." />
@@ -151,7 +151,7 @@ transition: slide-up
 <p>La transition <kbd>fly</kbd> joue sur l'opacité et la position de l'élément à afficher. Voici la liste des paramètres autorisés :</p>
 
 <ul class="flex flex-col my-2 mis-5">
-  <Option title="delay" details="(number, default 0)" description="delai avant démarrage de l'animation en ms." />
+  <Option title="delay" details="(number, default 0)" description="délai avant démarrage de l'animation en ms." />
   <Option title="duration" details="(number, default 0)" description="durée de l'animation en ms." />
   <Option title="easing" details='([easing function](https://v4.svelte.dev/docs/svelte-easing), default "linear")' description="progression de l'animation." />
   <Option title="opacity" details="(number, default 0)" description="Opacité de départ de l'animation." />
@@ -182,7 +182,7 @@ transition: slide-up
 <p>La transition <kbd>slide</kbd> fait glisser l'élément horizontalement ou verticalement. Voici la liste des paramètres autorisés :</p>
 
 <ul class="flex flex-col my-2 mis-5">
-  <Option title="delay" details="(number, default 0)" description="delai avant démarrage de l'animation en ms." />
+  <Option title="delay" details="(number, default 0)" description="délai avant démarrage de l'animation en ms." />
   <Option title="duration" details="(number, default 0)" description="durée de l'animation en ms." />
   <Option title="easing" details='([easing function](https://v4.svelte.dev/docs/svelte-easing), default "linear")' description="progression de l'animation." />
   <Option title="axis" details="(x | y, default y)" description="Axe de l'animation" />
@@ -213,7 +213,7 @@ transition: slide-up
 <p>La transition <kbd>scale</kbd> joue sur l'opacité et l'échelle de l'élément à afficher. Voici la liste des paramètres autorisés :</p>
 
 <ul class="flex flex-col my-2 mis-5">
-  <Option title="delay" details="(number, default 0)" description="delai avant démarrage de l'animation en ms." />
+  <Option title="delay" details="(number, default 0)" description="délai avant démarrage de l'animation en ms." />
   <Option title="duration" details="(number, default 0)" description="durée de l'animation en ms." />
   <Option title="easing" details='([easing function](https://v4.svelte.dev/docs/svelte-easing), default "linear")' description="progression de l'animation." />
   <Option title="start" details="(number, default 0)" description="échelle au démarrage de l'animation." />
@@ -244,7 +244,7 @@ transition: slide-up
 <p>La transition <kbd>draw</kbd> permet d'animer le tracé d'un élément SVG. Voici la liste des paramètres autorisés :</p>
 
 <ul class="flex flex-col my-2 mis-5">
-  <Option title="delay" details="(number, default 0)" description="delai avant démarrage de l'animation en ms." />
+  <Option title="delay" details="(number, default 0)" description="délai avant démarrage de l'animation en ms." />
   <Option title="duration" details="(number | function, default 800)" description="durée de l'animation en ms." />
   <Option title="speed" details="(number, default undefined)" description="vitesse de l'animation." />
   <Option title="easing" details='([easing function](https://v4.svelte.dev/docs/svelte-easing), default "linear")' description="progression de l'animation." />
@@ -273,10 +273,10 @@ transition: slide-up
 ---
 <h1>crossfade</h1>
 
-<p>La transition <kbd>crossfade</kbd> crée une paire de transitions appelées envoi et réception. Lorsqu'un élément est "envoyé", il recherche un élément correspondant "reçu" et génère une transition qui transforme l'élément à la position de son homologue et l'efface. Voici la liste des paramètres autorisés :</p>
+<p>La transition <kbd>crossfade</kbd> génère une paire de transitions appelées envoi et réception. Lorsqu'un élément est "envoyé", il recherche un élément correspondant "reçu" et génère une transition qui transforme l'élément à la position de son homologue et l'efface. Voici la liste des paramètres autorisés :</p>
 
 <ul class="flex flex-col my-5 mis-5">
-  <Option title="delay" details="(number, default 0)" description="delai avant démarrage de l'animation en ms." />
+  <Option title="delay" details="(number, default 0)" description="délai avant démarrage de l'animation en ms." />
   <Option title="duration" details="(number | function, default 800)" description="durée de l'animation en ms." />
   <Option title="easing" details='([easing function](https://v4.svelte.dev/docs/svelte-easing), default "linear")' description="progression de l'animation." />
   <Option title="fallback" details='(function)' description="
@@ -297,9 +297,9 @@ transition: slide-up
 ---
 <h1>Les transitions</h1>
 
-<p>Jusqu'à présent, nous avons utilisé le mot clé <kbd>transition:</kbd> pour réaliser une animation identique l'apparition et à la disparition de l'élément.</p>
+<p>Jusqu'à présent, nous avons utilisé le mot clé <kbd>transition:</kbd> pour réaliser une animation identique à l'apparition et à la disparition de l'élément.</p>
 
-<p v-click>Il est tout à fait possible d'avoir une transition différente, pour cela in faut utiliser les mot clés <kbd>in:</kbd> et <kbd>out:</kbd></p>
+<p v-click>Il est tout à fait possible d'avoir une transition différente, pour cela il faut utiliser les mot clés <kbd>in:</kbd> et <kbd>out:</kbd></p>
 
 <div v-click class="div flex mbs-10">
 ```svelte
@@ -324,7 +324,7 @@ transition: slide-left
 ---
 <h1>Les callback de transition</h1>
 
-<p><b>Svelte</b> permet de connaitre précisément le moment ou l'animation démarre ou s'arrète grâce à 4 callbaks : </p>
+<p><b>Svelte</b> permet de connaître précisément le moment où l'animation démarre ou s'arrète grâce à 4 callbaks : </p>
 
 <ul v-click class="my-2 mis-5">
   <li>

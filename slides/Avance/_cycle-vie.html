@@ -33,7 +33,7 @@ transition: slide-up
 <h1>L'initialisation</h1>
 
 <p class="!text-balance">C’est le moment où un composant est créé et monté dans le <b>DOM</b>.</p>
-<p class="!text-balance">Parfois on doit attendre que le composant soit initialisé pour réaliser une action. Pour cela in faut utiliser le hook <b>onMount</b> :</p>
+<p class="!text-balance">Parfois on doit attendre que le composant soit initialisé pour réaliser une action. Pour cela il faut utiliser le hook <b>onMount</b> :</p>
 
 <div v-click class="flex mbs-5 gap-10 items-center">
 ```svelte
@@ -52,8 +52,8 @@ transition: slide-up
 ```
 
 <div>
-  <p>Dans cet exemple, on veux connaitre la hauteur du h1, mais cette hauteur dépend du contexte.</p>
-  <p>Par conséquent on ne connaitra sa valeur réelle qu'après l'initialisation du composant.</p>
+  <p>Dans cet exemple, on veut connaître la hauteur du h1, mais cette hauteur dépend du contexte.</p>
+  <p>Par conséquent on ne connaîtra sa valeur réelle qu'après l'initialisation du composant.</p>
 </div>
 </div>
 
@@ -86,7 +86,7 @@ transition: slide-up
 ```
 
 <div>
-  <p>Dans cet exemple, on créé un bouton qui incrémente un compteur.</p>
+  <p>Dans cet exemple, on crée un bouton qui incrémente un compteur.</p>
   <p>Dès que la variable <b>count</b> est modifiée, le composant se met à jour grâce à la réactivité.</p>
 </div>
 </div>
@@ -118,7 +118,7 @@ transition: slide-up
   import { onDestroy } from 'svelte';
 
   onDestroy(() => {
-    console.log(`Composant détruit`);
+    console.log('Composant détruit');
   });
 </script>
 
@@ -175,7 +175,7 @@ transition: slide-left
       <tr>
         <td><code>onDestroy</code></td>
         <td>Juste avant que le composant ne soit retiré du <b>DOM</b>.</td>
-        <td>Retirer des écouterus d'événement</td>
+        <td>Retirer des écouteurs d'événement</td>
       </tr>
     </tbody>
   </table>

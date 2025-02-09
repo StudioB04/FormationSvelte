@@ -42,7 +42,7 @@ transition: slide-up
 ---
 <h1>Les selecteurs non utilisés</h1>
 
-<p class="!text-balance">En revanche si vous essayer d'appliquer du style à un élément qui n'est pas présent dans le composant, un message vous avertira :</p>
+<p class="!text-balance">En revanche si vous essayez d'appliquer du style à un élément qui n'est pas présent dans le composant, un message vous avertira :</p>
 
 <div v-click class="flex mbs-2 gap-10 items-center">
 ```svelte
@@ -79,20 +79,18 @@ transition: slide-up
 <h1>Le mot clé :global</h1>
 
 <p class="!my-0">Dans certains cas, on peut avoir besoin de styliser un élément qui n'est pas présent dans le composant.</p>
-<p class="!my-0" v-click>Imaginons par exemple une div qui contient un composant <b>&lt;Button /&gt;</b>, On veux que le background de la div soit bleu si elle contient un <b>&lt;Bouton/&gt;</b>.</p>
-<p class="!my-0" v-click>Dans ce cas il faut utiliser le mot clé <kbd>:global</kbd> :</p>
+<p class="!my-0" v-click>Imaginons par exemple une div qui contient un composant <b>&lt;Button /&gt;</b>, On veut que le background de la div soit bleu si elle contient un <b>&lt;Bouton/&gt;</b>.</p>
+<p v-click>Dans ce cas il faut utiliser le mot clé <kbd>:global</kbd> :</p>
 
 <div  v-click class="flex mbs-1">
 ```svelte
 <button>click me !</button>
 <style>
   :global(div) {
-    /* Toutes les divs de la page seront impactées ! */
-    background-color: orange; 
+    background-color: orange;    /* Toutes les divs de la page seront impactées ! */
   }
   :global(div:has(button)) {
-    /* Seules les divs qui contiennent le button seront impactées ! */
-    background-color: blue; 
+    background-color: blue;      /* Seules les divs qui contiennent le button seront impactées ! */
   }
 </style>
 ```
@@ -169,7 +167,7 @@ transition: slide-up
 ---
 <h1>Les classes conditionnelles</h1>
 
-<p class="!text-balance">Comme on l'a vu précédement pour les attributs, si le nom de la classe et la condition sont identique, on peut simplifier l'écriture :</p>
+<p class="!text-balance">Comme on l'a vu précédement pour les attributs, si le nom de la classe et la condition sont identiques, on peut simplifier l'écriture :</p>
 
 <div class="flex mbs-3">
 ```svelte
@@ -208,6 +206,17 @@ transition: slide-up
 
 
 <div v-click class="flex mbs-5 gap-20 items-center">
+<p><b>En React :</b></p>
+```svelte
+<p style={{color: red, fontSize: 20}}">
+  Lorem ipsum dolor sit amet.
+</p>
+```
+</div>
+
+
+<div v-click class="flex mbs-5 gap-20 items-center">
+<p><b>En Svelte :</b></p>
 ```svelte
 <p style="color: red; font-size: 20px;">
   Lorem ipsum dolor sit amet.
@@ -224,7 +233,7 @@ transition: slide-up
 ---
 <h1>L'attribut style</h1>
 
-<p>Il existe une autre façon d'écrire le style sur un élément qui ressemble au classes conditionelles avec :</p>
+<p>Il existe une autre façon d'écrire le style sur un élément qui ressemble aux classes conditionelles avec :</p>
 
 <div class="mbs-1 flex">
 ```svelte {*}{lines:false}
@@ -240,7 +249,7 @@ transition: slide-up
 ```
 </div>
 
-<p v-click class="!mbe-0">Encore une fois, ce code peux être raccourci si la variable et la rêgle CSS à appliquer sont identiques :</p>
+<p v-click class="!mbe-0">Encore une fois, ce code peut être raccourci si la variable et la rêgle CSS à appliquer sont identiques :</p>
 
 <div v-after class="flex mbs-1">
 ```svelte
@@ -267,7 +276,7 @@ transition: slide-left
 
 
 <p class="!text-balance">
-  L'intéret de cette méthode est que cela permet d'utiliser une variable <b>Javascript</b> pour styliser le composant, ce qui n'est pas possible dans la balise <kbd>&lt;style/&gt;</kbd>. Par exemple :
+  L'intérêt de cette méthode est que cela permet d'utiliser une variable <b>Javascript</b> pour styliser le composant, ce qui n'est pas possible dans la balise <kbd>&lt;style/&gt;</kbd>. Par exemple :
 </p>
 
 <div v-click class="flex mbs-5">

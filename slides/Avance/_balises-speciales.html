@@ -13,9 +13,9 @@ transition: slide-up
 ---
 <h1>La balise &lt;svelte:head/&gt;</h1>
 
-<p>Cet élément permet d'insérer des éléments dans la balise <kbd>head</kbd> du document.</p>
+<p>Cette balise permet d'insérer des éléments dans la balise <kbd>head</kbd> du document.</p>
 
-<div v-click class="flex mbs-5 gap-2">
+<div v-click class="flex mbs-5 gap-5 -mx-5">
 
 <div>
 <b>Component.svelte</b>
@@ -41,7 +41,7 @@ transition: slide-up
   description="Module de formation Svelte"
 />
 ```
-<p>Les balises <kbd>title</kbd> et <kbd>meta:description</kbd> seront ajoutées au sein de la balise <kbd>head</kbd>, ou remplacerons les balises existantes.</p>
+<p>Les balises <kbd>title</kbd> et <kbd>meta:description</kbd> seront ajoutées au sein de la balise <kbd>head</kbd>, ou remplaceront les balises existantes.</p>
 </div>
 </div>
 
@@ -59,7 +59,7 @@ transition: slide-up
 ---
 <h1>La balise &lt;svelte:window/&gt;</h1>
 
-<p>Cet élément permet d'ajouter des écouteurs d'événements ou de binder des variables à l'objet <b>window</b> sans avoir à se soucier de les supprimer lorsque le composant est détruit, ni de vérifier l'existence de <b>window</b> lors du rendu côté serveur, Exemple :</p>
+<p>Cette balise permet d'ajouter des écouteurs d'événements ou de binder des variables à l'objet <b>window</b> sans avoir à se soucier de les supprimer lorsque le composant est détruit, ni de vérifier l'existence de <b>window</b> lors du rendu côté serveur, Exemple :</p>
 
 <div v-click class="flex mbs-5">
 ```svelte
@@ -79,7 +79,7 @@ transition: slide-up
 </div>
 
 <div v-click class="mbs-3 flex">
-  <Alert type="idea" title="À savoir" text="Sur le même principe il existe aussi les éléments **svelte:body** et **svelte:document**"/>
+  <Alert type="idea" title="À savoir" text="Sur le même principe il existe aussi les balises **svelte:body** et **svelte:document**"/>
 </div>
 
 <SlideFooter/>
@@ -155,9 +155,10 @@ transition: slide-up
 ---
 <h1>La balise &lt;slot/&gt;</h1>
 
-<p>Cet élément permet d'afficher les enfant d'un composant. C'est l'équivalent de la propriété <kbd>children</kbd> en <b>React</b> :</p>
+<p>Cet élément permet d'afficher les enfants d'un composant.</p>
+<p>C'est l'équivalent de la propriété <kbd>children</kbd> en <b>React</b> :</p>
 
-<div class="flex mbs-15 gap-10 items-center">
+<div class="flex mbs-5 gap-10 items-center">
 
 <div v-click>
 
@@ -266,7 +267,7 @@ transition: slide-up
 ---
 <h1>La balise &lt;svelte:fragment/&gt;</h1>
 
-<p class="!text-balance">Cet élément vous permet de placer des elements dans un <kbd>slot</kbd> sans qu'il soit wrappé dans un container. C'est l'équivalent de <kbd>&lt;&gt;&lt;/&gt;</kbd> ou <kbd>&lt;React.fragment/&gt;</kbd> en <b>React</b>.</p>
+<p class="!text-balance">Cette balise vous permet de placer des éléments dans un <kbd>slot</kbd> sans qu'il soit wrappé dans un container. C'est l'équivalent de <kbd>&lt;&gt;&lt;/&gt;</kbd> ou <kbd>&lt;React.fragment/&gt;</kbd> en <b>React</b>.</p>
 <p class="!text-balance">Dans l'exemple précédent, si je ne veux pas que les 2 paragraphes du footer soit dans une <kbd>div</kbd> : </p>
 
 

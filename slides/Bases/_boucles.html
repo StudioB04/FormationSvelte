@@ -39,7 +39,7 @@ transition: slide-up
 </div>
 
 <div v-after class="mbs-5 flex">
-  <Alert text="Ici, les éléments présents dans le tableau <b>users</b> serons présentés sous forme de liste ordonée."/>
+  <Alert text="Ici, les éléments présents dans le tableau <b>users</b> seront présentés sous forme de liste ordonée."/>
 </div>
 
 <SlideFooter/>
@@ -50,7 +50,7 @@ transition: slide-up
 ---
 <h1>Les boucles dans les templates Svelte</h1>
 
-<p>Si on souhaite récupérer l'index de la chaque élément de la boucle, il faut passer un deuximème paramètre :</p>
+<p>Si on souhaite récupérer l'index de la chaque élément de la boucle, il faut passer un deuxième paramètre :</p>
 
 <div class="flex mbs-1">
 ```svelte {*}{lines:false}
@@ -75,7 +75,7 @@ transition: slide-up
 </div>
 
 <div v-after class="mbs-5 flex">
-  <Alert text="Ici, les éléments présents dans le tableau <b>users</b> serons présentés sous forme de liste non ordonée mais commencant par un numéro."/>
+  <Alert text="Ici, les éléments présents dans le tableau <b>users</b> seront présentés sous forme de liste non ordonée mais commencant par un numéro."/>
 </div>
 
 <SlideFooter/>
@@ -87,7 +87,7 @@ transition: slide-up
 ---
 <h1>Les boucles dans les templates Svelte</h1>
 
-<p>En <b>Svelte</b> il est possible très simplement de gérer le cas ou l'objet itérable est vide : </p>
+<p>En <b>Svelte</b> il est possible très simplement de gérer le cas où l'objet itérable est vide : </p>
 
 <div class="flex mbs-1">
 ```svelte {*}{lines:false}
@@ -107,14 +107,14 @@ transition: slide-up
   {#each users as user, index}
     <li>{index + 1} - {user}</li>
   {:else}
-    <li>Il n'y a aucun utilisateurs</li>
+    <li>Il n'y a aucun utilisateur</li>
   {/each}
 </ul>
 ```
 </div>
 
 <div v-after class="mbs-2">
-  <Alert text="Ici, le tableau **users** est vide, par conséquent, le texte **<u>Il n'y a aucun utilisateurs</u>** sera affiché."/>
+  <Alert text="Ici, le tableau **users** est vide. Par conséquent, le texte **<u>Il n'y a aucun utilisateur</u>** sera affiché."/>
 </div>
 
 <SlideFooter/>
@@ -125,8 +125,8 @@ transition: slide-left
 ---
 <h1>Les boucles dans les templates Svelte</h1>
 
-<p class="!text-balance">il peut-être parfois indispensable dans les boucle d'identifier chaque élément par une clée unique.</p>
-<p class="!text-balance !mbe-0">En <b>React</b> il existe l'attribut <kbd>key</kbd> à placer sur le premier élément de la boucle. En <b>Svelte</b>, c'est plus simple, on précise simplement la clé entre parenthèse dans la boucle :</p>
+<p class="!text-balance">il peut être parfois indispensable dans les boucles d'identifier chaque élément par une clé unique.</p>
+<p class="!text-balance !mbe-0">En <b>React</b> il existe l'attribut <kbd>key</kbd> à placer sur le premier élément de la boucle. <br/> En <b>Svelte</b>, c'est plus simple, on précise simplement la clé entre parenthèse dans la boucle :</p>
 
 <div class="flex mbs-1">
 ```svelte {*}{lines:false}

@@ -85,11 +85,10 @@ transition: slide-up
 
 ```svelte
 <button 
-  on:click={ ... } 
-  on:click={ ... } 
-  on:click={ ... } 
-  on:focus={ ... } 
-  on:blur={ ... }
+  on:click={ doSomething } 
+  on:click={ doSomethingElse } 
+  on:focus={ onFocus } 
+  on:blur={ onBlur }
 >
   Click me
 </button>
