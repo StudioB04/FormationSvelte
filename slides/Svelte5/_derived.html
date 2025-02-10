@@ -29,7 +29,7 @@ transition: slide-up
   $double = count * 2;
 </script>
 
-<button onclick={() => count++}>clicks: {count}</button>
+<button on:click={() => count++}>clicks: {count}</button>
 <p>double = {double}</p>
 ```
 </div>
@@ -44,7 +44,7 @@ transition: slide-up
   let double = $derived(count * 2);
 </script>
 
-<button onclick={() => count++}>clicks: {count}</button>
+<button on:click={() => count++}>clicks: {count}</button>
 <p>double = {double}</p>
 ```
 </div>

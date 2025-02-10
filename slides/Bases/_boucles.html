@@ -137,13 +137,13 @@ transition: slide-left
 <div v-click>
 ```svelte
 <script>
-  const user = [
+  const users = [
     {firstname: "John", lastname: "Doe" },
     {firstname: "Bill", lastname: "Gates" }
   ]
 </script>
 <ul>
-  {#each users as user, index, (user.firstname)}
+  {#each users as user, index (user.firstname)}
     <li>{index + 1} - {user.firstname} {user.lastname}</li>
   {/each}
 </ul>
