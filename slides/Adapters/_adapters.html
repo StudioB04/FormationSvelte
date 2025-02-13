@@ -85,9 +85,40 @@ export default {
 
 
 ---
+layout: default
+transition: slide-up
+---
+<h1>Une configuration différente en fonction de l'environnement</h1>
+
+<p>Il peux arriver que pendant la phase de développement de l'application, vous ayez besoin d'un serveur spécifique (serveur de preprod ou de staging)</p>
+
+<p>On peut alors tout à fait configurer un adapter différent pour le dev et la prod :</p>
+
+<div v-click mbs-2 flex items-center gap-5>
+```js
+import adapterNode from '@sveltejs/adapter-node';
+import adapterStatic from '@sveltejs/adapter-static';
+
+const isProd = process.env.NODE_ENV === 'production'
+const adapter = isProd ? adapterNode : adapterStatic
+
+export default {
+  kit: {
+    adapter: adapter()
+  }
+};
+```
+
+<p>L'<b>adapter-node</b> sera utilisé en prod et l'<b>adapter-static</b> sera utilisé pour la phase de développment.</p>
+</div>
+
+<SlideFooter/>
+
+
+---
 layout: image-right
 image: code.jpg
-transition: slide-up
+transition: slide-left
 ---
 <h1>Les adapters officiels</h1>
 <h2 class="text-light !text-3xl">la documentation</h2>
@@ -97,5 +128,9 @@ transition: slide-up
 <div flex mbs-20>
   <Alert type="information" title="Information" text="Si vous avez un besoin spécifique, sachez que vous pouvez [développer vos propres adapters](https://svelte.dev/docs/kit/writing-adapters), et qu'il existe des adapters non-officiels disponibles pour toutes les plateformes."/>
 </div>
+
+<SlideFooter/>
+
+
 
 
