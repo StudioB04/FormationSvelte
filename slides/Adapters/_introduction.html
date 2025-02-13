@@ -1,0 +1,38 @@
+---
+layout: default
+transition: slide-up
+---
+<h1>C'est quoi un adapter ?</h1>
+
+<p>Lorsqu'une application est développée avec <b>SvelteKit</b>, elle doit être déployée sur un environnement spécifique (<b>Node.js</b>, <b>serveur statique</b>, <b>plateforme cloud</b>, etc.)</p>
+<p>Les adapters sont des modules qui transforment une application <b>SvelteKit</b> afin qu'elle fonctionne sur une plateforme cible.</p>
+
+<p v-click>Lorsqu'une application est buildée avec la commande <kbd>npm run build</kbd>, le code est compilé et organisé selon des patterns prédéfinis en fonction de la plateforme sur laquelle vous projetez de déployer votre projet.</p>
+<p v-click>L'adapter va alors créer un dossier de sortie <b>/build</b> qui contiendra tous les fichiers nécéssaires pour être exécuté sur le serveur de production.</p>
+
+<SlideFooter/>
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Fonctionnement dans SvelteKit</h1>
+
+<p>La configuration de l'adapter se fait dans le fichier <kbd>svelte.config.js</kbd> :</p>
+
+<div flex mbs-5>
+```js
+// Ici on importe l'adapter qui génère un site statique.
+import adapter from '@sveltejs/adapter-static';
+
+export default {
+  kit: {
+    adapter: adapter()
+  },
+};
+```
+</div>
+
+
+
+<SlideFooter/>

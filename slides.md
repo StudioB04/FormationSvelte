@@ -89,6 +89,12 @@ src: ./slides/Svelte5/index.html
 ---
 
 
+---
+title: Adapters.
+src: ./slides/Adapters/index.html
+---
+
+
 
 ---
 title: Merci.

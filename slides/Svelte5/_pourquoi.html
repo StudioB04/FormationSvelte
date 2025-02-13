@@ -46,11 +46,11 @@ transition: slide-up
 
   $effect(() => console.log('counter was updated to : ', count));
 
-  const increment = () => { count +=1 };
+  const onclick = () => { count +=1 };
 </script>
 
 <h1>{title}</h1>
-<button onclick={increment}>{count}</button>
+<button {onclick}>{count}</button>
 ```
 </div>
 
@@ -68,7 +68,7 @@ transition: slide-up
 
 <div v-click>
 ```js
-export function createCounter() {
+export default function createCounter() {
   let count = $state(0);
   let double = $derived(count * 2);
   const increment = () => { count ++ };

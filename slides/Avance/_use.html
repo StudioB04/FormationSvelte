@@ -23,11 +23,11 @@ transition: slide-up
 
 ```js
 export function highlight(element) {
-  element.style.backgroundColor = 'yellow';
+  element.style.color = 'red';
 
   return {
     destroy() {
-      element.style.backgroundColor = '';
+      element.style.color = '';
     }
   };
 }
@@ -43,7 +43,7 @@ export function highlight(element) {
 </script>
 
 <p use:highlight>
-  Ce texte sera surligné.
+  Ce texte sera coloré en rouge. 
 </p>
 ```
 </div>
@@ -66,21 +66,21 @@ transition: slide-up
 <p>On peut transmettre des arguments à l'action. Reprenons l'exemple précédent :</p>
 
 
-<div class="flex gap-3 mbs-2">
+<div class="flex gap-3 mbs-2 -mx-10">
 
 <div v-click>
 <b>highlight.js</b>
 
 ```js
 export function highlight(element, color) {
-  element.style.backgroundColor = color;
+  element.style.color = color;
 
   return {
     update(newColor) {
-      element.style.backgroundColor = newColor;
+      element.style.color = newColor;
     },
     destroy() {
-      element.style.backgroundColor = '';
+      element.style.color = '';
     }
   };
 }
@@ -93,15 +93,15 @@ export function highlight(element, color) {
 ```svelte
 <script>
   import { highlight } from './highlight.js';
-  let color = 'yellow';
+  let color = '#FF55FF';
 </script>
 
 <label for="color">Entrez une couleur</label>
-<input id="color" bind:value={color} />
+<input id="color" type="color" bind:value={color} />
 
-<p use:highlight={color}>
+<h1 use:highlight={color}>
   Ce texte change de couleur.
-</p>
+</h1>
 ```
 </div>
 
@@ -133,7 +133,7 @@ export const autofocus = element => {
 }
 ```
 
-<div class="flex flex-col gap-5 mbs-5">
+<div class="flex flex-col gap-2 mbs-2">
   <Alert v-click="2" type="idea" title="Astuce 1" text="Ici on ajoute un délai de 100ms pour laisser au navigateur le temps d'ajouter l'élément au **DOM** avant de placer le focus sur lui."/>
   <Alert v-click="3" type="idea" title="Astuce 2" text="Il n'est pas nécessaire de nettoyer l'action avec **destroy()** puisque le champs va disparaitre et donc perdre le focus !"/>
 </div>
@@ -147,13 +147,11 @@ export const autofocus = element => {
 </script>
 
 <button on:click={() => (showForm = !showForm)}>
-  Toggle Form
+  Toggle input
 </button>
 
 {#if showForm}
-  <div class="modal">
-    <input type="text" use:autofocus>
-  </div>
+	<input type="text" use:autofocus>
 {/if}
 ```
 </div>

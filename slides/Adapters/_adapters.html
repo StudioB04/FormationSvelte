@@ -1,0 +1,101 @@
+---
+layout: default
+transition: slide-up
+---
+<h1>Les adapters officiels</h1>
+<h2 class="text-light !text-3xl">adapter-static</h2>
+
+<p>Cet adapter permet de convertir votre application en fichier statiques (<b>HTML</b>, <b>CSS</b>, <b>JS</b>) pour une utilisation sur un serveur Web statique comme <b>OVH</b> ou <b>Firebase</b> par exemple.</p>
+
+<p>Cet adapter ne convient pas aux applications dynamiques qui ont besoin de communiquer avec une API ou une base de données.</p>
+
+<div flex mbs-5>
+```js
+import adapter from '@sveltejs/adapter-static';
+
+export default {
+  kit: {
+    adapter: adapter({
+      // adapter options go here
+    })
+  },
+};
+```
+</div>
+
+<SlideFooter/>
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Les adapters officiels</h1>
+<h2 class="text-light !text-3xl">adapter-node</h2>
+
+<p>Cet adapter permet de builder votre application en une application <b>Node</b>. Le point d'entrée ne sera donc plus un fichier <b>HTML</b> mais un fichier <b>JavaScript</b>.</p>
+
+<p>Cet adapter permet de créer une applcation qui peut être deployé sur un serveur <b>Node</b> comme <b>AWS</b>, <b>Google Cloud</b>, <b>Github Pages</b>, etc.</p>
+
+<div flex>
+```js
+import adapter from '@sveltejs/adapter-node';
+
+export default {
+  kit: {
+    adapter: adapter({
+      // adapter options go here
+    })
+  },
+};
+```
+</div>
+
+<SlideFooter/>
+
+
+---
+layout: default
+transition: slide-up
+---
+<h1>Les adapters officiels</h1>
+<h2 class="text-light !text-3xl">adapter-netlify</h2>
+
+<p><b><a href="https://netlify.com">Netlify</a></b> est une plateforme d’hébergement et d’automatisation de projets gratuite (certaines options sont payantes)</p>
+
+<p>L'adapter <kbd>adapter-netlify</kbd> va convertir l'application en fichiers pour <b>Netlify</b>.</p>
+
+<div flex mbs-5 items-center gap-10>
+```js
+import adapter from '@sveltejs/adapter-static';
+
+export default {
+  kit: {
+    adapter: adapter({
+      // adapter options go here
+    })
+  },
+};
+```
+
+<Alert type="idea" title="Et pour Vercel ?" text="Si vous êtes plus familier avec **Vercel**, il existe aussi un adapteur <kbd>@sveltejs/adapter-vercel</kbd> !"/>
+
+</div>
+
+<SlideFooter/>
+
+
+---
+layout: image-right
+image: code.jpg
+transition: slide-up
+---
+<h1>Les adapters officiels</h1>
+<h2 class="text-light !text-3xl">la documentation</h2>
+
+<p>Pour en savoir plus sur les adapters et leur configuration, rendez vous sur la <b><a href="https://svelte.dev/docs/kit/adapters" target="_blank">Documentation de SvelteKit</a></b></p>
+
+<div flex mbs-20>
+  <Alert type="information" title="Information" text="Si vous avez un besoin spécifique, sachez que vous pouvez [développer vos propres adapters](https://svelte.dev/docs/kit/writing-adapters), et qu'il existe des adapters non-officiels disponibles pour toutes les plateformes."/>
+</div>
+
+
