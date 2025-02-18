@@ -7,9 +7,8 @@ transition: slide-up
 
 <p>Cet adapter permet de convertir votre application en fichier statiques (<b>HTML</b>, <b>CSS</b>, <b>JS</b>) pour une utilisation sur un serveur Web statique comme <b>OVH</b> ou <b>Firebase</b> par exemple.</p>
 
-<p>Cet adapter ne convient pas aux applications dynamiques qui ont besoin de communiquer avec une API ou une base de données.</p>
 
-<div flex mbs-5>
+<div v-click flex my-5>
 ```js
 import adapter from '@sveltejs/adapter-static';
 
@@ -22,6 +21,9 @@ export default {
 };
 ```
 </div>
+
+<Alert v-after type="danger" title="Attention" text="Cet adapter ne convient pas aux applications dynamiques qui ont besoin de communiquer avec une API ou une base de données !"/>
+
 
 <SlideFooter/>
 
@@ -36,7 +38,7 @@ transition: slide-up
 
 <p>Cet adapter permet de créer une applcation qui peut être deployé sur un serveur <b>Node</b> comme <b>AWS</b>, <b>Google Cloud</b>, <b>Github Pages</b>, etc.</p>
 
-<div flex>
+<div flex v-click>
 ```js
 import adapter from '@sveltejs/adapter-node';
 
@@ -64,7 +66,7 @@ transition: slide-up
 
 <p>L'adapter <kbd>adapter-netlify</kbd> va convertir l'application en fichiers pour <b>Netlify</b>.</p>
 
-<div flex mbs-5 items-center gap-10>
+<div v-click flex mbs-5 items-center gap-10>
 ```js
 import adapter from '@sveltejs/adapter-static';
 
@@ -77,7 +79,7 @@ export default {
 };
 ```
 
-<Alert type="idea" title="Et pour Vercel ?" text="Si vous êtes plus familier avec **Vercel**, il existe aussi un adapteur <kbd>@sveltejs/adapter-vercel</kbd> !"/>
+<Alert type="idea" title="Et pour Vercel ?" text="Si vous êtes plus familier avec **Vercel**, il existe aussi un adapteur dédié : <br/><br/><kbd>@sveltejs/adapter-vercel</kbd>"/>
 
 </div>
 
@@ -90,7 +92,7 @@ transition: slide-up
 ---
 <h1>Une configuration différente en fonction de l'environnement</h1>
 
-<p>Il peut arriver que pendant la phase de développement de l'application, vous ayez besoin d'un serveur spécifique (serveur de preprod, de staging, de recette, de tests, etc.)</p>
+<p>Il peut arriver que pendant la phase de développement de l'application, vous ayez besoin d'un serveur spécifique (Un serveur dédié à la recette, un serveur pour les test d'intégrations, etc.)</p>
 
 <p>On peut alors tout à fait configurer un adapter différent pour le dev et la prod :</p>
 
@@ -99,8 +101,8 @@ transition: slide-up
 import adapterNode from '@sveltejs/adapter-node';
 import adapterStatic from '@sveltejs/adapter-static';
 
-const isProd = process.env.NODE_ENV === 'production'
-const adapter = isProd ? adapterNode : adapterStatic
+const isProd = process.env.NODE_ENV === 'production';
+const adapter = isProd ? adapterNode : adapterStatic;
 
 export default {
   kit: {

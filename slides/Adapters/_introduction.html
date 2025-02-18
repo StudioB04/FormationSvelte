@@ -4,11 +4,11 @@ transition: slide-up
 ---
 <h1>C'est quoi un adapter ?</h1>
 
-<p>Lorsqu'une application est développée avec <b>SvelteKit</b>, elle doit être déployée sur un environnement spécifique (<b>Node.js</b>, <b>serveur statique</b>, <b>plateforme cloud</b>, etc.)</p>
+<p>Lorsqu'une application est développée avec <b>SvelteKit</b>, elle doit être déployée sur un environnement spécifique (<b>Node.js</b>, <b>serveur statique</b>, <b>plateforme cloud</b>, etc.) afin de la rendre publique.</p>
 <p>Les adapters sont des modules qui transforment une application <b>SvelteKit</b> afin qu'elle fonctionne sur une plateforme cible.</p>
 
-<p v-click>Lorsqu'une application est buildée avec la commande <kbd>npm run build</kbd>, le code est compilé et organisé selon des patterns prédéfinis en fonction de la plateforme sur laquelle vous projetez de déployer votre projet.</p>
-<p v-click>L'adapter va alors créer un dossier de sortie <b>/build</b> qui contiendra tous les fichiers nécéssaires pour être exécuté sur le serveur de production.</p>
+<p v-click>Lorsqu'une application est buildée avec la commande <kbd>npm run build</kbd>, le code est compilé et organisé selon des patterns prédéfinis par la plateforme sur laquelle vous projetez de déployer votre projet.</p>
+<p v-click>L'adapter va alors créer un dossier de sortie (par défaut, ce sera le dossier <b>/build</b>) qui contiendra tous les fichiers nécéssaires pour permettre à votre application d'exécuté sur le serveur de production.</p>
 
 <SlideFooter/>
 
@@ -22,8 +22,7 @@ transition: slide-up
 
 <div flex mbs-5>
 ```js
-// Ici on importe l'adapter qui génère un site statique.
-import adapter from '@sveltejs/adapter-static';
+import adapter from '...';
 
 export default {
   kit: {
